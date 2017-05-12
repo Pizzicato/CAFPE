@@ -14,6 +14,17 @@
 !/application/logs/index.html
 !/application/logs/.htaccess
 
+# Remove PHPUnit generated files when testing
+_ci_phpunit_test/tmp/
+application/tests/build/coverage
+application/tests/build/documentation
+application/tests/build/logs
+application/tests/build/phar
+application/tests/build/phpdox
+application/tests/build/*.phar
+application/tests/build/*.phar.asc
+application/tests/results
+
 composer.lock
 
 # Very crazy rules to ignore /vendor, except /vendor/codeigniter/framework/system/
