@@ -1,0 +1,27 @@
+# manage all ignores using only root folder .gitignore
+.gitignore
+!/.gitignore
+
+# TODO: Add ignores from legacy cafpe
+/.htaccess
+.DS_Store
+
+/application/cache/*
+!/application/cache/index.html
+!/application/cache/.htaccess
+
+/application/logs/*
+!/application/logs/index.html
+!/application/logs/.htaccess
+
+composer.lock
+
+# Very crazy rules to ignore /vendor, except /vendor/codeigniter/framework/system/
+/vendor/*
+!/vendor/codeigniter/
+
+/vendor/codeigniter/*
+!/vendor/codeigniter/framework/
+
+/vendor/codeigniter/framework/*
+!/vendor/codeigniter/framework/system/
