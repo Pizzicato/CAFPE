@@ -1,5 +1,5 @@
 # CAFPE
-
+[![Build Status](http://localhost:8090/buildStatus/icon?job=cafpe)](http://localhost:8090/job/cafpe/)
 ## Original base installation
 
 ### CodeIgniter via Composer
