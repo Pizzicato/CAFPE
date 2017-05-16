@@ -3,7 +3,6 @@
 !/.gitignore
 
 # TODO: Add ignores from legacy cafpe
-/.htaccess
 .DS_Store
 
 /application/cache/*
