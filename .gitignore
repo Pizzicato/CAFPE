@@ -15,7 +15,7 @@
 !/application/logs/.htaccess
 
 # Remove PHPUnit generated files when testing
-_ci_phpunit_test/tmp/
+_ci_phpunit_test/tmp
 application/tests/build/coverage
 application/tests/build/documentation
 application/tests/build/logs
@@ -28,6 +28,7 @@ application/tests/results
 composer.lock
 
 # Very crazy rules to ignore /vendor, except /vendor/codeigniter/framework/system/
+# ref: http://stackoverflow.com/questions/5533050/gitignore-exclude-folder-but-include-specific-subfolder/
 /vendor/*
 !/vendor/codeigniter/
 
@@ -36,3 +37,10 @@ composer.lock
 
 /vendor/codeigniter/framework/*
 !/vendor/codeigniter/framework/system/
+
+# Assets
+/public/*
+!/public/assets/
+
+/public/assets/*
+!/public/assets/src/
