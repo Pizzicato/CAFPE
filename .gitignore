@@ -44,6 +44,3 @@ composer.lock
 
 /public/assets/*
 !/public/assets/src/
-
-# Documentation
-/docs
