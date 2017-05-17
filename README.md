@@ -12,6 +12,8 @@ This sets the common git configuration values that all contributors should have 
 
 Since git version 2.9 the default hooks folder location can be changed using ```core.hookspath```, allowing to share them among all contributors, and thus keeping commits more stadard.
 
+The only hook configured so far is to generate documentation using ```phpDoc``` before pushing, therefore it should be installed in the development environment.
+
 ## Original base installation
 
 ### CodeIgniter via Composer
