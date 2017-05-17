@@ -3,9 +3,11 @@
 
 ## Set up
 After cloning the repository, cd into it and run:
-  ```
-  $ make init
-  ```
+
+```
+$ make init
+```
+
 This sets the common git configuration values that all contributors should have in their ```.git/config``` file. More specifically, those that enable the use of shared hooks which are located in the ```.githooks``` folder.
 
 Since git version 2.9 the default hooks folder location can be changed using ```core.hookspath```, allowing to share them among all contributors, and thus keeping commits more stadard.
@@ -28,6 +30,7 @@ $ php vendor/kenjis/ci-phpunit-test/install.php
 ```
 
 ## Update
+
 ```
 $ composer update
 ```
