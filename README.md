@@ -1,13 +1,13 @@
 # CAFPE
-[![Build Status](http://localhost:8090/buildStatus/icon?job=cafpe)](http://localhost:8090/job/cafpe/)
+[![Build Status](http://ftae31.ugr.es:8090/buildStatus/icon?job=cafpe)](http://ftae31.ugr.es:8090/job/cafpe/)
 
-## NEEDED SOFTWARE FOR DEVELOPMENT
+## Needed software for development
 
   - [Git](https://git-scm.com/)
   - [Composer](https://getcomposer.org/)
 
 
-## SET UP
+## Set up
 After cloning the repository, cd into it and run:
 
 ```
@@ -33,7 +33,7 @@ $ php vendor/kenjis/ci-phpunit-test/install.php
 
 After that edit ```application/tests/Bootstrap.php``` and remove comments in Monkey Patching section.
 
-## TESTS
+## Tests
 
 To run tests:
 
@@ -41,7 +41,7 @@ To run tests:
 $ vendor/bin/phpunit  -c application/tests
 ```
 
-## UPDATE
+## Updating
 
 ```
 $ composer update
