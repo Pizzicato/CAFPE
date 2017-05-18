@@ -1,0 +1,12 @@
+# Configuration for documentation autogeneration
+source:
+    - application/controllers
+    - application/core
+    - application/helpers
+    - application/hooks
+    - application/libraries
+    - application/models
+    - application/views
+destination: docs
+title: "CAFPE Docs"
+templateTheme: bootstrap

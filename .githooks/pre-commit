@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Regenerates documentaion and adds it to the commit
+#
+echo
+echo "Regenerating Documentation"
+echo
+vendor/bin/apigen -q generate
+echo
+echo
+echo "Regeneration complete"
+echo
+echo "Adding updated docs to commit"
+echo
+git add docs
+git add -u docs
+echo

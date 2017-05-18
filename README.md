@@ -1,6 +1,11 @@
 # CAFPE
 [![Build Status](http://localhost:8090/buildStatus/icon?job=cafpe)](http://localhost:8090/job/cafpe/)
 
+## Needed software for development
+
+    - [Git](https://git-scm.com/)
+    - [Composer](https://getcomposer.org/)
+
 ## Set up
 After cloning the repository, cd into it and run:
 
@@ -12,23 +17,27 @@ This sets the common git configuration values that all contributors should have 
 
 Since git version 2.9 the default hooks folder location can be changed using ```core.hookspath```, allowing to share them among all contributors, and thus keeping commits more stadard.
 
-The only hook configured so far is to generate documentation using ```phpDoc``` before pushing, therefore it should be installed in the development environment.
+The only hook configured so far (pre-commit) regenerates documentation using ```phpDoc``` before pushing, therefore it should be installed in the development environment.
 
-## Original base installation
-
-### CodeIgniter via Composer
+Then install required packages via composer:
 
 ```
-$ composer create-project kenjis/codeigniter-composer-installer .
+$ composer install
 ```
 
-`.htaccess` should be configured depending on production server needs.
-
-### PHPUnit Testing environment via Composer
-
+Run install script for CodeIgniter PHPUnit tests integration:
 ```
-$ composer require kenjis/ci-phpunit-test --dev
 $ php vendor/kenjis/ci-phpunit-test/install.php
+```
+
+After that edit ```application/tests/Bootstrap.php``` and remove comments in Monkey Patching section.
+
+## Tests
+
+To run tests:
+
+```
+$ vendor/bin/phpunit  -c application/tests
 ```
 
 ## Update
