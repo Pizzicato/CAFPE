@@ -1,2 +1,2 @@
-# Public folder will be uploaded using lftp
+# Public folder will be deployed using lftp
 /public
