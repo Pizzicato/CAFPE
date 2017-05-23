@@ -41,6 +41,7 @@ composer.lock
 /public/*
 !/public/assets/
 !/public/.htaccess
+!/public/index.php
 
 /public/assets/*
 !/public/assets/src/

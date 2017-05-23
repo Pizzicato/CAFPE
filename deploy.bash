@@ -14,7 +14,7 @@
 function set_environment() {
     HTACCESS=$1.htaccess
     if [[ ! -f $HTACCESS ]]; then
-        echo "Something went wrong: $HTACCESS doesn'exist"
+        echo "SETTING ENVIRONMENT ERROR: Something went wrong. $HTACCESS doesn'exist"
         exit 1
     fi
     sed -i -- 's/development/production/' $HTACCESS
@@ -31,26 +31,38 @@ function create_assets() {
 # $2 - Local folder
 # $3 - Remote folder
 function ftp_upload_folder() {
-    FTPURL=$1
-    LCD=$2
-    RCD=$3
+    echo "FTP UPLOAD: Uploading $2 to FTP server..."
     lftp -c "set ftp:list-options -a;
     set cmd:fail-exit yes;
     set ssl:verify-certificate no;
-    open '$FTPURL';
-    lcd $LCD;
-    cd $RCD;
+    open '$1';
+    lcd $2;
+    cd $3;
     mirror --reverse \
     --delete \
     --verbose"
+    echo "FTP UPLOAD: Done!"
 }
 
 # $1 - FTP_HOST
 # $2 - FTP_USERNAME
 # $3 - FTP_PASSWORD
 function ftp_upload_repo() {
-    # git ftp push <options>
-    echo "git ftp"
+    # Check if repo was initiated
+    git ftp push -D -u $2 -p $3 ftp://$1 &> /dev/null
+    if [[ $? != 0 ]]; then
+        echo "GIT FTP INFO: Repo not in FTP site yet. Trying first upload..."
+        git ftp init -u $2 -p $3 ftp://$1
+        if [[ $? != 0 ]]; then
+            echo "GIT FTP ERROR: Couldn't upload repo"
+        fi
+    else
+        echo "GIT FTP INFO: Pushing repo"
+        git ftp push -u $2 -p $3 ftp://$1
+        if [[ $? != 0 ]]; then
+            echo "GIT FTP ERROR: Couldn't upload changed file to repo"
+        fi
+    fi
 }
 
 LOCAL_PUBLIC_FOLDER='public/'
@@ -59,6 +71,6 @@ HOST=$1
 USERNAME=$2
 PASSWORD=$3
 
-#set_environment $LOCAL_PUBLIC_FOLDER
+set_environment $LOCAL_PUBLIC_FOLDER
 #ftp_upload_repo
 ftp_upload_folder "ftp://$USERNAME:$PASSWORD@$HOST" $LOCAL_PUBLIC_FOLDER $REMOTE_PUBLIC_FOLDER
