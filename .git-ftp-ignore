@@ -6,6 +6,7 @@ public/
 application/tests/
 .git-ftp-ignore
 .gitignore
+*/.gitignore
 apigen.neon
 composer.json
 deploy.bash

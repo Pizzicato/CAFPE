@@ -14,7 +14,7 @@
 !/application/logs/.htaccess
 
 # Remove PHPUnit generated files when testing
-_ci_phpunit_test/tmp
+application/tests/_ci_phpunit_test/tmp
 application/tests/build/coverage
 application/tests/build/documentation
 application/tests/build/logs
