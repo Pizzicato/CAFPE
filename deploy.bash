@@ -116,13 +116,15 @@ function ftp_upload_repo() {
         echo "GIT FTP [INFO]: Repo not in FTP site yet. Trying first upload..."
         git ftp init -u $2 -p $3 ftp://$1
         if [[ $? != 0 ]]; then
-            echo "GIT FTP [ERROR]: Couldn't upload repo"
+            echo "GIT FTP [ERROR]: Couldn't do first upload"
+            return 1
         fi
     else
         echo "GIT FTP [INFO]: Pushing repo"
         git ftp push -u $2 -p $3 ftp://$1
         if [[ $? != 0 ]]; then
-            echo "GIT FTP [ERROR]: Couldn't upload changed file to repo"
+            echo "GIT FTP [ERROR]: Couldn't upload changes"
+            return 1
         fi
     fi
 }
