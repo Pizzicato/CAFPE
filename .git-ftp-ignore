@@ -1,9 +1,9 @@
-.githooks/
-bin/
-docs/
+.githooks/*
+bin/*
+docs/*
 # Public folder will be deployed using lftp
-public/
-application/tests/
+public/*
+application/tests/*
 .git-ftp-ignore
 .gitignore
 apigen.neon
