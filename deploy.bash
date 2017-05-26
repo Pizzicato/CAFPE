@@ -144,12 +144,12 @@ USERNAME=$2
 PASSWORD=$3
 
 set_environment $LOCAL_PUBLIC_FOLDER
-if [[ $? ]]; then
+if [[ $? != 0 ]]; then
     fatal_error
 fi
 # Upload repo
 ftp_upload_repo $HOST $USERNAME $PASSWORD
-if [[ $? ]]; then
+if [[ $? != 0 ]]; then
     fatal_error
 fi
 # Upload public folder
