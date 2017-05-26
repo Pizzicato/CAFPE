@@ -1,2 +1,12 @@
+/.githooks
+/bin
+/docs
 # Public folder will be deployed using lftp
 /public
+.git-ftp-ignore
+.gitignore
+apigen.neon
+composer.json
+deploy.bash
+Makefile
+README.md
