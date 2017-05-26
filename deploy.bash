@@ -145,15 +145,18 @@ HOST=$1
 USERNAME=$2
 PASSWORD=$3
 
-set_environment $LOCAL_PUBLIC_FOLDER
-if [[ $? != 0 ]]; then
-    fatal_error
-fi
 # Upload repo
 ftp_upload_repo $HOST $USERNAME $PASSWORD
 if [[ $? != 0 ]]; then
     fatal_error
 fi
+
+# Set production environment
+set_environment $LOCAL_PUBLIC_FOLDER
+if [[ $? != 0 ]]; then
+    fatal_error
+fi
+
 # Upload public folder
 ftp_upload_folder "ftp://$USERNAME:$PASSWORD@$HOST" $LOCAL_PUBLIC_FOLDER $REMOTE_PUBLIC_FOLDER
 if [[ $? != 0 ]]; then
