@@ -1,7 +1,11 @@
-application/tests
+.githooks/
+bin/
+docs/
+# Public folder will be deployed using lftp
+public/
+application/tests/
 .git-ftp-ignore
 .gitignore
-*/.gitignore
 apigen.neon
 composer.json
 deploy.bash
