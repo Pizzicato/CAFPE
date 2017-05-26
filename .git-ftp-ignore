@@ -1,9 +1,4 @@
-.githooks/
-bin/
-docs/
-# Public folder will be deployed using lftp
-public/
-application/tests/
+application/tests
 .git-ftp-ignore
 .gitignore
 */.gitignore
