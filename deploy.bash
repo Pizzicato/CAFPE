@@ -96,7 +96,8 @@ function ftp_upload_folder() {
     cd $3;
     mirror --reverse --ignore-time\
     --delete \
-    --verbose"
+    --verbose \
+    --exclude-glob $2assets/src/"
     echo "FTP UPLOAD [INFO]: Done"
     check_ftp_errors $DEBUG_LOG
     if [[ $? != 0 ]]; then

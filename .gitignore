@@ -45,3 +45,6 @@ composer.lock
 
 /public/assets/*
 !/public/assets/src/
+
+# Front-End
+node_modules/*
