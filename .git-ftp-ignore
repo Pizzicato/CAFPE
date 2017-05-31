@@ -9,5 +9,7 @@ application/tests/*
 apigen.neon
 composer.json
 deploy.bash
+gulpfile.js
 Makefile
+package.json
 README.md

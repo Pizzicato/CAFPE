@@ -29,11 +29,11 @@ function create_assets() {
     echo popo
 }
 
-# $1 -> Debug log file
+# $1 -> LFTP debug log file
 function check_ftp_errors() {
     echo "FTP UPLOAD CHECK DEBUG [INFO]: Checking errors in debug log..."
     # Get FTP server return codes (second column) and check for errors (4XX, 5XX or 6XX)
-    awk '$2~/^[4-6]/ {print "FTP UPLOAD CHECK DEBUG [ERROR]: " $0; errors++; } END { if(errors){ exit errors; } }' $1
+    awk '$2~/^[4-6]/ { print "FTP UPLOAD CHECK DEBUG [ERROR]: " $0; errors++; } END { if(errors){ exit errors; } }' $1
     ERRORS=$?
     if [[ $ERRORS > 0 ]]; then
         echo "FTP UPLOAD CHECK DEBUG [INFO]: Done, $ERRORS error(s)"
@@ -43,7 +43,7 @@ function check_ftp_errors() {
     fi
 }
 
-# $1 -> Uploaded files log
+# $1 -> LFTP uploaded files log
 function check_ftp_upload() {
     echo "FTP UPLOAD CHECK UPLOAD [INFO]: Checking uploaded files log..."
     # error if nothing was uploaded
@@ -52,14 +52,15 @@ function check_ftp_upload() {
         return 0
     fi
     ERRORS=0
-    # Get list of filenames and size
+    # Chechk if each file size is the same as bytes uploaded, using the log file created by LFTP
     while read UPLOADED_FNAME UPLOADED_FSIZE; do
         ACTUAL_FSIZE=$(ls -nl $UPLOADED_FNAME | awk '{print $5}')
         if [[ $ACTUAL_FSIZE != $UPLOADED_FSIZE ]]; then
             echo "FTP UPLOAD CHECK UPLOAD [ERROR]: Possible corrupted file in FTP server: $UPLOADED_FNAME"
             ((ERRORS++))
         fi
-    done <<< `awk '{ match($3, "public/[^/]+$", file); match($6, "[0-9]+-(.*)", size)} { print file[0], size[1] }' $1`
+    # AWK: Make $3 relative path instead of absolute. Remove first characters from $6, only leaving file size
+    done <<< `awk -v pwd="$PWD/" '{ sub(pwd, "", $3); sub("^[0-9]+-", "", $6)} { print $3, $6 }' $1`
     if [[ $ERRORS > 0 ]]; then
         echo "FTP UPLOAD CHECK UPLOAD [INFO]: Done, $ERRORS error(s)"
         return 1
