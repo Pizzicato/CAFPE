@@ -28,7 +28,7 @@ function set_environment() {
 function create_assets() {
     npm set progress=false
     echo "ASSETS CREATION [INFO]: Installing dependencies"
-    npm install --production
+    npm install
     echo "ASSETS CREATION [INFO]: Installing dependencies done"
     echo "ASSETS CREATION [INFO]: Building assets"
     npm run build
