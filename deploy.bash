@@ -28,14 +28,15 @@ function set_environment() {
 function create_assets() {
     npm set progress=false
     echo "ASSETS CREATION [INFO]: Installing dependencies"
-    npm install
-    echo "ASSETS CREATION [INFO]: Done"
+    npm install --production
+    echo "ASSETS CREATION [INFO]: Installing dependencies done"
     echo "ASSETS CREATION [INFO]: Building assets"
-    gulp build
+    npm run build
     if [[ $? != 0 ]]; then
         echo "ASSETS CREATION [ERROR]: Building process failed"
         return 1
     fi
+    echo "ASSETS CREATION [INFO]: Building assets done"
 }
 
 # $1 -> LFTP debug log file
