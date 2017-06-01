@@ -45,7 +45,6 @@ To use it, first install Node and npm in your system. Then cd into the repo and 
 
 ```
 $ npm install
-$ gulp letsgo
 $ gulp dev
 ```
 

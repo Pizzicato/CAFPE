@@ -126,7 +126,7 @@ gulp.task('scss-task', function() {
 
 // Javascripts
 gulp.task('jscripts-task', function() {
-    return gulp.src(paths.jscripts.bundle)
+    return gulp.src(paths.jscripts.src)
         .pipe(plugins.concat('main.js'))
         .pipe(gulp.dest(paths.jscripts.dest))
         .pipe(plugins.rename({
@@ -157,12 +157,12 @@ gulp.task('php-task', function() {
 // Browser Sync
 gulp.task('browser-sync-task', function() {
     browserSync({
-        proxy: "local.fpa_nueva",
+        proxy: "http://127.0.0.1:8020/",
         notify: false
     });
 });
 
-// Task for development
+// Developmen task to watch assets and reload browser when they change
 gulp.task('dev', ['browser-sync-task', 'styles-task', 'jscripts-task', 'images-task'], function() {
     // Watch backend PHPs, .scss, .js & image files
     gulp.watch(paths.php.watch, ['php-task', browserSync.reload]);
@@ -171,5 +171,5 @@ gulp.task('dev', ['browser-sync-task', 'styles-task', 'jscripts-task', 'images-t
     gulp.watch(paths.images.watch, ['images-task', browserSync.reload]);
 });
 
-// Task to prepare all production assets
-gulp.task('prod', ['styles-task', 'jscripts-task', 'images-task']);
+// Task to prepare all
+gulp.task('build', ['styles-task', 'jscripts-task', 'images-task']);

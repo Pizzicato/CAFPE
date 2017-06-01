@@ -26,7 +26,16 @@ function set_environment() {
 # Runs gulp using gulpfile in repo to create production assets
 ##
 function create_assets() {
-    echo popo
+    npm set progress=false
+    echo "ASSETS CREATION [INFO]: Installing dependencies"
+    npm install
+    echo "ASSETS CREATION [INFO]: Done"
+    echo "ASSETS CREATION [INFO]: Building assets"
+    gulp build
+    if [[ $? != 0 ]]; then
+        echo "ASSETS CREATION [ERROR]: Building process failed"
+        return 1
+    fi
 }
 
 # $1 -> LFTP debug log file
@@ -98,7 +107,7 @@ function ftp_upload_folder() {
     mirror --reverse --ignore-time\
     --delete \
     --verbose \
-    --exclude-glob $2assets/src/"
+    --exclude assets/src/"
     echo "FTP UPLOAD [INFO]: Done"
     check_ftp_errors $DEBUG_LOG
     if [[ $? != 0 ]]; then
@@ -146,6 +155,12 @@ REMOTE_PUBLIC_FOLDER='public_html/'
 HOST=$1
 USERNAME=$2
 PASSWORD=$3
+
+# Create Assets
+create_assets
+if [[ $? != 0 ]]; then
+    fatal_error
+fi
 
 # Upload repo
 ftp_upload_repo $HOST $USERNAME $PASSWORD
