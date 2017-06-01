@@ -4,9 +4,9 @@
 ## Needed software for development
 
   - [Git](https://git-scm.com/): Version control
+  - [PHP](http://php.net/)
   - [Composer](https://getcomposer.org/): PHP Package installer
-  - [PHPUnit]
-  - [Node and npm](https://nodejs.org/) and [Gulp](http://gulpjs.com/): Build assets and some development features
+  - [Node and npm](https://nodejs.org/): Build assets and some development features
 
 ## Set up
 Follow each section below and run the commands.
@@ -45,7 +45,7 @@ To use it, first install Node and npm in your system. Then cd into the repo and 
 
 ```
 $ npm install
-$ gulp dev
+$ npm run dev
 ```
 
 ## Tests
