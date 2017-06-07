@@ -4,6 +4,8 @@
 
 # TODO: Add ignores from legacy cafpe
 .DS_Store
+/application/db/db.sqlite
+/application/config/production
 
 /application/cache/*
 !/application/cache/index.html
