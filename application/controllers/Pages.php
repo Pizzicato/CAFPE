@@ -19,6 +19,6 @@ class Pages extends Public_Controller
      */
     public function index()
     {
-        $this->load->view('welcome_message');
+        $this->render('test');
     }
 }

@@ -10,4 +10,10 @@ class Public_Controller extends MY_Controller
         parent::__construct();
         // TODO: Set public template
     }
+
+    protected function render($view = null)
+    {
+        $this->data['view_content'] = (is_null($view)) ? '' : $this->load->view($view, $this->data, true);
+        $this->parser->parse('templates/public', $this->data);
+    }
 }
