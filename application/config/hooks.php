@@ -12,8 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $hook['pre_system'][] = array(
-  'class' => 'AutoLoadHierarchicalControllers',
+  'class' => 'Hierarchical_controllers',
   'function' => 'load_app_controllers',
-  'filename' => 'App_controllers.php',
+  'filename' => 'Hierarchical_controllers.php',
   'filepath' => 'hooks'
 );

@@ -2,11 +2,11 @@
 /**
  * Class with methods to autoload MY_Controller extensions
  */
-class AutoLoadHierarchicalControllers
+class Hierarchical_controllers
 {
     /**
-     * Register anonymous function below as autoload() implementation
-     */
+    * Register anonymous function below as autoload() implementation
+    */
     public function load_app_controllers()
     {
         spl_autoload_register(function ($class) {

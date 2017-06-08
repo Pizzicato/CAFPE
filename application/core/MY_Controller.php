@@ -5,11 +5,17 @@
  */
 abstract class MY_Controller extends CI_Controller
 {
-    // Data that wil be passed to views
+    /**
+    * Data that wil be passed to views
+    *
+    * @var array
+    */
     protected $data = array();
 
-    //make children classes define render method
-    abstract protected function render($view);
+    /**
+    * Make children classes define render method
+    */
+    abstract protected function render($content_view);
 
     public function __construct()
     {
@@ -18,6 +24,9 @@ abstract class MY_Controller extends CI_Controller
         $this->data['pagetitle'] = 'CAFPE - Centro Andaluz de Física de Partículas Elementales';
     }
 
+    /**
+    * Sets language (default or explicitly selected by user)
+    */
     private function _language_check()
     {
         # TODO: Set default or language selected by user

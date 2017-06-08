@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pages extends Public_Controller
+class Pages extends Public_controller
 {
     /**
      * Index Page for this controller.

@@ -3,7 +3,7 @@
 /*
  * Controller extended by other controllers that load public access views
  */
-class Public_Controller extends MY_Controller
+class Public_controller extends MY_Controller
 {
     public function __construct()
     {
@@ -11,9 +11,14 @@ class Public_Controller extends MY_Controller
         // TODO: Set public template
     }
 
-    protected function render($view = null)
+    /**
+    * Renders view - This method implements abstract function in MY_Controller
+    *
+    * @param string $content_view Content view path and name
+    */
+    protected function render($content_view = null)
     {
-        $this->data['view_content'] = (is_null($view)) ? '' : $this->load->view($view, $this->data, true);
+        $this->data['content_view'] = (is_null($content_view)) ? '' : $content_view;
         $this->parser->parse('templates/public', $this->data);
     }
 }
