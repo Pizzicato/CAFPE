@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
 /**
  * Class with methods to autoload MY_Controller extensions
  */

@@ -20,8 +20,10 @@ abstract class MY_Controller extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->_language_check();
         $this->data['pagetitle'] = 'CAFPE - Centro Andaluz de Física de Partículas Elementales';
+
+        $this->_language_check();
+        $this->_maintenance_mode_check();
     }
 
     /**
@@ -30,5 +32,17 @@ abstract class MY_Controller extends CI_Controller
     private function _language_check()
     {
         # TODO: Set default or language selected by user
+    }
+
+    /**
+    * Check if site is in maintenance mode. In that case, load
+    * maintenance view and stop CI execution
+    */
+    private function _maintenance_mode_check()
+    {
+        if ($this->config->item('site_under_maintenance') === true) {
+            $this->data['content_view'] = 'maintenance';
+            die($this->parser->parse('templates/public', $this->data));
+        }
     }
 }

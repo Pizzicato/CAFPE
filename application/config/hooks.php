@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -12,8 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $hook['pre_system'][] = array(
-  'class' => 'Hierarchical_controllers',
-  'function' => 'load_app_controllers',
-  'filename' => 'Hierarchical_controllers.php',
-  'filepath' => 'hooks'
+    'class' => 'Hierarchical_controllers',
+    'function' => 'load_app_controllers',
+    'filename' => 'Hierarchical_controllers.php',
+    'filepath' => 'hooks'
 );
