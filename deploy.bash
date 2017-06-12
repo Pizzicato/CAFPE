@@ -5,6 +5,9 @@
 ##
 function create_assets() {
     npm set progress=false
+    if [[ -d node_modules ]]; then
+        rm -rf node_modules
+    fi
     echo "ASSETS CREATION [INFO]: Installing dependencies"
     npm install
     echo "ASSETS CREATION [INFO]: Installing dependencies done"
@@ -30,7 +33,7 @@ function create_assets() {
 # Sets environment to production modifing /public/.htaccess
 ##
 function set_environment() {
-    HTACCESS=$1.htaccess
+    HTACCESS=public/.htaccess
     echo "SETTING ENVIRONMENT [INFO]: Editing $HTACCESS..."
     if [[ ! -f $HTACCESS ]]; then
         echo "SETTING ENVIRONMENT [ERROR]: $HTACCESS doesn'exist"
@@ -140,7 +143,7 @@ if [[ $? != 0 ]]; then
 fi
 
 # Set production environment
-set_environment $LOCAL_PUBLIC_FOLDER
+set_environment
 if [[ $? != 0 ]]; then
     fatal_error
 fi
