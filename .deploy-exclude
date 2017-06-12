@@ -1,11 +1,11 @@
 apigen.neon
 application/tests/
-assets/src/
 bin/
 composer.json
 deploy.bash
-docs/
 .deploy-exclude
+docs/
+.git/
 .githooks/
 .gitignore
 gulpfile.js
@@ -15,4 +15,5 @@ Makefile
 node_modules/
 package.json
 package-lock.json
+public/assets/src/
 README.md
