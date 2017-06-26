@@ -74,8 +74,8 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'database' => APPPATH.'db/test-db.sqlite',
+	'database' => APPPATH.'db/db-test.sqlite',
 	'dbdriver' => 'sqlite3',
-    'db_debug' => TRUE,
+    'db_debug' => FALSE,
     'pconnect' => FALSE
 );

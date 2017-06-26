@@ -8,6 +8,7 @@
 		"mikey179/vfsStream": "1.1.*",
 		"kenjis/ci-phpunit-test": "^0.15.0",
 		"phpunit/phpunit": "6.1.*",
-		"apigen/apigen": "4.*"
+		"apigen/apigen": "4.*",
+		"kenjis/codeigniter-cli": "^0.1.0"
 	}
 }

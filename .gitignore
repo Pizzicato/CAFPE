@@ -3,9 +3,12 @@
 !/.gitignore
 
 # TODO: Add ignores from legacy cafpe
+lftp_debug.log
+lftp_transferred.log
 .DS_Store
-/application/db/db.sqlite
+/application/db/
 /application/config/production
+/tmp
 
 /application/cache/*
 !/application/cache/index.html
@@ -13,7 +16,6 @@
 
 /application/logs/*
 !/application/logs/index.html
-!/application/logs/.htaccess
 
 # Remove PHPUnit generated files when testing
 application/tests/_ci_phpunit_test/tmp
