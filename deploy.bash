@@ -174,8 +174,8 @@ function ftp_rename_file() {
 function ftp_download_file() {
     echo "FTP DOWNLOAD [INFO]: Downloading '$1' from FTP server"
     remove_lftp_logs
-    lftp -c "$LFTP_OPTIONS
     mkdir -p `dirname $2`
+    lftp -c "$LFTP_OPTIONS
     open '$FTP_ACCESS';
     get $1 -o $2"
     echo "FTP DOWNLOAD [INFO]: Done"
