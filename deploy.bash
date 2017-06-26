@@ -175,6 +175,7 @@ function ftp_download_file() {
     echo "FTP DOWNLOAD [INFO]: Downloading '$1' from FTP server"
     remove_lftp_logs
     lftp -c "$LFTP_OPTIONS
+    mkdir -p `dirname $2`
     open '$FTP_ACCESS';
     get $1 -o $2"
     echo "FTP DOWNLOAD [INFO]: Done"
@@ -201,6 +202,7 @@ function ftp_upload_file() {
     remove_lftp_logs
     lftp -c "$LFTP_OPTIONS
     open '$FTP_ACCESS';
+    mkdir -p `dirname $2`;
     put $1 -o $2;
     $CHMOD;"
     echo "FTP UPLOAD [INFO]: Done"
@@ -303,19 +305,17 @@ function update_db() {
     echo "DB MIGRATIONS [INFO]: Done"
 }
 
+echo
 echo "-------------------------- DEPLOYMENT [BEGIN] --------------------------"
 if ! create_assets; then
     echo "[FATAL] Fatal error creating assets, script halted"
     exit 1
 fi
 
-
-
 if ! set_maintenance_mode 'true'; then
     echo "[FATAL] Fatal error enabling maintenance mode, script halted"
     exit 1
 fi
-
 
 # Set production environment
 if ! set_environment; then
@@ -340,6 +340,7 @@ if ! set_maintenance_mode 'false'; then
     exit 1
 else
     echo "[INFO] Deployment done correctly"
+    echo
     echo "-------------------------- DEPLOYMENT [END] --------------------------"
     exit 0
 fi

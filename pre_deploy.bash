@@ -33,6 +33,7 @@ function install_npm_modules() {
     echo "NPM [INFO]: Done"
 }
 
+echo
 echo "-------------------------- REPO SETUP FOR DEPLOYMENT [BEGIN] --------------------------"
 if ! install_composer_packages; then
     echo "[FATAL] Fatal error intalling composer packages, script halted"
@@ -44,6 +45,7 @@ if ! install_npm_modules; then
     exit 1
 else
     echo "[INFO] Repo preparation for deployment done correctly"
+    echo
     echo "-------------------------- REPO SETUP FOR DEPLOYMENT [END] --------------------------"
     exit 0
 fi
