@@ -96,8 +96,6 @@ function check_ftp_errors() {
         echo "FTP TRANSFERS CHECK DEBUG [ERROR]: Connection wasn't finished properly. Transfer could have not been completed."
         return 1
     fi
-    # remove all create folder errors from log (creating an already existing folder logs error)
-    sed -i '/Create directory operation failed/d' $DEBUG_LOG
     # Get FTP server return codes (second column) and check for errors (4XX, 5XX or 6XX)
     awk '$2~/^[4-6]/ { print "FTP TRANSFER CHECK DEBUG [ERROR]: " $0; errors++; } END { if(errors){ exit errors; } }' $DEBUG_LOG
     ERRORS=$?
@@ -176,10 +174,9 @@ function ftp_rename_file() {
 function ftp_download_file() {
     echo "FTP DOWNLOAD [INFO]: Downloading '$1' from FTP server"
     remove_lftp_logs
-    mkdir -p `dirname $2`
     lftp -c "$LFTP_OPTIONS
     open '$FTP_ACCESS';
-    get -c $1 -o $2"
+    get1 $1 -o $2"
     echo "FTP DOWNLOAD [INFO]: Done"
     if ! check_ftp_errors $DEBUG_LOG; then
         return 1
@@ -204,8 +201,7 @@ function ftp_upload_file() {
     remove_lftp_logs
     lftp -c "$LFTP_OPTIONS
     open '$FTP_ACCESS';
-    mkdir -p -f `dirname $2`;
-    put -c $1 -o $2;
+    put1 $1 -o $2;
     $CHMOD;"
     echo "FTP UPLOAD [INFO]: Done"
     if ! check_ftp_errors $DEBUG_LOG; then
