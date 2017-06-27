@@ -241,6 +241,8 @@ function ftp_upload_site() {
     --exclude-glob='application/cache/ci_session*' \
     --exclude-glob='application/logs/*.php' \
     --exclude='application/config/development/' \
+    --exclude='application/config/production/' \
+    --exclude='application/config/testing/' \
     --exclude='application/db/' \
     --exclude='application/migrations/' \
     --exclude='application/tests/'"
