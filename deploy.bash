@@ -176,7 +176,7 @@ function ftp_download_file() {
     remove_lftp_logs
     lftp -c "$LFTP_OPTIONS
     open '$FTP_ACCESS';
-    get1 $1 -o $2"
+    get $1 -o $2"
     echo "FTP DOWNLOAD [INFO]: Done"
     if ! check_ftp_errors $DEBUG_LOG; then
         return 1
@@ -201,7 +201,7 @@ function ftp_upload_file() {
     remove_lftp_logs
     lftp -c "$LFTP_OPTIONS
     open '$FTP_ACCESS';
-    put1 $1 -o $2;
+    put $1 -o $2;
     $CHMOD;"
     echo "FTP UPLOAD [INFO]: Done"
     if ! check_ftp_errors $DEBUG_LOG; then
