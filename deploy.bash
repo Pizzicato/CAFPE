@@ -96,6 +96,8 @@ function check_ftp_errors() {
         echo "FTP TRANSFERS CHECK DEBUG [ERROR]: Connection wasn't finished properly. Transfer could have not been completed."
         return 1
     fi
+    # remove all create folder errors from log (creating an already existing folder logs error)
+    sed -i '/Create directory operation failed/d' $DEBUG_LOG
     # Get FTP server return codes (second column) and check for errors (4XX, 5XX or 6XX)
     awk '$2~/^[4-6]/ { print "FTP TRANSFER CHECK DEBUG [ERROR]: " $0; errors++; } END { if(errors){ exit errors; } }' $DEBUG_LOG
     ERRORS=$?
@@ -242,8 +244,9 @@ function ftp_upload_site() {
     --include='application/' \
     --exclude-glob='application/cache/ci_session*' \
     --exclude-glob='application/logs/*.php' \
-    --exclude='application/migrations/' \
+    --exclude='application/config/development/' \
     --exclude='application/db/' \
+    --exclude='application/migrations/' \
     --exclude='application/tests/'"
     echo "FTP UPLOAD [INFO]: Done"
     if ! check_ftp_errors $DEBUG_LOG; then
