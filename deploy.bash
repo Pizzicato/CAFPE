@@ -179,7 +179,7 @@ function ftp_download_file() {
     mkdir -p `dirname $2`
     lftp -c "$LFTP_OPTIONS
     open '$FTP_ACCESS';
-    get $1 -o $2"
+    get -c $1 -o $2"
     echo "FTP DOWNLOAD [INFO]: Done"
     if ! check_ftp_errors $DEBUG_LOG; then
         return 1
@@ -205,7 +205,7 @@ function ftp_upload_file() {
     lftp -c "$LFTP_OPTIONS
     open '$FTP_ACCESS';
     mkdir -p -f `dirname $2`;
-    put $1 -o $2;
+    put -c $1 -o $2;
     $CHMOD;"
     echo "FTP UPLOAD [INFO]: Done"
     if ! check_ftp_errors $DEBUG_LOG; then
