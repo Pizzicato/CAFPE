@@ -202,7 +202,7 @@ function ftp_upload_file() {
     remove_lftp_logs
     lftp -c "$LFTP_OPTIONS
     open '$FTP_ACCESS';
-    mkdir -p `dirname $2`;
+    mkdir -p -f `dirname $2`;
     put $1 -o $2;
     $CHMOD;"
     echo "FTP UPLOAD [INFO]: Done"
@@ -281,11 +281,9 @@ function update_db() {
     if [[ -f $DEV_DB ]]; then
         rm $DEV_DB
     fi
-    ftp_download_file $PROD_DB $DEV_DB
-    case $? in
-        1) return 1 ;;
-        -1) touch $PROD_DB ;;
-    esac
+    if ! ftp_download_file $PROD_DB $DEV_DB; then
+        return 1
+    fi
     echo "DB MIGRATIONS [INFO]: Running migrations"
     # if migrations were run
     if run_migrations; then

@@ -6,13 +6,15 @@
 lftp_debug.log
 lftp_transferred.log
 .DS_Store
-/application/db/
 /application/config/production
 /tmp
 
 /application/cache/*
 !/application/cache/index.html
 !/application/cache/.htaccess
+
+/application/db/*
+!/application/db/index.html
 
 /application/logs/*
 !/application/logs/index.html
