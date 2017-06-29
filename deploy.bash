@@ -48,21 +48,6 @@ function create_assets() {
 }
 
 
-
-##
-# Sets environment to production modifing /public/.htaccess
-##
-function set_environment() {
-    HTACCESS="public/.htaccess"
-    echo "SETTING ENVIRONMENT [INFO]: Editing $HTACCESS"
-    if [[ ! -f $HTACCESS ]]; then
-        echo "SETTING ENVIRONMENT [ERROR]: $HTACCESS doesn'exist"
-        return 1
-    fi
-    sed -i 's/development/production/' $HTACCESS
-    echo "SETTING ENVIRONMENT [INFO]: Done"
-}
-
 ##
 # Activates maintenance mode in CI
 # $1 -  new status (string -> 'true' or 'false')
@@ -313,12 +298,6 @@ fi
 
 if ! set_maintenance_mode 'true'; then
     echo "[FATAL] Fatal error enabling maintenance mode, script halted"
-    exit 1
-fi
-
-# Set production environment
-if ! set_environment; then
-    echo "[FATAL] Fatal error setting environment, script halted"
     exit 1
 fi
 

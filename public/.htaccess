@@ -1,6 +1,29 @@
-SetEnv CI_ENV development
-# Remove index.php from URLS
+## Set environment
+SetEnvIfNoCase Host "^" CI_ENV=development WPD_URL=0
+SetEnvIfNoCase Host "cafpe\.ugr\.es" CI_ENV=production
+SetEnvIfNoCase Host "wpd\.ugr\.es" CI_ENV=production WPD_URL=1
+# If URL begins with wpd.ugr.es/~pabloguaza, STAGING_SERVER = true
+SetEnvIf Request_URI "^/\~pabloguaza" STAGING_SERVER
+# else STAGING_SERVER = false
+SetEnvIf WPD_URL 0 !STAGING_SERVER
+
+## Remove index.php from URLS
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]
+
+## Basic auth for staging server
+Deny from env=STAGING_SERVER
+Satisfy any
+AuthType Basic
+AuthName "Auth Required"
+Require valid-user
+AuthUserFile /disk15/home/pabloguaza/public_html/.htpasswd
+
+# Don't allow the .htpassword file to be shown to web users
+<Files .htpasswd>
+   Order allow,deny
+   Deny from all
+   Satisfy All
+</Files>
