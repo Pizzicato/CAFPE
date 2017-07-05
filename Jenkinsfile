@@ -37,4 +37,5 @@ pipeline {
                echo 'Deploying to production server - manual...'
            }
        }
+   }
 }
