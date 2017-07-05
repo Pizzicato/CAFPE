@@ -6,7 +6,6 @@
 lftp_debug.log
 lftp_transferred.log
 .DS_Store
-/application/config/production
 /tmp
 
 /application/cache/*
