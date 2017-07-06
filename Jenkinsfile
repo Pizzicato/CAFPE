@@ -5,9 +5,11 @@ pipeline {
             steps {
                 parallel (
                     Composer: {
+                         echo '************ Installing Composer packages ************'
                         sh 'rm -rf ./vendor; composer install'
                     },
                     NodeJS: {
+                        echo '************ Installing Node modules ************'
                         sh 'rm -rf ./node_modules; npm set progress=false; npm install;'
                     }
                 )
