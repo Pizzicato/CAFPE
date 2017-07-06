@@ -3,17 +3,14 @@ pipeline {
     stages {
         stage('Set Up') {
             steps {
-                timeout(time: 5, unit: 'MINUTES') {
-                    echo ' ************ Installing Composer packages and Node modules ************'
-                    parallel (
-                        Composer: {
-                            sh 'rm -rf ./vendor; composer install'
-                        },
-                        NodeJS: {
-                            sh 'rm -rf ./node_modules; npm set progress=false; npm install;'
-                        }
-                    )
-                }
+                parallel (
+                    Composer: {
+                        sh 'rm -rf ./vendor; composer install'
+                    },
+                    NodeJS: {
+                        sh 'rm -rf ./node_modules; npm set progress=false; npm install;'
+                    }
+                )
             }
         }
         stage('Test') {
