@@ -34,19 +34,6 @@ LFTP_OPTIONS="set ftp:list-options -a;
             set dns:max-retries 3;
             debug 4 -o $DEBUG_LOG -T;"
 
-##
-# Runs gulp using gulpfile in repo to create production assets
-##
-function create_assets() {
-    echo "ASSETS CREATION [INFO]: Building assets"
-    npm run build
-    if [[ $? != 0 ]]; then
-        echo "ASSETS CREATION [ERROR]: Building process failed"
-        return 1
-    fi
-    echo "ASSETS CREATION [INFO]: Done"
-}
-
 
 ##
 # Activates maintenance mode in CI
@@ -291,10 +278,6 @@ function update_db() {
 
 echo
 echo "-------------------------- DEPLOYMENT [BEGIN] --------------------------"
-if ! create_assets; then
-    echo "[FATAL] Fatal error creating assets, script halted"
-    exit 1
-fi
 
 if ! set_maintenance_mode 'true'; then
     echo "[FATAL] Fatal error enabling maintenance mode, script halted"

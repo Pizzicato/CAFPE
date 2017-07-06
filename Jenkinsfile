@@ -1,24 +1,39 @@
 pipeline {
     agent any
     stages {
-        stage('Prepare') {
+        stage('Set Up') {
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
                     echo ' ************ Installing Composer packages and Node modules ************'
-                    echo "FTP HOST: ${env.FTPWPD_HOST}"
-                    sh 'rm -rf ./vendor; composer install'
-                    sh 'rm -rf ./node_modules; npm set progress=false; npm install;'
+                    parallel (
+                        Composer: {
+                            sh 'rm -rf ./vendor; composer install'
+                        },
+                        NodeJS: {
+                            sh 'rm -rf ./node_modules; npm set progress=false; npm install;'
+                        }
+                    )
                 }
             }
         }
         stage('Test') {
             steps {
-                echo ' ************ Testing  ************'
-                sh 'vendor/bin/phpunit --log-junit results/phpunit/phpunit.xml -c application/tests'
+                timeout(time: 15, unit: 'MINUTES') {
+                    echo ' ************ Testing  ************'
+                    sh 'vendor/bin/phpunit --log-junit results/phpunit/phpunit.xml -c application/tests'
+                }
             }
             post {
                 always {
                     junit allowEmptyResults: true, testResults: 'application/tests/results/phpunit/phpunit.xml'
+                }
+            }
+        }
+        stage('Create Assets') {
+            steps {
+                timeout(time: 5, unit: 'MINUTES') {
+                    echo ' ************ Creating Assets ************'
+                    sh 'npm run build'
                 }
             }
         }
