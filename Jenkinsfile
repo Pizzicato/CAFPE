@@ -3,18 +3,20 @@ pipeline {
     agent any
 
    stages {
-       stage('Build') {
+       stage('Prepare') {
            // composer install
            // npm install
            steps {
-               echo 'Building...'
-
+               echo 'Preparing PHP packages and Node modules...'
+               sh 'composer install'
+               sh 'npm set progress=false'
+               sh 'npm install'
            }
        }
        stage('Test') {
-           // vendor/bin/phpunit -c application/tests
            steps {
                echo 'Testing...'
+               sh 'vendor/bin/phpunit -c application/tests'
            }
        }
        stage('Deploy to staging Server') {
