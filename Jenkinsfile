@@ -39,7 +39,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to Staging Server') {
+        stage('Staging') {
             agent any
             steps {
                 echo ' ************ Deploying to staging server ************'
@@ -55,17 +55,17 @@ pipeline {
                 timeout(time:1, unit:'MINUTES') {
                     input message:"Does the staging environment look OK?", submitter: 'pabloguaza,pablo'
                 }
-                post {
-                    always {
-                        script {
-                            currentBuild.result = "SUCCESS"
-                        }
+            }
+            post {
+                always {
+                    steps {
+                        currentBuild.result = "SUCCESS"
                     }
                 }
             }
         }
 
-        stage('Release to Production Server') {
+        stage('Production') {
             agent any
             steps {
                 echo ' ************ Release to production server ************'
