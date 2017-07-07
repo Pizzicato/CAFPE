@@ -57,7 +57,7 @@ pipeline {
                 }
             }
             post {
-                failure {
+                always {
                     script {
                         currentBuild.result = "SUCCESS"
                         echo "LOOOCAOCOAOCA"
