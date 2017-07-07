@@ -59,7 +59,9 @@ pipeline {
             post {
                 always {
                     steps {
-                        currentBuild.result = "SUCCESS"
+                        script {
+                            currentBuild.result = "SUCCESS"
+                        }
                     }
                 }
             }
