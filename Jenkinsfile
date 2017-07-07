@@ -58,7 +58,9 @@ pipeline {
             }
             post {
                 failure {
-                    currentBuild.result = "SUCCESS"
+                    script {
+                        currentBuild.result = "SUCCESS"
+                    }
                 }
             }
         }
