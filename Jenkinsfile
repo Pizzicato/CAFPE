@@ -55,16 +55,16 @@ pipeline {
                 timeout(time:1, unit:'MINUTES') {
                     input message:"Does the staging environment look OK?", submitter: 'pabloguaza,pablo'
                 }
-            }
-        }
-        post {
-            always {
-                script {
-                    currentBuild.result = "SUCCESS"
+                post {
+                    always {
+                        script {
+                            currentBuild.result = "SUCCESS"
+                        }
+                    }
                 }
             }
         }
-        
+
         stage('Release to Production Server') {
             agent any
             steps {
