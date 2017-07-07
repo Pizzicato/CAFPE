@@ -52,7 +52,7 @@ pipeline {
             agent none
             steps {
                 echo ' ************ Decide Release to production server ************'
-                timeout(time:5, unit:'MINUTES') {
+                timeout(time:1, unit:'MINUTES') {
                     input message:"Does the staging environment look OK?", submitter: 'pabloguaza,pablo'
                 }
             }
@@ -60,6 +60,8 @@ pipeline {
                 failure {
                     script {
                         currentBuild.result = "SUCCESS"
+                        echo "LOOOCAOCOAOCA"
+                        echo currentBuild.result
                     }
                 }
             }
