@@ -1,7 +1,8 @@
 pipeline {
-    agent any
+    agent none
     stages {
         stage('Set Up') {
+            agent any
             steps {
                 parallel (
                     Composer: {
@@ -16,6 +17,7 @@ pipeline {
             }
         }
         stage('Test') {
+            agent any
             steps {
                 timeout(time: 15, unit: 'MINUTES') {
                     echo ' ************ Testing  ************'
@@ -29,6 +31,7 @@ pipeline {
             }
         }
         stage('Create Assets') {
+            agent any
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
                     echo ' ************ Creating Assets ************'
@@ -37,6 +40,7 @@ pipeline {
             }
         }
         stage('Deploy to Staging Server') {
+            agent any
             steps {
                 echo ' ************ Deploying to staging server ************'
                 withCredentials([usernamePassword(credentialsId: 'eddefcd8-350c-4a75-9f2e-bed38fab48c8', passwordVariable: 'FTP_PASSWORD', usernameVariable: 'FTP_USERNAME')]) {
@@ -44,9 +48,24 @@ pipeline {
                 }
             }
         }
-        stage('Release to Production Server') {
+        stage('Sanity check') {
+            agent none
             steps {
-                echo ' ************ Release to production server - manual... ************'
+                echo ' ************ Decide Release to production server ************'
+                timeout(time:5, unit:'MINUTES') {
+                    input message:"Does the staging environment look OK?", submitter: 'pabloguaza,pablo'
+                }
+            }
+            post {
+                failure {
+                    currentBuild.result = "SUCCESS"
+                }
+            }
+        }
+        stage('Release to Production Server') {
+            agent any
+            steps {
+                echo ' ************ Release to production server ************'
             }
         }
     }
