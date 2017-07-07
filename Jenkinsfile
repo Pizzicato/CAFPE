@@ -53,16 +53,7 @@ pipeline {
             steps {
                 echo ' ************ Decide Release to production server ************'
                 timeout(time:1, unit:'MINUTES') {
-                    input message:"Does the staging environment look OK?", submitter: 'pabloguaza,pablo'
-                }
-            }
-            post {
-                always {
-                    steps {
-                        script {
-                            currentBuild.result = "SUCCESS"
-                        }
-                    }
+                    input message: 'Does the staging environment look OK?', parameters: [booleanParam(defaultValue: false, description: '', name: 'Publish')], submitter: 'pablo,pabloguaza'
                 }
             }
         }
