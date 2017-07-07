@@ -56,16 +56,15 @@ pipeline {
                     input message:"Does the staging environment look OK?", submitter: 'pabloguaza,pablo'
                 }
             }
-            post {
-                always {
-                    script {
-                        currentBuild.result = "SUCCESS"
-                        echo "LOOOCAOCOAOCA"
-                        echo currentBuild.result
-                    }
+        }
+        post {
+            always {
+                script {
+                    currentBuild.result = "SUCCESS"
                 }
             }
         }
+        
         stage('Release to Production Server') {
             agent any
             steps {
