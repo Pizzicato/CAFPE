@@ -45,8 +45,17 @@ try {
     stage('Sanity Check') {
         echo ' ************ Decide Release to production server ************'
         // TODO: Change time
-        timeout(time:1, unit:'MINUTES') {
-            input message:'Approve deployment to production?', submitter: 'pablo,pabloguaza'
+        try {
+            timeout(time:1, unit:'MINUTES') {
+                input message:'Approve deployment to production?', submitter: 'pablo,pabloguaza'
+            }
+        }
+        catch (err) {
+            def user = err.getCauses()[0].getUser()
+            echo "TIMEOUT REACHED"
+            if('SYSTEM' == user.toString()) { //timeout
+                currentBuild.result = "SUCCESS"
+            }
         }
     }
     stage('Production') {
