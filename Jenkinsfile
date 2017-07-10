@@ -1,68 +1,77 @@
-pipeline {
-    agent none
-    stages {
-        stage('Set Up') {
-            agent any
-            steps {
-                parallel (
-                    Composer: {
-                         echo '************ Installing Composer packages ************'
-                        sh 'rm -rf ./vendor; composer install'
-                    },
-                    NodeJS: {
-                        echo '************ Installing Node modules ************'
-                        sh 'rm -rf ./node_modules; npm set progress=false; npm install;'
-                    }
-                )
-            }
-        }
-        stage('Test') {
-            agent any
-            steps {
-                timeout(time: 15, unit: 'MINUTES') {
-                    echo ' ************ Testing  ************'
-                    sh 'vendor/bin/phpunit --log-junit results/phpunit/phpunit.xml -c application/tests'
-                }
-            }
-            post {
-                always {
-                    junit allowEmptyResults: true, testResults: 'application/tests/results/phpunit/phpunit.xml'
-                }
-            }
-        }
-        stage('Create Assets') {
-            agent any
-            steps {
-                timeout(time: 5, unit: 'MINUTES') {
-                    echo ' ************ Creating Assets ************'
-                    sh 'npm run build'
-                }
-            }
-        }
-        stage('Staging') {
-            agent any
-            steps {
-                echo ' ************ Deploying to staging server ************'
-                withCredentials([usernamePassword(credentialsId: 'eddefcd8-350c-4a75-9f2e-bed38fab48c8', passwordVariable: 'FTP_PASSWORD', usernameVariable: 'FTP_USERNAME')]) {
-                    sh "./deploy.bash ${env.FTPWPD_HOST} ${FTP_USERNAME} ${FTP_PASSWORD} ${env.CAFPE_DEV_DB} ${env.CAFPE_PROD_DB}"
-                }
-            }
-        }
-        stage('Sanity check') {
-            agent none
-            steps {
-                echo ' ************ Decide Release to production server ************'
-                timeout(time:1, unit:'MINUTES') {
-                    input message: 'Does the staging environment look OK?', parameters: [booleanParam(defaultValue: false, description: '', name: 'Publish')], submitter: 'pablo,pabloguaza'
-                }
-            }
-        }
+#!/usr/bin/env groovy
 
-        stage('Production') {
-            agent any
-            steps {
-                echo ' ************ Release to production server ************'
+stage('Set Up') {
+    node {
+        echo '************ Getting Repo ************'
+        checkout scm
+        echo '************ Installing Composer packages ************'
+        sh 'composer install'
+        echo '************ Installing Node modules ************'
+        sh 'npm prune'
+        sh 'npm set progress=false'
+        sh 'npm install'
+        echo '************ Creating Assets ************'
+        sh 'npm run build'
+        stash 'complete-workspace'
+    }
+}
+
+stage('Test') {
+    node {
+        unstash 'complete-workspace'
+        echo '************ Testing  ************'
+        try {
+            sh 'vendor/bin/phpunit --log-junit results/phpunit/phpunit.xml -c application/tests'
+        }
+        catch(err) {
+            error('Tests failed. Deploy process halted.')
+        }
+        finally {
+            junit allowEmptyResults: true, testResults: 'application/tests/results/phpunit/phpunit.xml'
+        }
+    }
+}
+
+try {
+    stage('Staging') {
+        node {
+            echo ' ************ Deploying to staging server ************'
+            withCredentials([usernamePassword(credentialsId: 'eddefcd8-350c-4a75-9f2e-bed38fab48c8', passwordVariable: 'FTP_PASSWORD', usernameVariable: 'FTP_USERNAME')]) {
+                unstash 'complete-workspace'
+                sh "./deploy.bash ${env.FTPWPD_HOST} ${FTP_USERNAME} ${FTP_PASSWORD} ${env.CAFPE_DEV_DB} ${env.CAFPE_PROD_DB}"
             }
         }
     }
+    stage('Sanity Check') {
+        echo ' ************ Decide Release to production server ************'
+        // TODO: Change time
+        timeout(time:1, unit:'MINUTES') {
+            input message:'Approve deployment to production?', submitter: 'pablo,pabloguaza'
+        }
+    }
+    stage('Production') {
+        node {
+            echo ' ************ Release to production server ************'
+            // TODO: Don't forget unstash
+        }
+    }
+}
+finally {
+    // If the script has passed the tests, it has to be marked as successful
+    // even if deployment stages failed, or execution is aborted
+    currentBuild.result = "SUCCESS"
+}
+
+
+stage('Cleanup'){
+
+ echo 'prune and cleanup'
+ sh 'npm prune'
+ sh 'rm node_modules -rf'
+
+ mail body: 'project build successful',
+             from: 'xxxx@yyyyy.com',
+             replyTo: 'xxxx@yyyy.com',
+             subject: 'project build successful',
+             to: 'yyyyy@yyyy.com'
 }
