@@ -2,12 +2,12 @@
 
 stage('Set Up') {
     node {
+        deleteDir()
         echo '************ Getting Repo ************'
         checkout scm
         echo '************ Installing Composer packages ************'
         sh 'composer install'
         echo '************ Installing Node modules ************'
-        sh 'npm prune'
         sh 'npm set progress=false'
         sh 'npm install'
         echo '************ Creating Assets ************'
@@ -51,11 +51,7 @@ try {
             }
         }
         catch (err) {
-            def user = err.getCauses()[0].getUser()
-            echo "TIMEOUT REACHED"
-            if('SYSTEM' == user.toString()) { //timeout
-                currentBuild.result = "SUCCESS"
-            }
+            echo "Timeout reached or user aborted production deployment"
         }
     }
     stage('Production') {
@@ -69,18 +65,4 @@ finally {
     // If the script has passed the tests, it has to be marked as successful
     // even if deployment stages failed, or execution is aborted
     currentBuild.result = "SUCCESS"
-}
-
-
-stage('Cleanup'){
-
- echo 'prune and cleanup'
- sh 'npm prune'
- sh 'rm node_modules -rf'
-
- mail body: 'project build successful',
-             from: 'xxxx@yyyyy.com',
-             replyTo: 'xxxx@yyyy.com',
-             subject: 'project build successful',
-             to: 'yyyyy@yyyy.com'
 }
