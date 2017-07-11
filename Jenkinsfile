@@ -53,7 +53,8 @@ try {
             }
         }
         catch(error) {
-            error("Error: Something went wrong during deployment to staging server")
+            echo "Error: Something went wrong during deployment to staging server"
+            throw error
         }
     }
     stage('Sanity Check') {
@@ -65,7 +66,8 @@ try {
             }
         }
         catch(error) {
-            error("Warning: Timeout reached or user aborted production deployment")
+            echo "Warning: Timeout reached or user aborted production deployment"
+            throw error
         }
     }
     stage('Production') {
@@ -76,12 +78,13 @@ try {
             }
         }
         catch(error) {
-            error("Error: Something went wrong during deployment to production server")
+            echo "Error: Something went wrong during deployment to production server"
+            throw error
         }
     }
 }
 catch(error) {
-    error("Error: Althought build was successful, deployment process couldn't be completed: ${error.message}")
+    echo "Error: Althought build was SUCCESSFUL, deployment process couldn't be completed: ${error.message}"
 }
 finally {
     // If the script has passed the tests, it has to be marked as successful
