@@ -13,7 +13,7 @@ class Welcome_test extends TestCase
 	public function test_index()
 	{
 		$output = $this->request('GET', '/');
-		$this->assertContains('CAFPE', $output);
+		$this->assertContains('CRAFPE', $output);
 	}
 
 	// public function test_method_404()
