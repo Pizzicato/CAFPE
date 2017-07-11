@@ -17,7 +17,8 @@ stage('Set Up') {
             stash 'complete-workspace'
         }
         catch(error) {
-            error('Set up process failed. Deploy halted: ${error.message}')
+            echo "Set up process failed. Deploy halted: ${error.message}"
+            throw error
         }
 
     }
@@ -31,7 +32,8 @@ stage('Test') {
             sh 'vendor/bin/phpunit --log-junit results/phpunit/phpunit.xml -c application/tests'
         }
         catch(error) {
-            error('Tests failed. Deploy halted: ${error.message}')
+            echo "Tests failed. Deploy halted: ${error.message}"
+            throw error
         }
         finally {
             junit allowEmptyResults: true, testResults: 'application/tests/results/phpunit/phpunit.xml'
