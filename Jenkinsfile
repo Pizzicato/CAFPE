@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 
 stage('Set Up') {
+    milestone()
     node {
         try {
             // delete all untracked files. Use '|| true' in case repo hasn't been checked out previously
@@ -42,14 +43,18 @@ stage('Test') {
 }
 
 try {
+    milestone()
     stage('Staging') {
         try {
-            node {
-                echo ' ************ Deploying to staging server ************'
-                withCredentials([usernamePassword(credentialsId: 'eddefcd8-350c-4a75-9f2e-bed38fab48c8', passwordVariable: 'FTP_PASSWORD', usernameVariable: 'FTP_USERNAME')]) {
-                    unstash 'complete-workspace'
-                    sh "./deploy.bash ${env.FTPWPD_HOST} ${FTP_USERNAME} ${FTP_PASSWORD} ${env.CAFPE_DEV_DB} ${env.CAFPE_PROD_DB}"
+            lock(resource: 'staging-server', inversePrecedence: true) {
+                node {
+                    echo ' ************ Deploying to staging server ************'
+                    withCredentials([usernamePassword(credentialsId: 'eddefcd8-350c-4a75-9f2e-bed38fab48c8', passwordVariable: 'FTP_PASSWORD', usernameVariable: 'FTP_USERNAME')]) {
+                        unstash 'complete-workspace'
+                        sh "./deploy.bash ${env.FTPWPD_HOST} ${FTP_USERNAME} ${FTP_PASSWORD} ${env.CAFPE_DEV_DB} ${env.CAFPE_PROD_DB}"
+                    }
                 }
+                milestone()
             }
         }
         catch(error) {
@@ -64,17 +69,27 @@ try {
             timeout(time:1, unit:'MINUTES') {
                 input message:'Approve deployment to production?', submitter: 'pablo,pabloguaza'
             }
+            milestone()
         }
         catch(error) {
             echo "Warning: Timeout reached or user aborted production deployment"
             throw error
         }
     }
+    milestone()
     stage('Production') {
         try {
-            node {
-                echo ' ************ Release to production server ************'
-                // TODO: Don't forget unstash
+            lock(resource: 'staging-server', inversePrecedence: true) {
+                node {
+                    echo ' ************ Release to production server ************'
+                    unstash 'complete-workspace'
+                    // TODO: Add deploy command once first migration is made
+                    withCredentials([usernamePassword(credentialsId: '4ef8e4ac-7c5f-4e97-a698-b2ad6909c718', passwordVariable: 'FTP_PASSWORD', usernameVariable: 'FTP_USERNAME')]) {
+                        unstash 'complete-workspace'
+
+                    }
+                }
+                milestone()
             }
         }
         catch(error) {
