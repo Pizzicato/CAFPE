@@ -76,10 +76,9 @@ try {
             throw error
         }
     }
-    milestone()
     stage('Production') {
         try {
-            lock(resource: 'staging-server', inversePrecedence: true) {
+            lock(resource: 'production-server', inversePrecedence: true) {
                 node {
                     echo ' ************ Release to production server ************'
                     unstash 'complete-workspace'
