@@ -1,0 +1,2741 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class MY_Model | CAFPE Docs</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?70c1d062672daa3f906b72e4f5d03d4bc5c4174d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">CAFPE Docs</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li class="active">
+<span>Class</span>					</li>
+
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Auth_controller.html">Auth_controller</a></li>
+				<li><a href="class-Hierarchical_controllers.html">Hierarchical_controllers</a></li>
+				<li><a href="class-MY_Controller.html">MY_Controller</a></li>
+				<li class="active"><a href="class-MY_Model.html">MY_Model</a></li>
+				<li><a href="class-News.html">News</a></li>
+				<li><a href="class-News_model.html">News_model</a></li>
+				<li><a href="class-Pages.html">Pages</a></li>
+				<li><a href="class-Public_controller.html">Public_controller</a></li>
+				<li><a href="class-Seeder.html">Seeder</a></li>
+			</ul>
+
+
+
+
+
+			<h3>Functions</h3>
+			<ul>
+				<li><a href="function-css_url.html">css_url</a></li>
+				<li><a href="function-jscript_url.html">jscript_url</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class MY_Model</h1>
+
+
+	<div class="description">
+	<p>how to extend MY_Model:
+class User_model extends MY_Model
+{ public $table = 'users'; // Set the name of the table for this model. public $primary_key = 'id'; // Set the primary key public $fillable = array(); // You can set an array with the fields that can be filled by insert/update public $protected = array(); // ...Or you can set an array with the fields that cannot be filled by insert/update public function __construct() { $this-><em>database_connection  = group_name or array() | OPTIONAL Sets the connection preferences (group name) set up in the database.php. If not trset, it will use the 'default' (the $active_group) database connection. $this->timestamps = TRUE | array('made_at','modified_at','removed_at') If set to TRUE tells MY_Model that the table has 'created_at','updated_at' (and 'deleted_at' if $this->soft_delete is set to TRUE) If given an array as parameter, it tells MY_Model, that the first element is a created_at field type, the second element is a updated_at field type (and the third element is a deleted_at field type) $this->soft_deletes = FALSE; Enables (TRUE) or disables (FALSE) the "soft delete" on records. Default is FALSE $this->timestamps_format = 'Y-m-d H:i:s' You can at any time change the way the timestamp is created (the default is the MySQL standard datetime format) by modifying this variable. You can choose between whatever format is acceptable by the php function date() (default is 'Y-m-d H:i:s'), or 'timestamp' (UNIX timestamp) $this->return_as = 'object' | 'array' Allows the model to return the results as object or as array $this->has_one['phone'] = 'Phone_model' or $this->has_one['phone'] = array('Phone_model','foreign_key','local_key'); $this->has_one['address'] = 'Address_model' or $this->has_one['address'] = array('Address_model','foreign_key','another_local_key'); Allows establishing ONE TO ONE or more ONE TO ONE relationship(s) between models/tables $this->has_many['posts'] = 'Post_model' or $this->has_many['posts'] = array('Posts_model','foreign_key','another_local_key'); Allows establishing ONE TO MANY or more ONE TO MANY relationship(s) between models/tables $this->has_many_pivot['posts'] = 'Post_model' or $this->has_many_pivot['posts'] = array('Posts_model','foreign_primary_key','local_primary_key'); Allows establishing MANY TO MANY or more MANY TO MANY relationship(s) between models/tables with the use of a PIVOT TABLE !ATTENTION: The pivot table name must be composed of the two table names separated by "</em>" the table names having to to be alphabetically ordered (NOT users_posts, but posts_users). Also the pivot table must contain as identifying columns the columns named by convention as follows: table_name_singular + _ + foreign_table_primary_key. For example: considering that a post can have multiple authors, a pivot table that connects two tables (users and posts) must be named posts_users and must have post_id and user_id as identifying columns for the posts.id and users.id tables. $this->cache_driver = 'file' $this->cache_prefix = 'mm' If you know you will do some caching of results without the native caching solution, you can at any time use the MY_Model's caching. By default, MY_Model uses the files to cache result. If you want to change the way it stores the cache, you can change the $cache_driver property to whatever CodeIgniter cache driver you want to use. Also, with $cache_prefix, you can prefix the name of the caches. by default any cache made by MY_Model starts with 'mm' + _ + "name chosen for cache" $this->delete_cache_on_save = FALSE If you use caching often and you don't want to be forced to delete cache manually, you can enable $this->delete_cache_on_save by setting it to TRUE. If set to TRUE the model will auto-delete all cache related to the model's table whenever you write/update/delete data from that table. $this->pagination_delimiters = array('<span>','</span>'); If you know you will use the paginate() method, you can change the delimiters between the pages links $this->pagination_arrows = array('&lt;','&gt;'); You can also change the way the previous and next arrows look like.</p>
+
+<p>parent::__construct(); } }</p>
+	</div>
+
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+CI_Model
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>MY_Model</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+	<div>
+		<h3>Direct known subclasses</h3>
+		<p class="elementList">
+			<code><a href="class-News_model.html">News_model</a></code>
+		</p>
+	</div>
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		
+		
+
+			<b>Located at</b> <a href="source-class-MY_Model.html#21-2067" title="Go to source code">MY_Model.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="__construct" id="___construct">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___construct">#</a>
+			<code><a href="source-class-MY_Model.html#185-200" title="Go to source code">__construct</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="_get_table_fields" id="__get_table_fields">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#__get_table_fields">#</a>
+			<code><a href="source-class-MY_Model.html#202-209" title="Go to source code">_get_table_fields</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="fillable_fields" id="_fillable_fields">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_fillable_fields">#</a>
+			<code><a href="source-class-MY_Model.html#211-235" title="Go to source code">fillable_fields</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="_prep_before_write" id="__prep_before_write">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#__prep_before_write">#</a>
+			<code><a href="source-class-MY_Model.html#237-278" title="Go to source code">_prep_before_write</a>( <span> <var>$data</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="_prep_after_write" id="__prep_after_write">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#__prep_after_write">#</a>
+			<code><a href="source-class-MY_Model.html#285-292" title="Go to source code">_prep_after_write</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="_prep_before_read" id="__prep_before_read">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#__prep_before_read">#</a>
+			<code><a href="source-class-MY_Model.html#294-297" title="Go to source code">_prep_before_read</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="_prep_after_read" id="__prep_after_read">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#__prep_after_read">#</a>
+			<code><a href="source-class-MY_Model.html#299-323" title="Go to source code">_prep_after_read</a>( <span> <var>$data</var></span>, <span> <var>$multi</var> = <span class="php-keyword1">TRUE</span></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="from_form" id="_from_form">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_from_form">#</a>
+			<code><a href="source-class-MY_Model.html#325-396" title="Go to source code">from_form</a>( <span>null <var>$rules</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$additional_values</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$row_fields_to_update</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>public function from_form($rules = NULL,$additional_values = array(), $row_fields_to_update = array())
+Gets data from form, after validating it and waits for an insert() or update() method in the query chain</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function from_form($rules = NULL,$additional_values = array(), $row_fields_to_update = array())
+Gets data from form, after validating it and waits for an insert() or update() method in the query chain</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$rules</var></dt>
+						<dd><p>Gets the validation rules. If nothing is passed (NULL), will look for the validation rules
+inside the model $rules public property</p></dd>
+						<dt><var>$additional_values</var></dt>
+						<dd><p>Accepts additional fields to be filled, fields that are not to be found inside
+the form. The values are inserted as an array with "field_name" => "field_value"</p></dd>
+						<dt><var>$row_fields_to_update</var></dt>
+						<dd><p>You can mention the fields from the form that can be used to identify
+the row when doing an update</p></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<br>$this
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="insert" id="_insert">
+
+			<td class="attributes"><code>
+				 public 
+				int/array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_insert">#</a>
+			<code><a href="source-class-MY_Model.html#398-462" title="Go to source code">insert</a>( <span> <var>$data</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				<p>public function insert($data)
+Inserts data into table. Can receive an array or a multidimensional array depending on what kind of insert we're talking about.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function insert($data)
+Inserts data into table. Can receive an array or a multidimensional array depending on what kind of insert we're talking about.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$data</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						int/array<br>Returns id/ids of inserted rows
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="is_multidimensional" id="_is_multidimensional">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_is_multidimensional">#</a>
+			<code><a href="source-class-MY_Model.html#470-483" title="Go to source code">is_multidimensional</a>( <span> <var>$array</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="update" id="_update">
+
+			<td class="attributes"><code>
+				 public 
+				str/array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_update">#</a>
+			<code><a href="source-class-MY_Model.html#486-600" title="Go to source code">update</a>( <span>array <var>$data</var> = <span class="php-keyword1">NULL</span></span>, <span>array|integer <var>$column_name_where</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$escape</var> = <span class="php-keyword1">TRUE</span></span> )</code>
+
+			<div class="description short">
+				<p>public function update($data)
+Updates data into table. Can receive an array or a multidimensional array depending on what kind of update we're talking about.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function update($data)
+Updates data into table. Can receive an array or a multidimensional array depending on what kind of update we're talking about.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$data</var></dt>
+						<dd></dd>
+						<dt><var>$column_name_where</var></dt>
+						<dd></dd>
+						<dt><var>$escape</var></dt>
+						<dd>should the values be escaped or not - defaults to true</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						str/array<br>Returns id/ids of inserted rows
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="where" id="_where">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_where">#</a>
+			<code><a href="source-class-MY_Model.html#602-698" title="Go to source code">where</a>( <span>null <var>$field_or_array</var> = <span class="php-keyword1">NULL</span></span>, <span>null <var>$operator_or_value</var> = <span class="php-keyword1">NULL</span></span>, <span>null <var>$value</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$with_or</var> = <span class="php-keyword1">FALSE</span></span>, <span>boolean <var>$with_not</var> = <span class="php-keyword1">FALSE</span></span>, <span>boolean <var>$custom_string</var> = <span class="php-keyword1">FALSE</span></span> )</code>
+
+			<div class="description short">
+				<p>public function where($field_or_array = NULL, $operator_or_value = NULL, $value = NULL, $with_or = FALSE, $with_not = FALSE, $custom_string = FALSE)
+Sets a where method for the $this object</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function where($field_or_array = NULL, $operator_or_value = NULL, $value = NULL, $with_or = FALSE, $with_not = FALSE, $custom_string = FALSE)
+Sets a where method for the $this object</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$field_or_array</var></dt>
+						<dd><ul>
+<li>can receive a field name or an array with more wheres...</li>
+</ul></dd>
+						<dt><var>$operator_or_value</var></dt>
+						<dd><ul>
+<li>can receive a database operator or, if it has a field, the value to equal with</li>
+</ul></dd>
+						<dt><var>$value</var></dt>
+						<dd><ul>
+<li>a value if it received a field name and an operator</li>
+</ul></dd>
+						<dt><var>$with_or</var></dt>
+						<dd><ul>
+<li>if set to true will create a or_where query type pr a or_like query type, depending on the operator</li>
+</ul></dd>
+						<dt><var>$with_not</var></dt>
+						<dd><ul>
+<li>if set to true will also add "NOT" in the where</li>
+</ul></dd>
+						<dt><var>$custom_string</var></dt>
+						<dd><ul>
+<li>if set to true, will simply assume that $field_or_array is actually a string and pass it to the where query</li>
+</ul></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<br>$this
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="limit" id="_limit">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_limit">#</a>
+			<code><a href="source-class-MY_Model.html#700-711" title="Go to source code">limit</a>( <span> <var>$limit</var></span>, <span>integer <var>$offset</var> = <span class="php-num">0</span></span> )</code>
+
+			<div class="description short">
+				<p>public function limit($limit, $offset = 0)
+Sets a rows limit to the query</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function limit($limit, $offset = 0)
+Sets a rows limit to the query</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$limit</var></dt>
+						<dd></dd>
+						<dt><var>$offset</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<br>$this
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="group_by" id="_group_by">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_group_by">#</a>
+			<code><a href="source-class-MY_Model.html#713-723" title="Go to source code">group_by</a>( <span> <var>$grouping_by</var></span> )</code>
+
+			<div class="description short">
+				<p>public function group_by($grouping_by)
+A wrapper to $this->_database->group_by()</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function group_by($grouping_by)
+A wrapper to $this->_database->group_by()</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$grouping_by</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<br>$this
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="delete" id="_delete">
+
+			<td class="attributes"><code>
+				 public 
+				Returns
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_delete">#</a>
+			<code><a href="source-class-MY_Model.html#724-797" title="Go to source code">delete</a>( <span> <var>$where</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				<p>public function delete($where)
+Deletes data from table.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function delete($where)
+Deletes data from table.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$where</var></dt>
+						<dd>Can receive the primary key value or a list of primary keys as array()</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						Returns<br>affected rows or false on failure
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="force_delete" id="_force_delete">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_force_delete">#</a>
+			<code><a href="source-class-MY_Model.html#799-817" title="Go to source code">force_delete</a>( <span>null <var>$where</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				<p>public function force_delete($where = NULL)
+Forces the delete of a row if soft_deletes is enabled</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function force_delete($where = NULL)
+Forces the delete of a row if soft_deletes is enabled</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$where</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="restore" id="_restore">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_restore">#</a>
+			<code><a href="source-class-MY_Model.html#819-838" title="Go to source code">restore</a>( <span>null <var>$where</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				<p>public function restore($where = NULL)
+"Un-deletes" a row</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function restore($where = NULL)
+"Un-deletes" a row</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$where</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="trashed" id="_trashed">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_trashed">#</a>
+			<code><a href="source-class-MY_Model.html#840-860" title="Go to source code">trashed</a>( <span>null <var>$where</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				<p>public function trashed($where = NULL)
+Verifies if a record (row) is soft_deleted or not</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function trashed($where = NULL)
+Verifies if a record (row) is soft_deleted or not</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$where</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="_get_joined" id="__get_joined">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#__get_joined">#</a>
+			<code><a href="source-class-MY_Model.html#862-886" title="Go to source code">_get_joined</a>( <span> <var>$requested</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="get" id="_get">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_get">#</a>
+			<code><a href="source-class-MY_Model.html#889-952" title="Go to source code">get</a>( <span>null <var>$where</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				<p>public function get()
+Retrieves one row from table.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function get()
+Retrieves one row from table.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$where</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="get_all" id="_get_all">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_get_all">#</a>
+			<code><a href="source-class-MY_Model.html#954-1016" title="Go to source code">get_all</a>( <span>null <var>$where</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				<p>public function get_all()
+Retrieves rows from table.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function get_all()
+Retrieves rows from table.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$where</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="count_rows" id="_count_rows">
+
+			<td class="attributes"><code>
+				 public 
+				integer
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_count_rows">#</a>
+			<code><a href="source-class-MY_Model.html#1018-1038" title="Go to source code">count_rows</a>( <span>null <var>$where</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				<p>public function count_rows()
+Retrieves number of rows from table.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function count_rows()
+Retrieves number of rows from table.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$where</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						integer
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="with" id="_with">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_with">#</a>
+			<code><a href="source-class-MY_Model.html#1042-1102" title="Go to source code">with</a>( <span>string <var>$request</var></span>, <span>array <var>$arguments</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>public function with($requests)
+allows the user to retrieve records from other interconnected tables depending on the relations defined before the constructor</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function with($requests)
+allows the user to retrieve records from other interconnected tables depending on the relations defined before the constructor</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$request</var></dt>
+						<dd></dd>
+						<dt><var>$arguments</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<br>$this
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="join_temporary_results" id="_join_temporary_results">
+
+			<td class="attributes"><code>
+				 protected 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_join_temporary_results">#</a>
+			<code><a href="source-class-MY_Model.html#1104-1358" title="Go to source code">join_temporary_results</a>( <span> <var>$data</var></span> )</code>
+
+			<div class="description short">
+				<p>protected function join_temporary_results($data)
+Joins the subquery results to the main $data</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>protected function join_temporary_results($data)
+Joins the subquery results to the main $data</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$data</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="on" id="_on">
+
+			<td class="attributes"><code>
+				 public 
+				obj
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_on">#</a>
+			<code><a href="source-class-MY_Model.html#1491-1506" title="Go to source code">on</a>( <span> <var>$connection_group</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				<p>public function on($connection_group = NULL)
+Sets a different connection to use for a query</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function on($connection_group = NULL)
+Sets a different connection to use for a query</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$connection_group</var></dt>
+						<dd>NULL - connection group in database setup</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						obj
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="reset_connection" id="_reset_connection">
+
+			<td class="attributes"><code>
+				 public 
+				obj
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_reset_connection">#</a>
+			<code><a href="source-class-MY_Model.html#1508-1521" title="Go to source code">reset_connection</a>( )</code>
+
+			<div class="description short">
+				<p>public function reset_connection($connection_group = NULL)
+Resets the connection to the default used for all the model</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function reset_connection($connection_group = NULL)
+Resets the connection to the default used for all the model</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						obj
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="trigger" id="_trigger">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_trigger">#</a>
+			<code><a href="source-class-MY_Model.html#1523-1544" title="Go to source code">trigger</a>( <span> <var>$event</var></span>, <span> <var>$data</var> = <span class="php-keyword1">array</span>()</span>, <span> <var>$last</var> = <span class="php-keyword1">TRUE</span></span> )</code>
+
+			<div class="description short">
+				<p>Trigger an event and call its observers. Pass through the event name
+(which looks for an instance variable $this->event_name), an array of
+parameters to pass through and an optional 'last in interation' boolean</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Trigger an event and call its observers. Pass through the event name
+(which looks for an instance variable $this->event_name), an array of
+parameters to pass through and an optional 'last in interation' boolean</p>
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="with_trashed" id="_with_trashed">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_with_trashed">#</a>
+			<code><a href="source-class-MY_Model.html#1555-1563" title="Go to source code">with_trashed</a>( )</code>
+
+			<div class="description short">
+				<p>public function with_trashed()
+Sets $_trashed to with</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function with_trashed()
+Sets $_trashed to with</p>
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="without_trashed" id="_without_trashed">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_without_trashed">#</a>
+			<code><a href="source-class-MY_Model.html#1565-1573" title="Go to source code">without_trashed</a>( )</code>
+
+			<div class="description short">
+				<p>public function without_trashed()
+Sets $_trashed to without</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function without_trashed()
+Sets $_trashed to without</p>
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="only_trashed" id="_only_trashed">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_only_trashed">#</a>
+			<code><a href="source-class-MY_Model.html#1575-1583" title="Go to source code">only_trashed</a>( )</code>
+
+			<div class="description short">
+				<p>public function with_trashed()
+Sets $_trashed to only</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function with_trashed()
+Sets $_trashed to only</p>
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="fields" id="_fields">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_fields">#</a>
+			<code><a href="source-class-MY_Model.html#1602-1640" title="Go to source code">fields</a>( <span> <var>$fields</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				<p>public function fields($fields)
+does a select() of the $fields</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function fields($fields)
+does a select() of the $fields</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$fields</var></dt>
+						<dd>fields needed</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<br>$this
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="order_by" id="_order_by">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_order_by">#</a>
+			<code><a href="source-class-MY_Model.html#1642-1663" title="Go to source code">order_by</a>( <span> <var>$criteria</var></span>, <span>string <var>$order</var> = <span class="php-quote">'ASC'</span></span> )</code>
+
+			<div class="description short">
+				<p>public function order_by($criteria, $order = 'ASC'
+A wrapper to $this->_database->order_by()</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>public function order_by($criteria, $order = 'ASC'
+A wrapper to $this->_database->order_by()</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$criteria</var></dt>
+						<dd></dd>
+						<dt><var>$order</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<br>$this
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="as_array" id="_as_array">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_as_array">#</a>
+			<code><a href="source-class-MY_Model.html#1665-1672" title="Go to source code">as_array</a>( )</code>
+
+			<div class="description short">
+				<p>Return the next call as an array rather than an object</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Return the next call as an array rather than an object</p>
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="as_object" id="_as_object">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_as_object">#</a>
+			<code><a href="source-class-MY_Model.html#1674-1681" title="Go to source code">as_object</a>( )</code>
+
+			<div class="description short">
+				<p>Return the next call as an object rather than an array</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Return the next call as an object rather than an array</p>
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="as_dropdown" id="_as_dropdown">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_as_dropdown">#</a>
+			<code><a href="source-class-MY_Model.html#1683-1694" title="Go to source code">as_dropdown</a>( <span> <var>$field</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="_get_from_cache" id="__get_from_cache">
+
+			<td class="attributes"><code>
+				 protected 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#__get_from_cache">#</a>
+			<code><a href="source-class-MY_Model.html#1696-1705" title="Go to source code">_get_from_cache</a>( <span> <var>$cache_name</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="_write_to_cache" id="__write_to_cache">
+
+			<td class="attributes"><code>
+				 protected 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#__write_to_cache">#</a>
+			<code><a href="source-class-MY_Model.html#1707-1722" title="Go to source code">_write_to_cache</a>( <span> <var>$data</var></span>, <span> <var>$cache_name</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="set_cache" id="_set_cache">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_set_cache">#</a>
+			<code><a href="source-class-MY_Model.html#1724-1730" title="Go to source code">set_cache</a>( <span> <var>$string</var></span>, <span> <var>$seconds</var> = <span class="php-num">86400</span></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="delete_cache" id="_delete_cache">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_delete_cache">#</a>
+			<code><a href="source-class-MY_Model.html#1741-1765" title="Go to source code">delete_cache</a>( <span> <var>$string</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="paginate" id="_paginate">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_paginate">#</a>
+			<code><a href="source-class-MY_Model.html#1826-1923" title="Go to source code">paginate</a>( <span> <var>$rows_per_page</var></span>, <span> <var>$total_rows</var> = <span class="php-keyword1">NULL</span></span>, <span> <var>$page_number</var> = <span class="php-num">1</span></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="set_pagination_delimiters" id="_set_pagination_delimiters">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_set_pagination_delimiters">#</a>
+			<code><a href="source-class-MY_Model.html#1925-1932" title="Go to source code">set_pagination_delimiters</a>( <span> <var>$delimiters</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="set_pagination_arrows" id="_set_pagination_arrows">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_set_pagination_arrows">#</a>
+			<code><a href="source-class-MY_Model.html#1934-1941" title="Go to source code">set_pagination_arrows</a>( <span> <var>$arrows</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="__call" id="___call">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___call">#</a>
+			<code><a href="source-class-MY_Model.html#1963-1987" title="Go to source code">__call</a>( <span> <var>$method</var></span>, <span> <var>$arguments</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="object_to_array" id="_object_to_array">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_object_to_array">#</a>
+			<code><a href="source-class-MY_Model.html#2002-2013" title="Go to source code">object_to_array</a>( <span> <var>$object</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="is_assoc" id="_is_assoc">
+
+			<td class="attributes"><code>
+				 protected 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_is_assoc">#</a>
+			<code><a href="source-class-MY_Model.html#2016-2023" title="Go to source code">is_assoc</a>( <span>array <var>$array</var></span> )</code>
+
+			<div class="description short">
+				<p>Verifies if an array is associative or not</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Verifies if an array is associative or not</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$array</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h2>Properties summary</h2></div>
+			<table class="summary table table-bordered table-striped properties" id="properties">
+		<tr data-order="_database_connection" id="$_database_connection">
+			<td class="attributes"><code>
+				protected  
+				
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#74-78" title="Go to source code"><var>$_database_connection</var></a>
+
+				<div class="description short">
+					<p>Select the database connection from the group names defined inside the database.php configuration file or an
+array.</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>Select the database connection from the group names defined inside the database.php configuration file or an
+array.</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$_database_connection" class="anchor">#</a>
+					<code><span class="php-keyword1">NULL</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="_database" id="$_database">
+			<td class="attributes"><code>
+				protected  
+				This
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#80-83" title="Go to source code"><var>$_database</var></a>
+
+				<div class="description short">
+					<p>one will hold the database connection object</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>one will hold the database connection object</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$_database" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="table" id="$table">
+			<td class="attributes"><code>
+				public  
+				null
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#85-88" title="Go to source code"><var>$table</var></a>
+
+				<div class="description short">
+					<p>Sets table name</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>Sets table name</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$table" class="anchor">#</a>
+					<code><span class="php-keyword1">NULL</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="primary_key" id="$primary_key">
+			<td class="attributes"><code>
+				public  
+				null
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#90-94" title="Go to source code"><var>$primary_key</var></a>
+
+				<div class="description short">
+					<p>Sets PRIMARY KEY</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>Sets PRIMARY KEY</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$primary_key" class="anchor">#</a>
+					<code><span class="php-quote">'id'</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="table_fields" id="$table_fields">
+			<td class="attributes"><code>
+				public  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#96-100" title="Go to source code"><var>$table_fields</var></a>
+
+				<div class="description short">
+					<p>You can establish the fields of the table. If you won't these fields will be filled by MY_Model (with one query)</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>You can establish the fields of the table. If you won't these fields will be filled by MY_Model (with one query)</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$table_fields" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="fillable" id="$fillable">
+			<td class="attributes"><code>
+				public  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#102-106" title="Go to source code"><var>$fillable</var></a>
+
+				<div class="description short">
+					<p>Sets fillable fields</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>Sets fillable fields</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$fillable" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="protected" id="$protected">
+			<td class="attributes"><code>
+				public  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#108-112" title="Go to source code"><var>$protected</var></a>
+
+				<div class="description short">
+					<p>Sets protected fields</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>Sets protected fields</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$protected" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="timestamps" id="$timestamps">
+			<td class="attributes"><code>
+				protected  
+				boolean
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#117-120" title="Go to source code"><var>$timestamps</var></a>
+
+				<div class="description short">
+					<p>| array
+Enables created_at and updated_at fields</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>| array
+Enables created_at and updated_at fields</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$timestamps" class="anchor">#</a>
+					<code><span class="php-keyword1">TRUE</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="timestamps_format" id="$timestamps_format">
+			<td class="attributes"><code>
+				protected  
+				string
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#121" title="Go to source code"><var>$timestamps_format</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$timestamps_format" class="anchor">#</a>
+					<code><span class="php-quote">'Y-m-d H:i:s'</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="_created_at_field" id="$_created_at_field">
+			<td class="attributes"><code>
+				protected  
+				
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#123" title="Go to source code"><var>$_created_at_field</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$_created_at_field" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="_updated_at_field" id="$_updated_at_field">
+			<td class="attributes"><code>
+				protected  
+				
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#124" title="Go to source code"><var>$_updated_at_field</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$_updated_at_field" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="_deleted_at_field" id="$_deleted_at_field">
+			<td class="attributes"><code>
+				protected  
+				
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#125" title="Go to source code"><var>$_deleted_at_field</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$_deleted_at_field" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="soft_deletes" id="$soft_deletes">
+			<td class="attributes"><code>
+				protected  
+				boolean
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#127-130" title="Go to source code"><var>$soft_deletes</var></a>
+
+				<div class="description short">
+					<p>Enables soft_deletes</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>Enables soft_deletes</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$soft_deletes" class="anchor">#</a>
+					<code><span class="php-keyword1">FALSE</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="has_one" id="$has_one">
+			<td class="attributes"><code>
+				public  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#134" title="Go to source code"><var>$has_one</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$has_one" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="has_many" id="$has_many">
+			<td class="attributes"><code>
+				public  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#135" title="Go to source code"><var>$has_many</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$has_many" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="has_many_pivot" id="$has_many_pivot">
+			<td class="attributes"><code>
+				public  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#136" title="Go to source code"><var>$has_many_pivot</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$has_many_pivot" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="separate_subqueries" id="$separate_subqueries">
+			<td class="attributes"><code>
+				public  
+				boolean
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#137" title="Go to source code"><var>$separate_subqueries</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$separate_subqueries" class="anchor">#</a>
+					<code><span class="php-keyword1">TRUE</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="cache_driver" id="$cache_driver">
+			<td class="attributes"><code>
+				public  
+				string
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#142" title="Go to source code"><var>$cache_driver</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$cache_driver" class="anchor">#</a>
+					<code><span class="php-quote">'file'</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="cache_prefix" id="$cache_prefix">
+			<td class="attributes"><code>
+				public  
+				string
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#143" title="Go to source code"><var>$cache_prefix</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$cache_prefix" class="anchor">#</a>
+					<code><span class="php-quote">'mm'</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="_cache" id="$_cache">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#144" title="Go to source code"><var>$_cache</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$_cache" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="delete_cache_on_save" id="$delete_cache_on_save">
+			<td class="attributes"><code>
+				public  
+				boolean
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#145" title="Go to source code"><var>$delete_cache_on_save</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$delete_cache_on_save" class="anchor">#</a>
+					<code><span class="php-keyword1">FALSE</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="next_page" id="$next_page">
+			<td class="attributes"><code>
+				public  
+				
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#148" title="Go to source code"><var>$next_page</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$next_page" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="previous_page" id="$previous_page">
+			<td class="attributes"><code>
+				public  
+				
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#149" title="Go to source code"><var>$previous_page</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$previous_page" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="all_pages" id="$all_pages">
+			<td class="attributes"><code>
+				public  
+				
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#150" title="Go to source code"><var>$all_pages</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$all_pages" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="pagination_delimiters" id="$pagination_delimiters">
+			<td class="attributes"><code>
+				public  
+				
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#151" title="Go to source code"><var>$pagination_delimiters</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$pagination_delimiters" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="pagination_arrows" id="$pagination_arrows">
+			<td class="attributes"><code>
+				public  
+				
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#152" title="Go to source code"><var>$pagination_arrows</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$pagination_arrows" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="before_create" id="$before_create">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#159-163" title="Go to source code"><var>$before_create</var></a>
+
+				<div class="description short">
+					<p>The various callbacks available to the model. Each are
+simple lists of method names (methods will be run on $this).</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>The various callbacks available to the model. Each are
+simple lists of method names (methods will be run on $this).</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$before_create" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="after_create" id="$after_create">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#164" title="Go to source code"><var>$after_create</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$after_create" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="before_update" id="$before_update">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#165" title="Go to source code"><var>$before_update</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$before_update" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="after_update" id="$after_update">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#166" title="Go to source code"><var>$after_update</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$after_update" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="before_get" id="$before_get">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#167" title="Go to source code"><var>$before_get</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$before_get" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="after_get" id="$after_get">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#168" title="Go to source code"><var>$after_get</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$after_get" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="before_delete" id="$before_delete">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#169" title="Go to source code"><var>$before_delete</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$before_delete" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="after_delete" id="$after_delete">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#170" title="Go to source code"><var>$after_delete</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$after_delete" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="before_soft_delete" id="$before_soft_delete">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#171" title="Go to source code"><var>$before_soft_delete</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$before_soft_delete" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="after_soft_delete" id="$after_soft_delete">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#172" title="Go to source code"><var>$after_soft_delete</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$after_soft_delete" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="callback_parameters" id="$callback_parameters">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#174" title="Go to source code"><var>$callback_parameters</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$callback_parameters" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="return_as" id="$return_as">
+			<td class="attributes"><code>
+				protected  
+				string
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#176" title="Go to source code"><var>$return_as</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$return_as" class="anchor">#</a>
+					<code><span class="php-quote">'object'</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="return_as_dropdown" id="$return_as_dropdown">
+			<td class="attributes"><code>
+				protected  
+				
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#177" title="Go to source code"><var>$return_as_dropdown</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$return_as_dropdown" class="anchor">#</a>
+					<code><span class="php-keyword1">NULL</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="_dropdown_field" id="$_dropdown_field">
+			<td class="attributes"><code>
+				protected  
+				string
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Model.html#178" title="Go to source code"><var>$_dropdown_field</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$_dropdown_field" class="anchor">#</a>
+					<code><span class="php-quote">''</span></code>
+				</div>
+			</td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		CAFPE Docs API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

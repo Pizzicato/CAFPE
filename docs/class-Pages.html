@@ -52,8 +52,12 @@
 				<li><a href="class-Auth_controller.html">Auth_controller</a></li>
 				<li><a href="class-Hierarchical_controllers.html">Hierarchical_controllers</a></li>
 				<li><a href="class-MY_Controller.html">MY_Controller</a></li>
+				<li><a href="class-MY_Model.html">MY_Model</a></li>
+				<li><a href="class-News.html">News</a></li>
+				<li><a href="class-News_model.html">News_model</a></li>
 				<li class="active"><a href="class-Pages.html">Pages</a></li>
 				<li><a href="class-Public_controller.html">Public_controller</a></li>
+				<li><a href="class-Seeder.html">Seeder</a></li>
 			</ul>
 
 
@@ -119,7 +123,7 @@ CI_Controller
 		
 		
 
-			<b>Located at</b> <a href="source-class-Pages.html#3-24" title="Go to source code">Pages.php</a>
+			<b>Located at</b> <a href="source-class-Pages.html#3-14" title="Go to source code">Pages.php</a>
 		<br>
 	</div>
 
@@ -139,32 +143,22 @@ CI_Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#_index">#</a>
-			<code><a href="source-class-Pages.html#5-23" title="Go to source code">index</a>( )</code>
+			<code><a href="source-class-Pages.html#5-13" title="Go to source code">index</a>( )</code>
 
 			<div class="description short">
-				<p>Index Page for this controller.</p>
+				<p>Maps to:
+   - base_url + pages
+   - base_url + pages/index
+   - base_url (default controller in routes)</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>Index Page for this controller.</p>
-
-<p>Maps to the following URL http://example.com/index.php/welcome
-- or - http://example.com/index.php/welcome/index
-- or -
-Since this controller is set as the default controller in
-config/routes.php, it's displayed at http://example.com/</p>
-
-<p>So any other public methods not prefixed with an underscore will
-map to /index.php/welcome/<method_name></p>
+				<p>Maps to: - base_url + pages - base_url + pages/index - base_url (default controller in routes)</p>
 
 
 
 
 
-					<h4>See</h4>
-					<div class="list">
-							https://codeigniter.com/user_guide/general/urls.html<br>
-					</div>
 
 
 			</div>
@@ -176,8 +170,14 @@ map to /index.php/welcome/<method_name></p>
 		<div class="panel panel-default">
 	        <div class="panel-heading"><h3>Methods inherited from <a href="class-Public_controller.html#methods">Public_controller</a></h3></div>
 			<p class="elementList">
-				<code><a href="class-Public_controller.html#___construct">__construct()</a></code>, 
-				<code><a href="class-Public_controller.html#_render">render()</a></code>
+				<code><a href="class-Public_controller.html#___construct">__construct()</a></code>
+			</p>
+		</div>
+		<div class="panel panel-default">
+	        <div class="panel-heading"><h3>Methods inherited from <a href="class-MY_Controller.html#methods">MY_Controller</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-MY_Controller.html#___destruct">__destruct()</a></code>, 
+				<code><a href="class-MY_Controller.html#_render">render()</a></code>
 			</p>
 		</div>
 
@@ -197,7 +197,10 @@ map to /index.php/welcome/<method_name></p>
 		<div class="panel panel-default">
             <div class="panel-heading"><h3>Properties inherited from <a href="class-MY_Controller.html#properties">MY_Controller</a></h3></div>
 			<p class="elementList">
-				<code><a href="class-MY_Controller.html#$data"><var>$data</var></a></code>
+				<code><a href="class-MY_Controller.html#$data"><var>$data</var></a></code>, 
+				<code><a href="class-MY_Controller.html#$default_view"><var>$default_view</var></a></code>, 
+				<code><a href="class-MY_Controller.html#$template"><var>$template</var></a></code>, 
+				<code><a href="class-MY_Controller.html#$view_rendered"><var>$view_rendered</var></a></code>
 			</p>
 		</div>
 

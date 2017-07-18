@@ -7,20 +7,8 @@ class Auth_controller extends MY_Controller
 {
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct('templates/auth');
         $this->_auth_logged_in();
-        //TODO: Set private template
-    }
-
-    /**
-    * Renders view - This method implements abstract function in MY_Controller
-    *
-    * @param string $content_view Content view path and name
-    */
-    protected function render($content_view = null)
-    {
-        $this->data['content_view'] = (is_null($content_view)) ? '' : $content_view;
-        $this->parser->parse('templates/auth', $this->data);
     }
 
     /**

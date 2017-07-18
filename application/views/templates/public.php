@@ -6,9 +6,10 @@
         <title>{pagetitle}</title>
     </head>
     <body>
+        <p>PUBLIC</p>
         <?php $this->load->view('templates/_parts/header'); ?>
         <main>
-            <?php $this->load->view($content_view); ?>
+            <?php $this->load->view($view); ?>
             <?php $this->load->view('templates/_parts/sidebar'); ?>
         </main>
         <?php $this->load->view('templates/_parts/footer'); ?>

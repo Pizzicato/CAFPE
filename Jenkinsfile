@@ -64,9 +64,8 @@ try {
     }
     stage('Sanity Check') {
         echo ' ************ Decide Release to production server ************'
-        // TODO: Change time
         try {
-            timeout(time:1, unit:'MINUTES') {
+            timeout(time:5, unit:'DAYS') {
                 input message:'Approve deployment to production?', submitter: 'pablo,pabloguaza'
             }
             milestone()

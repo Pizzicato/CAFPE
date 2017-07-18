@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class MY_Controller | CAFPE Docs</title>
+	<title>Class Seeder | CAFPE Docs</title>
 
 	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
 	<link rel="stylesheet" href="resources/style.css?70c1d062672daa3f906b72e4f5d03d4bc5c4174d">
@@ -51,13 +51,13 @@
 			<ul>
 				<li><a href="class-Auth_controller.html">Auth_controller</a></li>
 				<li><a href="class-Hierarchical_controllers.html">Hierarchical_controllers</a></li>
-				<li class="active"><a href="class-MY_Controller.html">MY_Controller</a></li>
+				<li><a href="class-MY_Controller.html">MY_Controller</a></li>
 				<li><a href="class-MY_Model.html">MY_Model</a></li>
 				<li><a href="class-News.html">News</a></li>
 				<li><a href="class-News_model.html">News_model</a></li>
 				<li><a href="class-Pages.html">Pages</a></li>
 				<li><a href="class-Public_controller.html">Public_controller</a></li>
-				<li><a href="class-Seeder.html">Seeder</a></li>
+				<li class="active"><a href="class-Seeder.html">Seeder</a></li>
 			</ul>
 
 
@@ -78,40 +78,16 @@
 <div id="right">
 	<div id="rightInner">
 <div id="content" class="class">
-	<h1>Class MY_Controller</h1>
+	<h1>Class Seeder</h1>
 
 
-
-	<dl class="tree well">
-		<dd style="padding-left:0px">
-CI_Controller
-			
-			
-		</dd>
-		<dd style="padding-left:30px">
-			<img src="resources/inherit.png" alt="Extended by">
-<b><span>MY_Controller</span></b>			
-			
-			
-		</dd>
-	</dl>
-
-
-	<div>
-		<h3>Direct known subclasses</h3>
-		<p class="elementList">
-			<code><a href="class-Auth_controller.html">Auth_controller</a></code>, 
-			<code><a href="class-Public_controller.html">Public_controller</a></code>
-		</p>
+	<div class="description">
+	<p>Part of ci-phpunit-test</p>
 	</div>
 
-	<div>
-		<h3>Indirect known subclasses</h3>
-		<p class="elementList">
-			<code><a href="class-News.html">News</a></code>, 
-			<code><a href="class-Pages.html">Pages</a></code>
-		</p>
-	</div>
+
+
+
 
 
 
@@ -123,7 +99,15 @@ CI_Controller
 		
 		
 
-			<b>Located at</b> <a href="source-class-MY_Controller.html#6-80" title="Go to source code">MY_Controller.php</a>
+				<b>Copyright:</b>
+				2015 Kenji Suzuki<br>
+				<b>License:</b>
+				<a href="MIT">License</a><br>
+				<b>Author:</b>
+				Kenji Suzuki <a href="https://github.com/kenjis">https://github.com/kenjis</a><br>
+				<b>Link:</b>
+				<a href="https://github.com/kenjis/ci-phpunit-test">https://github.com/kenjis/ci-phpunit-test</a><br>
+			<b>Located at</b> <a href="source-class-Seeder.html#2-52" title="Go to source code">Seeder.php</a>
 		<br>
 	</div>
 
@@ -143,7 +127,7 @@ CI_Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-MY_Controller.html#20-29" title="Go to source code">__construct</a>( <span> <var>$template</var></span> )</code>
+			<code><a href="source-class-Seeder.html#16-23" title="Go to source code">__construct</a>( )</code>
 
 			<div class="description short">
 				
@@ -161,7 +145,7 @@ CI_Controller
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="__destruct" id="___destruct">
+		<tr data-order="call" id="_call">
 
 			<td class="attributes"><code>
 				 public 
@@ -171,17 +155,22 @@ CI_Controller
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#___destruct">#</a>
-			<code><a href="source-class-MY_Controller.html#31-36" title="Go to source code">__destruct</a>( )</code>
+			<a class="anchor" href="#_call">#</a>
+			<code><a href="source-class-Seeder.html#24-38" title="Go to source code">call</a>( <span>string <var>$seeder</var></span> )</code>
 
 			<div class="description short">
-				
+				<p>Run another seeder</p>
 			</div>
 
 			<div class="description detailed hidden">
-				
+				<p>Run another seeder</p>
 
 
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$seeder</var></dt>
+						<dd>Seeder classname</dd>
+					</dl></div>
 
 
 
@@ -190,25 +179,59 @@ CI_Controller
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="render" id="_render">
+		<tr data-order="setPath" id="_setPath">
 
 			<td class="attributes"><code>
-				 protected 
+				 public 
 				
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_render">#</a>
-			<code><a href="source-class-MY_Controller.html#38-49" title="Go to source code">render</a>( <span> <var>$view</var></span> )</code>
+			<a class="anchor" href="#_setPath">#</a>
+			<code><a href="source-class-Seeder.html#39-47" title="Go to source code">setPath</a>( <span>string <var>$path</var></span> )</code>
 
 			<div class="description short">
-				<p>Renders passed view</p>
+				<p>Set path for seeder files</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>Renders passed view</p>
+				<p>Set path for seeder files</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$path</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="__get" id="___get">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___get">#</a>
+			<code><a href="source-class-Seeder.html#48-51" title="Go to source code">__get</a>( <span> <var>$property</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
 
 
 
@@ -235,39 +258,14 @@ CI_Controller
 		<div class="panel panel-default">
             <div class="panel-heading"><h2>Properties summary</h2></div>
 			<table class="summary table table-bordered table-striped properties" id="properties">
-		<tr data-order="data" id="$data">
-			<td class="attributes"><code>
-				protected  
-				array
-			</code></td>
-
-			<td class="name">
-					<a href="source-class-MY_Controller.html#8-13" title="Go to source code"><var>$data</var></a>
-
-				<div class="description short">
-					<p>Data that wil be passed to views</p>
-				</div>
-
-				<div class="description detailed hidden">
-					<p>Data that wil be passed to views</p>
-
-				</div>
-			</td>
-			<td class="value">
-				<div>
-					<a href="#$data" class="anchor">#</a>
-					<code><span class="php-keyword1">array</span>()</code>
-				</div>
-			</td>
-		</tr>
-		<tr data-order="template" id="$template">
+		<tr data-order="db" id="$db">
 			<td class="attributes"><code>
 				protected  
 				
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-MY_Controller.html#14" title="Go to source code"><var>$template</var></a>
+					<a href="source-class-Seeder.html#13" title="Go to source code"><var>$db</var></a>
 
 				<div class="description short">
 					
@@ -280,19 +278,19 @@ CI_Controller
 			</td>
 			<td class="value">
 				<div>
-					<a href="#$template" class="anchor">#</a>
+					<a href="#$db" class="anchor">#</a>
 					<code></code>
 				</div>
 			</td>
 		</tr>
-		<tr data-order="default_view" id="$default_view">
+		<tr data-order="dbforge" id="$dbforge">
 			<td class="attributes"><code>
 				protected  
 				
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-MY_Controller.html#16" title="Go to source code"><var>$default_view</var></a>
+					<a href="source-class-Seeder.html#14" title="Go to source code"><var>$dbforge</var></a>
 
 				<div class="description short">
 					
@@ -305,19 +303,19 @@ CI_Controller
 			</td>
 			<td class="value">
 				<div>
-					<a href="#$default_view" class="anchor">#</a>
+					<a href="#$dbforge" class="anchor">#</a>
 					<code></code>
 				</div>
 			</td>
 		</tr>
-		<tr data-order="view_rendered" id="$view_rendered">
+		<tr data-order="seedPath" id="$seedPath">
 			<td class="attributes"><code>
 				protected  
-				boolean
+				
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-MY_Controller.html#18" title="Go to source code"><var>$view_rendered</var></a>
+					<a href="source-class-Seeder.html#15" title="Go to source code"><var>$seedPath</var></a>
 
 				<div class="description short">
 					
@@ -330,8 +328,8 @@ CI_Controller
 			</td>
 			<td class="value">
 				<div>
-					<a href="#$view_rendered" class="anchor">#</a>
-					<code><span class="php-keyword1">false</span></code>
+					<a href="#$seedPath" class="anchor">#</a>
+					<code></code>
 				</div>
 			</td>
 		</tr>

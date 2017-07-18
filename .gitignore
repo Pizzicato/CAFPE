@@ -14,6 +14,8 @@ lftp_transferred.log
 
 /application/db/*
 !/application/db/index.html
+!/application/db/migrations
+!/application/db/seeds
 
 /application/logs/*
 !/application/logs/index.html
