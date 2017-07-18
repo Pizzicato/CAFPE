@@ -1082,7 +1082,7 @@
 </span><span id="1000" class="l">            }
 </span><span id="1001" class="l">            <span class="php-var">$query</span> = <span class="php-var">$this</span>-&gt;_database-&gt;get(<span class="php-var">$this</span>-&gt;table);
 </span><span id="1002" class="l">            <span class="php-var">$this</span>-&gt;_reset_trashed();
-</span><span id="1003" class="l">            <span class="php-keyword1">if</span>(<span class="php-var">$query</span>-&gt;num_rows() &gt; <span class="php-num">0</span>)
+</span><span id="1003" class="l">            <span class="php-keyword1">if</span>(<span class="php-var">$query</span>)
 </span><span id="1004" class="l">            {
 </span><span id="1005" class="l">                <span class="php-var">$data</span> = <span class="php-var">$query</span>-&gt;result_array();
 </span><span id="1006" class="l">                <span class="php-var">$data</span> = <span class="php-var">$this</span>-&gt;trigger(<span class="php-quote">'after_get'</span>, <span class="php-var">$data</span>);
@@ -2130,7 +2130,7 @@
 </span><span id="2048" class="l">        <span class="php-keyword1">return</span> <span class="php-var">$data</span>;
 </span><span id="2049" class="l">    }
 </span><span id="2050" class="l">
-</span><span id="2051" class="l">    
+</span><span id="2051" class="l">
 </span><span id="2052" class="l">    <span class="php-comment">/*
 </span></span><span id="2053" class="l"><span class="php-comment">    public function add_creator($data)
 </span></span><span id="2054" class="l"><span class="php-comment">    {

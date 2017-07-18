@@ -14,8 +14,6 @@ class MY_Controller extends CI_Controller
     protected $template;
     // View that will be loaded by default: controller/method path inside views folder
     protected $default_view;
-    // Has view been rendered?
-    protected $view_rendered = false;
 
     public function __construct($template)
     {
@@ -28,26 +26,32 @@ class MY_Controller extends CI_Controller
         $this->_maintenance_mode_check();
     }
 
-    public function __destruct()
-    {
-        if (! $this->view_rendered) {
-            $this->render($this->default_view);
-        }
-    }
 
     /**
     * Renders passed view
     */
-    protected function render($view){
-        if(! $this->_valid_view($view)){
+    public function render($view, $return = false)
+    {
+        if (! $this->_valid_view($view)) {
             show_404();
         }
 
-        $this->view_rendered = true;
         $this->data['view'] = (is_null($view)) ? '' : $view;
-        echo $this->parser->parse($this->template, $this->data, true);
+        return $this->parser->parse($this->template, $this->data, $return);
     }
 
+    /**
+    * Override _ouput Ouput class method to allow implicit view rendering
+    */
+    public function _output($output)
+    {
+        if ($output) {
+            echo $output;
+        } else {
+            // nothing was rendered from controller, render default view
+            echo $this->render($this->default_view, true);
+        }
+    }
 
     /**
     * Sets language (default or explicitly selected by user)
@@ -64,7 +68,7 @@ class MY_Controller extends CI_Controller
     private function _maintenance_mode_check()
     {
         if ($this->config->item('site_under_maintenance') === true) {
-            $this->data['content_view'] = 'maintenance';
+            $this->data['view'] = 'maintenance';
             die($this->parser->parse('templates/public', $this->data));
         }
     }

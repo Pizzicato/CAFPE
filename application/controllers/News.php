@@ -15,6 +15,7 @@ class News extends Auth_controller
      */
     public function index()
     {
-        $this->data['news'] = $this->news_model->get_all();
+        $news = $this->news_model->as_array()->get_all();
+        $this->data['news'] = $news ? $news : [];
     }
 }

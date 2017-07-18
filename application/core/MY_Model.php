@@ -1000,7 +1000,7 @@ class MY_Model extends CI_Model
             }
             $query = $this->_database->get($this->table);
             $this->_reset_trashed();
-            if($query->num_rows() > 0)
+            if($query)
             {
                 $data = $query->result_array();
                 $data = $this->trigger('after_get', $data);
@@ -2048,7 +2048,7 @@ class MY_Model extends CI_Model
         return $data;
     }
 
-    
+
     /*
     public function add_creator($data)
     {
