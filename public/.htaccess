@@ -2,8 +2,8 @@
 SetEnvIfNoCase Host "^" CI_ENV=development WPD_URL=0
 SetEnvIfNoCase Host "cafpe\.ugr\.es" CI_ENV=production
 SetEnvIfNoCase Host "wpd\.ugr\.es" CI_ENV=production WPD_URL=1
-# If URL begins with wpd.ugr.es/~pabloguaza, STAGING_SERVER = true
-SetEnvIf Request_URI "^/\~pabloguaza" STAGING_SERVER
+# If URL begins with wpd.ugr.es/~pabloguaza, STAGING_SERVER=true
+SetEnvIf Request_URI "^/\~pabloguaza" CI_ENV=staging BASE_PATH=/\~pabloguaza STAGING_SERVER
 # else STAGING_SERVER = false
 SetEnvIf WPD_URL 0 !STAGING_SERVER
 
@@ -11,7 +11,7 @@ SetEnvIf WPD_URL 0 !STAGING_SERVER
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteRule ^(.*)$ %{ENV:BASE_PATH}/index.php/$1 [L]
 
 ## Basic auth for staging server
 Deny from env=STAGING_SERVER
