@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class News | CAFPE Docs</title>
+	<title>Class Articles | CAFPE Docs</title>
 
 	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
 	<link rel="stylesheet" href="resources/style.css?70c1d062672daa3f906b72e4f5d03d4bc5c4174d">
@@ -49,12 +49,12 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-Article_model.html">Article_model</a></li>
+				<li class="active"><a href="class-Articles.html">Articles</a></li>
 				<li><a href="class-Auth_controller.html">Auth_controller</a></li>
 				<li><a href="class-Hierarchical_controllers.html">Hierarchical_controllers</a></li>
 				<li><a href="class-MY_Controller.html">MY_Controller</a></li>
 				<li><a href="class-MY_Model.html">MY_Model</a></li>
-				<li class="active"><a href="class-News.html">News</a></li>
-				<li><a href="class-News_model.html">News_model</a></li>
 				<li><a href="class-Pages.html">Pages</a></li>
 				<li><a href="class-Public_controller.html">Public_controller</a></li>
 				<li><a href="class-Seeder.html">Seeder</a></li>
@@ -78,7 +78,7 @@
 <div id="right">
 	<div id="rightInner">
 <div id="content" class="class">
-	<h1>Class News</h1>
+	<h1>Class Articles</h1>
 
 
 
@@ -104,7 +104,7 @@ CI_Controller
 		</dd>
 		<dd style="padding-left:90px">
 			<img src="resources/inherit.png" alt="Extended by">
-<b><span>News</span></b>			
+<b><span>Articles</span></b>			
 			
 			
 		</dd>
@@ -123,7 +123,7 @@ CI_Controller
 		
 		
 
-			<b>Located at</b> <a href="source-class-News.html#3-21" title="Go to source code">News.php</a>
+			<b>Located at</b> <a href="source-class-Articles.html#3-50" title="Go to source code">Articles.php</a>
 		<br>
 	</div>
 
@@ -143,7 +143,7 @@ CI_Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-News.html#5-9" title="Go to source code">__construct</a>( )</code>
+			<code><a href="source-class-Articles.html#5-9" title="Go to source code">__construct</a>( )</code>
 
 			<div class="description short">
 				
@@ -174,16 +174,76 @@ CI_Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#_index">#</a>
-			<code><a href="source-class-News.html#11-20" title="Go to source code">index</a>( )</code>
+			<code><a href="source-class-Articles.html#11-20" title="Go to source code">index</a>( )</code>
 
 			<div class="description short">
 				<p>Maps to:
-   - base_url + news
-   - base_url + news/index</p>
+   - base_url + articles
+   - base_url + articles/index</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>Maps to: - base_url + news - base_url + news/index</p>
+				<p>Maps to: - base_url + articles - base_url + articles/index</p>
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="view" id="_view">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_view">#</a>
+			<code><a href="source-class-Articles.html#22-35" title="Go to source code">view</a>( <span> <var>$slug</var> = <span class="php-keyword1">null</span></span> )</code>
+
+			<div class="description short">
+				<p>Maps to:
+   - base_url + articles/view/$slug</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Maps to: - base_url + articles/view/$slug</p>
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="create" id="_create">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_create">#</a>
+			<code><a href="source-class-Articles.html#37-49" title="Go to source code">create</a>( )</code>
+
+			<div class="description short">
+				<p>Maps to:
+   - base_url + articles/create</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Maps to: - base_url + articles/create</p>
 
 
 

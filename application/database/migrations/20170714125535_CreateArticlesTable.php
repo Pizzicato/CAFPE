@@ -1,11 +1,11 @@
 <?php
 /**
- * Migration: CreateUsersTable
+ * Migration: CreateArticlesTable
  *
  * Created by: Cli for CodeIgniter <https://github.com/kenjis/codeigniter-cli>
  * Created on: 2017/07/14 12:55:35
  */
-class Migration_CreateNewsTable extends CI_Migration
+class Migration_CreateArticlesTable extends CI_Migration
 {
     public function up()
     {
@@ -35,11 +35,22 @@ class Migration_CreateNewsTable extends CI_Migration
             ),
             'main_pic' => array(
                 'type' => 'VARCHAR',
-                'constraint' => 150
+                'constraint' => 150,
+                'NULL' => true
             ),
             'lang' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 3
+            ),
+            'slug_es' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+                'unique' => true
+            ),
+            'slug_en' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+                'unique' => true
             ),
             'created_at' => array(
                 'type' => 'TEXT',
@@ -51,12 +62,15 @@ class Migration_CreateNewsTable extends CI_Migration
             )
         ));
         $this->dbforge->add_key('id', true);
-        $this->dbforge->create_table('news');
+        $this->dbforge->create_table('articles');
+        $sql = "CREATE INDEX IF NOT EXISTS slug_index ON articles (slug_en);";
+        $sql = "CREATE INDEX IF NOT EXISTS slug_index ON articles (slug_es);";
+        $this->db->query($sql);
     }
 
     public function down()
     {
         // Dropping a table
-        $this->dbforge->drop_table('news', true);
+        $this->dbforge->drop_table('articles', true);
     }
 }

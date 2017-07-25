@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class News_model | CAFPE Docs</title>
+	<title>Class Article_model | CAFPE Docs</title>
 
 	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
 	<link rel="stylesheet" href="resources/style.css?70c1d062672daa3f906b72e4f5d03d4bc5c4174d">
@@ -49,12 +49,12 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li class="active"><a href="class-Article_model.html">Article_model</a></li>
+				<li><a href="class-Articles.html">Articles</a></li>
 				<li><a href="class-Auth_controller.html">Auth_controller</a></li>
 				<li><a href="class-Hierarchical_controllers.html">Hierarchical_controllers</a></li>
 				<li><a href="class-MY_Controller.html">MY_Controller</a></li>
 				<li><a href="class-MY_Model.html">MY_Model</a></li>
-				<li><a href="class-News.html">News</a></li>
-				<li class="active"><a href="class-News_model.html">News_model</a></li>
 				<li><a href="class-Pages.html">Pages</a></li>
 				<li><a href="class-Public_controller.html">Public_controller</a></li>
 				<li><a href="class-Seeder.html">Seeder</a></li>
@@ -78,9 +78,16 @@
 <div id="right">
 	<div id="rightInner">
 <div id="content" class="class">
-	<h1>Class News_model</h1>
+	<h1>Class Article_model</h1>
 
 
+	<div class="description">
+	<p>how to extend MY_Model:
+class User_model extends MY_Model
+{ public $table = 'users'; // Set the name of the table for this model. public $primary_key = 'id'; // Set the primary key public $fillable = array(); // You can set an array with the fields that can be filled by insert/update public $protected = array(); // ...Or you can set an array with the fields that cannot be filled by insert/update public function __construct() { $this-><em>database_connection  = group_name or array() | OPTIONAL Sets the connection preferences (group name) set up in the database.php. If not trset, it will use the 'default' (the $active_group) database connection. $this->timestamps = TRUE | array('made_at','modified_at','removed_at') If set to TRUE tells MY_Model that the table has 'created_at','updated_at' (and 'deleted_at' if $this->soft_delete is set to TRUE) If given an array as parameter, it tells MY_Model, that the first element is a created_at field type, the second element is a updated_at field type (and the third element is a deleted_at field type) $this->soft_deletes = FALSE; Enables (TRUE) or disables (FALSE) the "soft delete" on records. Default is FALSE $this->timestamps_format = 'Y-m-d H:i:s' You can at any time change the way the timestamp is created (the default is the MySQL standard datetime format) by modifying this variable. You can choose between whatever format is acceptable by the php function date() (default is 'Y-m-d H:i:s'), or 'timestamp' (UNIX timestamp) $this->return_as = 'object' | 'array' Allows the model to return the results as object or as array $this->has_one['phone'] = 'Phone_model' or $this->has_one['phone'] = array('Phone_model','foreign_key','local_key'); $this->has_one['address'] = 'Address_model' or $this->has_one['address'] = array('Address_model','foreign_key','another_local_key'); Allows establishing ONE TO ONE or more ONE TO ONE relationship(s) between models/tables $this->has_many['posts'] = 'Post_model' or $this->has_many['posts'] = array('Posts_model','foreign_key','another_local_key'); Allows establishing ONE TO MANY or more ONE TO MANY relationship(s) between models/tables $this->has_many_pivot['posts'] = 'Post_model' or $this->has_many_pivot['posts'] = array('Posts_model','foreign_primary_key','local_primary_key'); Allows establishing MANY TO MANY or more MANY TO MANY relationship(s) between models/tables with the use of a PIVOT TABLE !ATTENTION: The pivot table name must be composed of the two table names separated by "</em>" the table names having to to be alphabetically ordered (NOT users_posts, but posts_users). Also the pivot table must contain as identifying columns the columns named by convention as follows: table_name_singular + _ + foreign_table_primary_key. For example: considering that a post can have multiple authors, a pivot table that connects two tables (users and posts) must be named posts_users and must have post_id and user_id as identifying columns for the posts.id and users.id tables. $this->cache_driver = 'file' $this->cache_prefix = 'mm' If you know you will do some caching of results without the native caching solution, you can at any time use the MY_Model's caching. By default, MY_Model uses the files to cache result. If you want to change the way it stores the cache, you can change the $cache_driver property to whatever CodeIgniter cache driver you want to use. Also, with $cache_prefix, you can prefix the name of the caches. by default any cache made by MY_Model starts with 'mm' + _ + "name chosen for cache" $this->delete_cache_on_save = FALSE If you use caching often and you don't want to be forced to delete cache manually, you can enable $this->delete_cache_on_save by setting it to TRUE. If set to TRUE the model will auto-delete all cache related to the model's table whenever you write/update/delete data from that table. $this->pagination_delimiters = array('<span>','</span>'); If you know you will use the paginate() method, you can change the delimiters between the pages links $this->pagination_arrows = array('&lt;','&gt;'); You can also change the way the previous and next arrows look like.</p>
+
+<p>parent::__construct(); } }</p>
+	</div>
 
 	<dl class="tree well">
 		<dd style="padding-left:0px">
@@ -97,7 +104,7 @@ CI_Model
 		</dd>
 		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by">
-<b><span>News_model</span></b>			
+<b><span>Article_model</span></b>			
 			
 			
 		</dd>
@@ -116,7 +123,7 @@ CI_Model
 		
 		
 
-			<b>Located at</b> <a href="source-class-News_model.html#2-14" title="Go to source code">News_model.php</a>
+			<b>Located at</b> <a href="source-class-Article_model.html#3-86" title="Go to source code">Article_model.php</a>
 		<br>
 	</div>
 
@@ -136,7 +143,7 @@ CI_Model
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-News_model.html#10-13" title="Go to source code">__construct</a>( )</code>
+			<code><a href="source-class-Article_model.html#10-67" title="Go to source code">__construct</a>( )</code>
 
 			<div class="description short">
 				
@@ -152,6 +159,64 @@ CI_Model
 
 					<h4>Overrides</h4>
 					<div class="list"><code><a href="class-MY_Model.html#___construct">MY_Model::__construct</a></code></div>
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="create_slug" id="_create_slug">
+
+			<td class="attributes"><code>
+				 protected 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_create_slug">#</a>
+			<code><a href="source-class-Article_model.html#69-75" title="Go to source code">create_slug</a>( <span> <var>$data</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="get_main_pic" id="_get_main_pic">
+
+			<td class="attributes"><code>
+				 protected 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_get_main_pic">#</a>
+			<code><a href="source-class-Article_model.html#77-85" title="Go to source code">get_main_pic</a>( <span> <var>$data</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
 
 			</div>
 			</div></td>
@@ -228,7 +293,7 @@ CI_Model
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-News_model.html#7" title="Go to source code"><var>$table</var></a>
+					<a href="source-class-Article_model.html#5" title="Go to source code"><var>$table</var></a>
 
 				<div class="description short">
 					<p>Sets table name</p>
@@ -242,7 +307,7 @@ CI_Model
 			<td class="value">
 				<div>
 					<a href="#$table" class="anchor">#</a>
-					<code><span class="php-quote">'news'</span></code>
+					<code><span class="php-quote">'articles'</span></code>
 				</div>
 			</td>
 		</tr>
@@ -253,7 +318,7 @@ CI_Model
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-News_model.html#8" title="Go to source code"><var>$primary_key</var></a>
+					<a href="source-class-Article_model.html#6" title="Go to source code"><var>$primary_key</var></a>
 
 				<div class="description short">
 					<p>Sets PRIMARY KEY</p>
@@ -268,6 +333,56 @@ CI_Model
 				<div>
 					<a href="#$primary_key" class="anchor">#</a>
 					<code><span class="php-quote">'id'</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="protected" id="$protected">
+			<td class="attributes"><code>
+				public  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-Article_model.html#7" title="Go to source code"><var>$protected</var></a>
+
+				<div class="description short">
+					<p>Sets protected fields</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>Sets protected fields</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$protected" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>(<span class="php-quote">'id'</span>)</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="rules" id="$rules">
+			<td class="attributes"><code>
+				public  
+				
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-Article_model.html#8" title="Go to source code"><var>$rules</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$rules" class="anchor">#</a>
+					<code></code>
 				</div>
 			</td>
 		</tr>
@@ -307,7 +422,6 @@ CI_Model
 				<code><a href="class-MY_Model.html#$pagination_arrows"><var>$pagination_arrows</var></a></code>, 
 				<code><a href="class-MY_Model.html#$pagination_delimiters"><var>$pagination_delimiters</var></a></code>, 
 				<code><a href="class-MY_Model.html#$previous_page"><var>$previous_page</var></a></code>, 
-				<code><a href="class-MY_Model.html#$protected"><var>$protected</var></a></code>, 
 				<code><a href="class-MY_Model.html#$return_as"><var>$return_as</var></a></code>, 
 				<code><a href="class-MY_Model.html#$return_as_dropdown"><var>$return_as_dropdown</var></a></code>, 
 				<code><a href="class-MY_Model.html#$separate_subqueries"><var>$separate_subqueries</var></a></code>, 

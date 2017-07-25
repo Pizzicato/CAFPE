@@ -1,0 +1,50 @@
+<?php defined('BASEPATH') or exit('No direct script access allowed');
+
+class Articles extends Auth_controller
+{
+    public function __construct()
+    {
+        parent ::__construct();
+        $this->load->model('article_model');
+    }
+
+    /**
+     * Maps to:
+     *    - base_url + articles
+     *    - base_url + articles/index
+     */
+    public function index()
+    {
+        $articles = $this->article_model->as_array()->get_all();
+        $this->data['articles'] = $articles ? $articles : [];
+    }
+
+    /**
+     * Maps to:
+     *    - base_url + articles/view/$slug
+     */
+    public function view($slug = null)
+    {
+        // TODO: slug depending on lang
+        $article = $this->article_model->as_array()->where('slug_es', $slug)->get();
+        if (! $article) {
+            show_404();
+        }
+
+        $this->data = array_merge($this->data, $article);
+    }
+
+    /**
+     * Maps to:
+     *    - base_url + articles/create
+     */
+    public function create()
+    {
+        $this->load->helper('form');
+
+        $id = $this->article_model->from_form()->insert();
+        if ($id) {
+            redirect('articles/');
+        }
+    }
+}
