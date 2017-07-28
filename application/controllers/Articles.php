@@ -15,8 +15,8 @@ class Articles extends Auth_controller
      */
     public function index()
     {
-        $articles = $this->article_model->as_array()->get_all();
-        $this->data['articles'] = $articles ? $articles : [];
+        $articles = $this->article_model->get_all();
+        $this->data['articles'] = $articles;
     }
 
     /**
@@ -25,8 +25,8 @@ class Articles extends Auth_controller
      */
     public function view($slug = null)
     {
-        // TODO: slug depending on lang
-        $article = $this->article_model->as_array()->where('slug_es', $slug)->get();
+        // TODO: slug depending
+        $article = $this->article_model->with_slug($slug)->get();
         if (! $article) {
             show_404();
         }
@@ -43,8 +43,9 @@ class Articles extends Auth_controller
         $this->load->helper('form');
 
         $id = $this->article_model->from_form()->insert();
-        if ($id) {
-            redirect('articles/');
-        }
+        var_dump($_POST);
+        // if ($id) {
+        //     redirect('articles/');
+        // }
     }
 }

@@ -12,10 +12,10 @@ lftp_transferred.log
 !/application/cache/index.html
 !/application/cache/.htaccess
 
-/application/db/*
-!/application/db/index.html
-!/application/db/migrations
-!/application/db/seeds
+/application/database/*
+!/application/database/index.html
+!/application/database/migrations
+!/application/database/seeds
 
 /application/logs/*
 !/application/logs/index.html

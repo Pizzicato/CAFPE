@@ -18,17 +18,21 @@ class Migration_CreateArticlesTable extends CI_Migration
             ),
             'title_es' => array(
                 'type' => 'VARCHAR',
-                'constraint' => 100
+                'constraint' => 100,
+                'NULL' => true
             ),
             'title_en' => array(
                 'type' => 'VARCHAR',
-                'constraint' => 100
+                'constraint' => 100,
+                'NULL' => true
             ),
             'content_es' => array(
-                'type' => 'TEXT'
+                'type' => 'TEXT',
+                'NULL' => true
             ),
             'content_en' => array(
-                'type' => 'TEXT'
+                'type' => 'TEXT',
+                'NULL' => true
             ),
             'date' => array(
                 'type' => 'TEXT'
@@ -45,12 +49,14 @@ class Migration_CreateArticlesTable extends CI_Migration
             'slug_es' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 100,
-                'unique' => true
+                'unique' => true,
+                'NULL' => true
             ),
             'slug_en' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 100,
-                'unique' => true
+                'unique' => true,
+                'NULL' => true
             ),
             'created_at' => array(
                 'type' => 'TEXT',

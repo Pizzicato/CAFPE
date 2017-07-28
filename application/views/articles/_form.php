@@ -4,7 +4,7 @@
     <?php
         $data = array(
             'name' => 'date',
-            'value' => date('Y-m-d'),
+            'value' => '',
             'id'=> 'date',
             'readonly' => 'readonly'
         );

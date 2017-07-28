@@ -12,7 +12,7 @@ class TestCase extends CIPHPUnitTestCase
             $CI =& get_instance();
             $CI->load->database();
             $CI->load->library('migration');
-            if ($CI->migration->current() === false) {
+            if ($CI->migration->latest() === false) {
                 throw new RuntimeException($this->migration->error_string());
             }
             self::$migrated = true ;
