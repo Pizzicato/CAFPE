@@ -215,7 +215,7 @@ function ftp_upload_site() {
     --exclude='application/config/development/' \
     --exclude='application/config/production/' \
     --exclude='application/config/testing/' \
-    --exclude='application/db/' \
+    --exclude='application/database/' \
     --exclude='application/migrations/' \
     --exclude='application/tests/'"
     echo "FTP UPLOAD [INFO]: Done"

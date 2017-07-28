@@ -74,6 +74,6 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'database' => APPPATH.'/database/db-prod-ugr.sqlite',
+	'database' => APPPATH.'database/db-prod-ugr.sqlite',
 	'dbdriver' => 'sqlite3'
 );
