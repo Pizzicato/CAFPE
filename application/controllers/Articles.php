@@ -43,9 +43,8 @@ class Articles extends Auth_controller
         $this->load->helper('form');
 
         $id = $this->article_model->from_form()->insert();
-        var_dump($_POST);
-        // if ($id) {
-        //     redirect('articles/');
-        // }
+        if ($id) {
+            redirect('articles/');
+        }
     }
 }
