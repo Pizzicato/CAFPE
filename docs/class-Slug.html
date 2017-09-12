@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class Seeder | CAFPE Docs</title>
+	<title>Class Slug | CAFPE Docs</title>
 
 	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
 	<link rel="stylesheet" href="resources/style.css?70c1d062672daa3f906b72e4f5d03d4bc5c4174d">
@@ -57,8 +57,8 @@
 				<li><a href="class-MY_Model.html">MY_Model</a></li>
 				<li><a href="class-Pages.html">Pages</a></li>
 				<li><a href="class-Public_controller.html">Public_controller</a></li>
-				<li class="active"><a href="class-Seeder.html">Seeder</a></li>
-				<li><a href="class-Slug.html">Slug</a></li>
+				<li><a href="class-Seeder.html">Seeder</a></li>
+				<li class="active"><a href="class-Slug.html">Slug</a></li>
 			</ul>
 
 
@@ -79,11 +79,15 @@
 <div id="right">
 	<div id="rightInner">
 <div id="content" class="class">
-	<h1>Class Seeder</h1>
+	<h1>Class Slug</h1>
 
 
 	<div class="description">
-	<p>Part of ci-phpunit-test</p>
+	<p>Slug Library</p>
+
+<p>Nothing but legless, boneless creatures who are responsible for creating
+magic "friendly urls" in your CodeIgniter application. Slugs are nocturnal
+feeders, hiding during daylight hours.</p>
 	</div>
 
 
@@ -100,15 +104,7 @@
 		
 		
 
-				<b>Copyright:</b>
-				2015 Kenji Suzuki<br>
-				<b>License:</b>
-				<a href="MIT">License</a><br>
-				<b>Author:</b>
-				Kenji Suzuki <a href="https://github.com/kenjis">https://github.com/kenjis</a><br>
-				<b>Link:</b>
-				<a href="https://github.com/kenjis/ci-phpunit-test">https://github.com/kenjis/ci-phpunit-test</a><br>
-			<b>Located at</b> <a href="source-class-Seeder.html#2-52" title="Go to source code">Seeder.php</a>
+			<b>Located at</b> <a href="source-class-Slug.html#24-176" title="Go to source code">Slug.php</a>
 		<br>
 	</div>
 
@@ -128,82 +124,19 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-Seeder.html#16-23" title="Go to source code">__construct</a>( )</code>
+			<code><a href="source-class-Slug.html#58-68" title="Go to source code">__construct</a>( <span>array <var>$config</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
-				
+				<p>Setup all vars</p>
 			</div>
 
 			<div class="description detailed hidden">
-				
-
-
-
-
-
-
-
-			</div>
-			</div></td>
-		</tr>
-		<tr data-order="call" id="_call">
-
-			<td class="attributes"><code>
-				 public 
-				
-				
-				</code>
-			</td>
-
-			<td class="name"><div>
-			<a class="anchor" href="#_call">#</a>
-			<code><a href="source-class-Seeder.html#24-38" title="Go to source code">call</a>( <span>string <var>$seeder</var></span> )</code>
-
-			<div class="description short">
-				<p>Run another seeder</p>
-			</div>
-
-			<div class="description detailed hidden">
-				<p>Run another seeder</p>
+				<p>Setup all vars</p>
 
 
 					<h4>Parameters</h4>
 					<div class="list"><dl>
-						<dt><var>$seeder</var></dt>
-						<dd>Seeder classname</dd>
-					</dl></div>
-
-
-
-
-
-			</div>
-			</div></td>
-		</tr>
-		<tr data-order="setPath" id="_setPath">
-
-			<td class="attributes"><code>
-				 public 
-				
-				
-				</code>
-			</td>
-
-			<td class="name"><div>
-			<a class="anchor" href="#_setPath">#</a>
-			<code><a href="source-class-Seeder.html#39-47" title="Go to source code">setPath</a>( <span>string <var>$path</var></span> )</code>
-
-			<div class="description short">
-				<p>Set path for seeder files</p>
-			</div>
-
-			<div class="description detailed hidden">
-				<p>Set path for seeder files</p>
-
-
-					<h4>Parameters</h4>
-					<div class="list"><dl>
-						<dt><var>$path</var></dt>
+						<dt><var>$config</var></dt>
 						<dd></dd>
 					</dl></div>
 
@@ -214,7 +147,7 @@
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="__get" id="___get">
+		<tr data-order="set_config" id="_set_config">
 
 			<td class="attributes"><code>
 				 public 
@@ -224,18 +157,116 @@
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#___get">#</a>
-			<code><a href="source-class-Seeder.html#48-51" title="Go to source code">__get</a>( <span> <var>$property</var></span> )</code>
+			<a class="anchor" href="#_set_config">#</a>
+			<code><a href="source-class-Slug.html#72-87" title="Go to source code">set_config</a>( <span>array <var>$config</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
-				
+				<p>Manually Set Config</p>
 			</div>
 
 			<div class="description detailed hidden">
+				<p>Manually Set Config</p>
+
+<p>Pass an array of config vars to override previous setup</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$config</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="create_uri" id="_create_uri">
+
+			<td class="attributes"><code>
+				 public 
+				string
 				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_create_uri">#</a>
+			<code><a href="source-class-Slug.html#91-109" title="Go to source code">create_uri</a>( <span>string <var>$title</var> = <span class="php-quote">''</span></span>, <span> <var>$field</var> = <span class="php-quote">'uri'</span></span> )</code>
+
+			<div class="description short">
+				<p>Create a uri string</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Create a uri string</p>
+
+<p>This wraps into the _check_uri method to take a character
+string and convert into ascii characters.</p>
 
 
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$title</var></dt>
+						<dd></dd>
+						<dt><var>$field</var></dt>
+						<dd></dd>
+					</dl></div>
 
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+					<h4>Uses</h4>
+					<div class="list">
+							Slug::_check_uri()<br>
+							Slug::create_slug()<br>
+					</div>
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="create_slug" id="_create_slug">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_create_slug">#</a>
+			<code><a href="source-class-Slug.html#113-129" title="Go to source code">create_slug</a>( <span>string <var>$string</var></span>, <span>string <var>$replacement</var>,…</span> )</code>
+
+			<div class="description short">
+				<p>Create Slug</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Create Slug</p>
+
+<p>Returns a string with all spaces converted to underscores (by default), accented
+characters converted to non-accented characters, and non word characters removed.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$string</var></dt>
+						<dd>the string you want to slug</dd>
+						<dt><var>$replacement</var>,…</dt>
+						<dd>will replace keys in map</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
 
 
 
@@ -259,78 +290,78 @@
 		<div class="panel panel-default">
             <div class="panel-heading"><h2>Properties summary</h2></div>
 			<table class="summary table table-bordered table-striped properties" id="properties">
-		<tr data-order="db" id="$db">
+		<tr data-order="table" id="$table">
 			<td class="attributes"><code>
-				protected  
-				
+				public  
+				string
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-Seeder.html#13" title="Go to source code"><var>$db</var></a>
+					<a href="source-class-Slug.html#35-40" title="Go to source code"><var>$table</var></a>
 
 				<div class="description short">
-					
+					<p>The name of the table</p>
 				</div>
 
 				<div class="description detailed hidden">
-					
+					<p>The name of the table</p>
 
 				</div>
 			</td>
 			<td class="value">
 				<div>
-					<a href="#$db" class="anchor">#</a>
-					<code></code>
+					<a href="#$table" class="anchor">#</a>
+					<code><span class="php-quote">''</span></code>
 				</div>
 			</td>
 		</tr>
-		<tr data-order="dbforge" id="$dbforge">
+		<tr data-order="id" id="$id">
 			<td class="attributes"><code>
-				protected  
-				
+				public  
+				string
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-Seeder.html#14" title="Go to source code"><var>$dbforge</var></a>
+					<a href="source-class-Slug.html#42-47" title="Go to source code"><var>$id</var></a>
 
 				<div class="description short">
-					
+					<p>The primary id field in the table</p>
 				</div>
 
 				<div class="description detailed hidden">
-					
+					<p>The primary id field in the table</p>
 
 				</div>
 			</td>
 			<td class="value">
 				<div>
-					<a href="#$dbforge" class="anchor">#</a>
-					<code></code>
+					<a href="#$id" class="anchor">#</a>
+					<code><span class="php-quote">'id'</span></code>
 				</div>
 			</td>
 		</tr>
-		<tr data-order="seedPath" id="$seedPath">
+		<tr data-order="replacement" id="$replacement">
 			<td class="attributes"><code>
-				protected  
-				
+				public  
+				string
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-Seeder.html#15" title="Go to source code"><var>$seedPath</var></a>
+					<a href="source-class-Slug.html#49-54" title="Go to source code"><var>$replacement</var></a>
 
 				<div class="description short">
-					
+					<p>The replacement (Either underscore or dash)</p>
 				</div>
 
 				<div class="description detailed hidden">
-					
+					<p>The replacement (Either underscore or dash)</p>
 
 				</div>
 			</td>
 			<td class="value">
 				<div>
-					<a href="#$seedPath" class="anchor">#</a>
-					<code></code>
+					<a href="#$replacement" class="anchor">#</a>
+					<code><span class="php-quote">'dash'</span></code>
 				</div>
 			</td>
 		</tr>

@@ -35,7 +35,7 @@ class Article_model_test extends TestCase
 
     public function test_When_inserting_Then_date_is_required_with_valid_format()
     {
-        $_POST = ['title_es' => 'Title es', 'lang' => 'es'];
+        $_POST = ['title_es' => 'Date check', 'lang' => 'es'];
         $this->assertFalse($this->obj->from_form()->insert());
         $this->CI->form_validation->reset_validation();
 
@@ -50,7 +50,7 @@ class Article_model_test extends TestCase
 
     public function test_When_inserting_Then_lang_has_to_be_es_en_or_all()
     {
-        $_POST = ['title_es' => 'Title es', 'title_en' => 'Title en', 'lang' => 'invalid', 'date' => date('Y-m-d')];
+        $_POST = ['title_es' => 'Lang check', 'title_en' => 'Lang check', 'lang' => 'invalid', 'date' => date('Y-m-d')];
         $this->assertFalse($this->obj->from_form()->insert());
         $this->CI->form_validation->reset_validation();
 
@@ -63,27 +63,28 @@ class Article_model_test extends TestCase
 
     public function test_When_inserting_Then_title_has_to_be_defined_depending_on_lang()
     {
-        $_POST = ['title_es' => 'Title es', 'lang' => 'en', 'date' => date('Y-m-d')];
+        $_POST = ['title_es' => 'Title check 1', 'lang' => 'en', 'date' => date('Y-m-d')];
         $this->assertFalse($this->obj->from_form()->insert());
         $this->CI->form_validation->reset_validation();
 
-        $_POST = ['title_es' => '', 'title_en' => 'Title en', 'lang' => 'es', 'date' => date('Y-m-d')];
+        $_POST = ['title_es' => '', 'title_en' => 'Title check 2', 'lang' => 'es', 'date' => date('Y-m-d')];
         $this->assertFalse($this->obj->from_form()->insert());
         $this->CI->form_validation->reset_validation();
 
+        $_POST = ['title_es' => 'Title check 3'];
         $_POST['lang'] = 'all';
         $this->assertFalse($this->obj->from_form()->insert());
         $this->CI->form_validation->reset_validation();
 
-        $_POST = ['title_en' => '', 'title_es' => 'Title es', 'lang' => 'es', 'date' => date('Y-m-d')];
+        $_POST = ['title_en' => '', 'title_es' => 'Title check 4', 'lang' => 'es', 'date' => date('Y-m-d')];
         $this->assertInternalType("int", $this->obj->from_form()->insert());
         $this->CI->form_validation->reset_validation();
 
-        $_POST = ['title_es' => '', 'title_en' => 'Title en', 'lang' => 'en', 'date' => date('Y-m-d')];
+        $_POST = ['title_es' => '', 'title_en' => 'Title check 5', 'lang' => 'en', 'date' => date('Y-m-d')];
         $this->assertInternalType("int", $this->obj->from_form()->insert());
         $this->CI->form_validation->reset_validation();
 
-        $_POST = ['title_es' => 'Title es', 'title_en' => 'Title en', 'lang' => 'all', 'date' => date('Y-m-d')];
+        $_POST = ['title_es' => 'Title es', 'title_en' => 'Title check 6', 'lang' => 'all', 'date' => date('Y-m-d')];
         $this->assertInternalType("int", $this->obj->from_form()->insert());
         var_dump(validation_errors());
         $this->CI->form_validation->reset_validation();
@@ -91,7 +92,7 @@ class Article_model_test extends TestCase
 
     public function test_When_inserting_Then_main_pic_has_to_be_extracted_from_content()
     {
-        $_POST = ['title_en' => 'Title en', 'lang' => 'en', 'date' => date('Y-m-d'), 'content_en' => 'no pic'];
+        $_POST = ['title_en' => 'Pic check', 'lang' => 'en', 'date' => date('Y-m-d'), 'content_en' => 'no pic'];
         $this->assertInternalType("int", $this->obj->from_form()->insert());
 
         $this->CI->form_validation->reset_validation();

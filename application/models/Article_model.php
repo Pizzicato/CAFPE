@@ -10,6 +10,10 @@
 
     public function __construct()
     {
+        $config = array('table' => 'articles');
+
+        $this->load->library('slug', $config);
+
         $this->rules['insert'] = array(
             'title_es' => array(
                 'field'=>'title_es',
@@ -82,7 +86,7 @@
         $this->rules['update'] = $this->rules['insert'];
         $this->before_create[] = 'create_slugs';
         $this->before_create[] = 'get_main_pic';
-        $this->before_update[] = 'create_slug';
+        $this->before_update[] = 'create_slugs';
         parent::__construct();
     }
 
@@ -94,8 +98,10 @@
 
     protected function create_slugs($data)
     {
-        $data['slug_es'] = $this->create_unique_slug('slug_es', $data['title_es']);
-        $data['slug_en'] = $this->create_unique_slug('slug_en', $data['title_en']);
+        $data['slug_es'] = $this->slug->create_uri($data['title_es'], 'slug_es');
+        $data['slug_en'] = $this->slug->create_uri($data['title_en'], 'slug_en');
+        echo "\nES: ".$data['title_es']." NEW SLUG: ".$data['slug_es']."\n";
+        echo "EN: ".$data['title_en']." NEW SLUG: ".$data['slug_en']."\n";
         return $data;
      }
 
@@ -121,19 +127,4 @@
         }
         return $data;
     }
-
-    private function create_unique_slug($field, $raw)
-    {
-        if(! is_string($raw)){
-            return false;
-        }
-
-        $slug = url_title($raw, 'dash', true);
-        $count = $this->db
-                            ->from($this->table)
-                            ->like($field, $slug, 'after')
-                            ->count_all_results();
-
-        return ($count > 0) ? ($slug . '-' . $count) : $slug;
-     }
  }

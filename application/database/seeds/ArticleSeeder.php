@@ -5,6 +5,7 @@ class ArticleSeeder extends Seeder {
 	public function run()
 	{
 		$this->db->truncate('articles');
+        $this->db->query("DELETE FROM sqlite_sequence WHERE name='articles';");
 
 		$data = [
 			'id' => 1,
