@@ -25,7 +25,10 @@ class Articles extends Auth_controller
      */
     public function view($slug = null)
     {
-        // TODO: slug depending
+        // TODO: show article depending on language
+        // $article = $this->article_model->where($this->lang->t('slug'), $slug)->get();
+        // TODO: if language is changed, redirect URL to change slug if article exists in that lang,
+        // if not, message to user "article not available in that lang"
         $article = $this->article_model->with_slug($slug)->get();
         if (! $article) {
             show_404();
@@ -41,7 +44,6 @@ class Articles extends Auth_controller
     public function create()
     {
         $this->load->helper('form');
-
         $id = $this->article_model->from_form()->insert();
         if ($id) {
             redirect('articles/');

@@ -22,7 +22,6 @@ class MY_Controller extends CI_Controller
         $this->template = $template;
         $this->default_view = $this->router->fetch_class() . '/' . $this->router->fetch_method();
 
-        $this->_language_check();
         $this->_maintenance_mode_check();
     }
 
@@ -51,14 +50,6 @@ class MY_Controller extends CI_Controller
             // nothing was rendered from controller, render default view
             echo $this->render($this->default_view, true);
         }
-    }
-
-    /**
-    * Sets language (default or explicitly selected by user)
-    */
-    private function _language_check()
-    {
-        # TODO: Set default or language selected by user
     }
 
     /**

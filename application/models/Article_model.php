@@ -100,8 +100,6 @@
     {
         $data['slug_es'] = $this->slug->create_uri($data['title_es'], 'slug_es');
         $data['slug_en'] = $this->slug->create_uri($data['title_en'], 'slug_en');
-        echo "\nES: ".$data['title_es']." NEW SLUG: ".$data['slug_es']."\n";
-        echo "EN: ".$data['title_en']." NEW SLUG: ".$data['slug_en']."\n";
         return $data;
      }
 
@@ -118,7 +116,7 @@
                 break;
 
             default:
-                return $data;
+                return FALSE;
         }
         if (preg_match_all('/< *img[^>]*src *= *["\']?([^"\']*)/i', $content, $matches)) {
             $data['main_pic'] = $matches [1][0];

@@ -86,24 +86,30 @@ class Article_model_test extends TestCase
 
         $_POST = ['title_es' => 'Title es', 'title_en' => 'Title check 6', 'lang' => 'all', 'date' => date('Y-m-d')];
         $this->assertInternalType("int", $this->obj->from_form()->insert());
-        var_dump(validation_errors());
         $this->CI->form_validation->reset_validation();
     }
 
     public function test_When_inserting_Then_main_pic_has_to_be_extracted_from_content()
     {
         $_POST = ['title_en' => 'Pic check', 'lang' => 'en', 'date' => date('Y-m-d'), 'content_en' => 'no pic'];
-        $this->assertInternalType("int", $this->obj->from_form()->insert());
+        $this->obj->from_form()->insert();
+        $last = $this->obj->get($this->obj->db->insert_id());
+        $this->assertNull($last['main_pic']);
+        $this->CI->form_validation->reset_validation();
 
+        $_POST['content_en'] = 'Pic this time <img src="smiley.gif" alt="Smiley face" height="42" width="42">';
+        $this->obj->from_form()->insert();
+        $last = $this->obj->get($this->obj->db->insert_id());
+        $this->assertSame('smiley.gif', $last['main_pic']);
         $this->CI->form_validation->reset_validation();
     }
 
-    // public function test_When_inserting_Then_slugs_have_to_be_created_from_titles()
-    // {
-    //     $result_en = $this->obj->with_slug('title-en-slug-1')->get();
-    //     $result_es = $this->obj->with_slug('title-es-slug-1')->get();
-    //     $this->assertInternalType('array', $result_en);
-    //     $this->assertInternalType('array', $result_es);
-    //     $this->assertSame($result_en, $result_es);
-    // }
+    public function test_When_inserting_Then_slugs_have_to_be_created_from_titles()
+    {
+        $_POST = ['title_en' => 'Slug check', 'lang' => 'en', 'date' => date('Y-m-d')];
+        $this->obj->from_form()->insert();
+        $last = $this->obj->get($this->obj->db->insert_id());
+        $slug = $this->CI->slug->create_slug($_POST['title_en']);
+        $this->assertSame($slug, $last['slug_en']);
+    }
 }
