@@ -388,7 +388,7 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'ci_session';
+$config['sess_cookie_name'] = 'cafpesesscokie';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = APPPATH.'cache/';
 $config['sess_match_ip'] = false;
@@ -459,8 +459,8 @@ $config['global_xss_filtering'] = false;
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
 $config['csrf_protection'] = true;
-$config['csrf_token_name'] = 'csrf_cafpe_token';
-$config['csrf_cookie_name'] = 'csrf_cafpe_cookie';
+$config['csrf_token_name'] = 'csrfcafpetoken';
+$config['csrf_cookie_name'] = 'csrfcafpecookie';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = true;
 $config['csrf_exclude_uris'] = array();

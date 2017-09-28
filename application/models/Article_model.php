@@ -14,74 +14,76 @@
 
         $this->load->library('slug', $config);
 
+        // article has to have titles and content in at least one language
         $this->rules['insert'] = array(
+            'title_es_callable' => array(
+                'field'=>'title_es_callable',
+                'label'=>'title_es_callable',
+                'rules'=> array(
+                    array(
+                        'title_es_callable',
+                        function () {
+                            $valid_es = $this->input->post('title_es') && $this->input->post('content_es');
+                            $valid_en = $this->input->post('title_en') && $this->input->post('content_en');
+                            if (!$valid_es && !$valid_en) {
+                                $this->form_validation->set_message('title_es_callable', 'The article title and content have to be filled in in at least one of the available languages');
+                                return false;
+                            }
+                            return true;
+                        }
+                    )
+                )
+            ),
             'title_es' => array(
                 'field'=>'title_es',
                 'label'=>'title_es',
-                'rules'=>'trim'
+                'rules'=>array('trim')
             ),
             'title_en' => array(
                 'field'=>'title_en',
                 'label'=>'title_en',
-                'rules'=>'trim'
+                'rules'=>array('trim')
             ),
             'content_es' => array(
                 'field'=>'content_es',
-                'label'=>'content_es'
+                'label'=>'content_es',
+                'rules'=> array('trim')
             ),
             'content_en' => array(
                 'field'=>'content_en',
-                'label'=>'content_en'
+                'label'=>'content_en',
+                'rules'=> array('trim')
             ),
             'date' => array(
                 'field'=>'date',
                 'label'=>'date',
-                'rules'=> array(
-                            array(
+                'rules'=> array(array(
                                 'date_callable',
                                 function ($date) {
                                     if(! $date) {
+                                        // TODO: Messages language
                                         $this->form_validation->set_message('date_callable', 'The date field is required');
                                         return false;
                                     }
 
+                                    // TODO: date format depending on language
                                     $d = DateTime::createFromFormat('Y-m-d', $date);
                                     if ($d && $d->format('Y-m-d') === $date) {
                                         return true;
                                     }
 
-                                    $this->form_validation->set_message('date_callable', 'The date field has an invalid format (YYYY-MM-DD)');
+                                    $this->form_validation->set_message('date_callable', 'The date field has an invalid format');
                                     return false;
                                 }
-                            )
-                )
+                        ))
             ),
             'main_pic' => array(
                 'field'=>'main_pic',
                 'label'=>'main_pic'
-            ),
-            'lang' => array(
-                'field'=>'lang',
-                'label'=>'lang',
-                'rules'=> array(
-                    'required',
-                    'regex_match[/^(en|es|all)$/]',
-                    array(
-                        'title_lang_callable',
-                        function ($lang) {
-                            $is_title_undefined = (($lang === 'es' || $lang === 'all') && !$this->input->post('title_es')) ||
-                                                (($lang === 'en' || $lang === 'all') && !$this->input->post('title_en'));
-                            if ($is_title_undefined) {
-                                $this->form_validation->set_message('title_lang_callable', 'Title is required for the selected language');
-                                return false;
-                            } else {
-                                return true;
-                            }
-                        }
-                    )
-                )
             )
         );
+
+        $this->add_dynamic_rules();
 
         $this->rules['update'] = $this->rules['insert'];
         $this->before_create[] = 'create_slugs';
@@ -90,39 +92,70 @@
         parent::__construct();
     }
 
+    /**
+     * Adds OR WHERE filter for both slugs
+     * @param string $slug slug
+     * @return $this
+     */
     public function with_slug($slug)
     {
         $this->where('slug_es', $slug)->or_where('slug_en', $slug);
         return $this;
     }
 
+    /**
+     * Creates data slugs from titles
+     * @param array $data data to save to DB
+     * @return array $data modified data to save to DB
+     */
     protected function create_slugs($data)
     {
         $data['slug_es'] = $this->slug->create_uri($data['title_es'], 'slug_es');
         $data['slug_en'] = $this->slug->create_uri($data['title_en'], 'slug_en');
         return $data;
-     }
+    }
 
+    /**
+     * Gets first picture in an article
+     * @param array $data data to save to DB
+     * @return array $data modified data to save to DB
+     */
     protected function get_main_pic($data)
     {
-        switch ($data['lang']) {
-            case 'es':
-            case 'all':
-                $content = $data['content_es'];
-                break;
-
-            case 'en':
-                $content = $data['content_en'];
-                break;
-
-            default:
-                return FALSE;
+        if ($data['content_es']) {
+            $content = $data['content_es'];
         }
+        else {
+            $content = $data['content_en'];
+        }
+
+
         if (preg_match_all('/< *img[^>]*src *= *["\']?([^"\']*)/i', $content, $matches)) {
             $data['main_pic'] = $matches [1][0];
         } else {
             $data['main_pic'] = null;
         }
+
         return $data;
+    }
+
+    /**
+     * Adds rules to rules array, which depend on posted fields content
+     */
+    private function add_dynamic_rules()
+    {
+        // if aticle title is posted, corresponding language content can't be empty, and vice versa
+        if($this->input->post('title_es')) {
+            array_unshift($this->rules['insert']['content_es']['rules'] , 'required');
+        }
+        if($this->input->post('title_en')) {
+            array_unshift($this->rules['insert']['content_en']['rules'] , 'required');
+        }
+        if($this->input->post('content_es')) {
+            array_unshift($this->rules['insert']['title_es']['rules'] , 'required');
+        }
+        if($this->input->post('content_en')) {
+            array_unshift($this->rules['insert']['title_en']['rules'] , 'required');
+        }
     }
  }

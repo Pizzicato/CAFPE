@@ -69,8 +69,9 @@ class Migration_CreateArticlesTable extends CI_Migration
         ));
         $this->dbforge->add_key('id', true);
         $this->dbforge->create_table('articles');
-        $sql = "CREATE INDEX IF NOT EXISTS slug_index ON articles (slug_en);";
-        $sql = "CREATE INDEX IF NOT EXISTS slug_index ON articles (slug_es);";
+        $sql = "CREATE INDEX IF NOT EXISTS slug_en_index ON articles (slug_en);";
+        $this->db->query($sql);
+        $sql = "CREATE INDEX IF NOT EXISTS slug_es_index ON articles (slug_es);";
         $this->db->query($sql);
     }
 
