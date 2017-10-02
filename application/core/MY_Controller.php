@@ -11,7 +11,6 @@ class MY_Controller extends CI_Controller
     * @var array
     */
     protected $data = array();
-    protected $template;
     // View that will be loaded by default: controller/method path inside views folder
     protected $default_view;
 
@@ -19,7 +18,7 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
         $this->data['pagetitle'] = 'CAFPE - Centro Andaluz de Física de Partículas Elementales';
-        $this->template = $template;
+        $this->data['template'] = $template;
         $this->default_view = $this->router->fetch_class() . '/' . $this->router->fetch_method();
 
         $this->_maintenance_mode_check();
@@ -36,7 +35,7 @@ class MY_Controller extends CI_Controller
         }
 
         $this->data['view'] = (is_null($view)) ? '' : $view;
-        return $this->parser->parse($this->template, $this->data, $return);
+        return $this->parser->parse('main.php', $this->data, $return);
     }
 
     /**

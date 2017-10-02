@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class Public_controller | CAFPE Docs</title>
+	<title>Class Private_pages | CAFPE Docs</title>
 
 	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
 	<link rel="stylesheet" href="resources/style.css?70c1d062672daa3f906b72e4f5d03d4bc5c4174d">
@@ -58,8 +58,8 @@
 				<li><a href="class-MY_Lang.html">MY_Lang</a></li>
 				<li><a href="class-MY_Model.html">MY_Model</a></li>
 				<li><a href="class-Pages.html">Pages</a></li>
-				<li><a href="class-Private_pages.html">Private_pages</a></li>
-				<li class="active"><a href="class-Public_controller.html">Public_controller</a></li>
+				<li class="active"><a href="class-Private_pages.html">Private_pages</a></li>
+				<li><a href="class-Public_controller.html">Public_controller</a></li>
 				<li><a href="class-Seeder.html">Seeder</a></li>
 				<li><a href="class-Slug.html">Slug</a></li>
 			</ul>
@@ -83,7 +83,7 @@
 <div id="right">
 	<div id="rightInner">
 <div id="content" class="class">
-	<h1>Class Public_controller</h1>
+	<h1>Class Private_pages</h1>
 
 
 
@@ -102,19 +102,20 @@ CI_Controller
 		</dd>
 		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by">
-<b><span>Public_controller</span></b>			
+			<a href="class-Auth_controller.html"><span>Auth_controller</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Private_pages</span></b>			
 			
 			
 		</dd>
 	</dl>
 
 
-	<div>
-		<h3>Direct known subclasses</h3>
-		<p class="elementList">
-			<code><a href="class-Pages.html">Pages</a></code>
-		</p>
-	</div>
 
 
 
@@ -127,7 +128,7 @@ CI_Controller
 		
 		
 
-			<b>Located at</b> <a href="source-class-Public_controller.html#6-12" title="Go to source code">Public_controller.php</a>
+			<b>Located at</b> <a href="source-class-Private_pages.html#3-14" title="Go to source code">Private_pages.php</a>
 		<br>
 	</div>
 
@@ -136,7 +137,7 @@ CI_Controller
 		<div class="panel panel-default">
 			<div class="panel-heading"><h2>Methods summary</h2></div>
 			<table class="summary table table-bordered table-striped methods" id="methods">
-		<tr data-order="__construct" id="___construct">
+		<tr data-order="index" id="_index">
 
 			<td class="attributes"><code>
 				 public 
@@ -146,23 +147,24 @@ CI_Controller
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-Public_controller.html#8-11" title="Go to source code">__construct</a>( )</code>
+			<a class="anchor" href="#_index">#</a>
+			<code><a href="source-class-Private_pages.html#5-13" title="Go to source code">index</a>( )</code>
 
 			<div class="description short">
-				
+				<p>Maps to:
+   - site_url + private_pages
+   - site_url + private_pages/index
+   - site_url + admin (in routes)</p>
 			</div>
 
 			<div class="description detailed hidden">
-				
+				<p>Maps to: - site_url + private_pages - site_url + private_pages/index - site_url + admin (in routes)</p>
 
 
 
 
 
 
-					<h4>Overrides</h4>
-					<div class="list"><code><a href="class-MY_Controller.html#___construct">MY_Controller::__construct</a></code></div>
 
 			</div>
 			</div></td>
@@ -170,6 +172,12 @@ CI_Controller
 			</table>
 		</div>
 
+		<div class="panel panel-default">
+	        <div class="panel-heading"><h3>Methods inherited from <a href="class-Auth_controller.html#methods">Auth_controller</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-Auth_controller.html#___construct">__construct()</a></code>
+			</p>
+		</div>
 		<div class="panel panel-default">
 	        <div class="panel-heading"><h3>Methods inherited from <a href="class-MY_Controller.html#methods">MY_Controller</a></h3></div>
 			<p class="elementList">

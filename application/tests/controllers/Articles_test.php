@@ -9,6 +9,6 @@ class Articles_test extends TestCase
     public function test_index()
     {
         $output = $this->request('GET', '/articles');
-        $this->assertContains('All news', $output);
+        $this->assertContains('<h3>News</h3>', $output);
     }
 }

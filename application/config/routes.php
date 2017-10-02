@@ -53,6 +53,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'pages';
 $route['404_override'] = '';
 
-// Ignore lang segment in URI
-$route['(\w{2})/(.*)'] = '$2';
+// only lang in URI
 $route['(\w{2})'] = $route['default_controller'];
+
+// Admin routes
+$route['(\w{2})/admin'] = 'private_pages/index';
+$route['(\w{2})/admin/dashboard'] = 'private_pages/index';
+$route['(\w{2})/admin/(.*)'] = '$2';
+
+$route['en/articles'] = 'pages/articles';
+$route['es/noticias'] = 'pages/articles';
+$route['es/noticia/(.*)'] = 'pages/article/$1';
+
+// Ignore lang segment in URI
+$route['(\w{2})/(.*)'] = 'pages/$2';

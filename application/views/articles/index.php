@@ -1,14 +1,14 @@
-<h3>All news</h3>
+<h3>News</h3>
+<?php if($articles): ?>
 <table>
-{articles}
+    <?php foreach ($articles as $_) : ?>
     <tr>
-        <td>{date}</td>
-        <td>{title_es}</td>
-        <td>{content_es}</td>
-        <td>{title_en}</td>
-        <td>{content_en}</td>
-        <td>{main_pic}</td>
-        <td><a href="<?php echo site_url('articles/view'); ?>/{slug_es}">view</a></td>
+        <td><?= $_['date'] ?></td>
+        <td><?= $_['title_es'] ? $_['title_es'] : $_['title_en'] ?></td>
+        <td><a href="<?= site_url("admin/articles/view/{$_['id']}") ?>">view</a></td>
     </tr>
-{/articles}
+    <?php endforeach; ?>
 </table>
+<?php else: ?>
+    <p>Sorry, there aren't any articles yet</p>
+<?php endif; ?>

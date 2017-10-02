@@ -58,6 +58,7 @@
 				<li><a href="class-MY_Lang.html">MY_Lang</a></li>
 				<li><a href="class-MY_Model.html">MY_Model</a></li>
 				<li><a href="class-Pages.html">Pages</a></li>
+				<li><a href="class-Private_pages.html">Private_pages</a></li>
 				<li><a href="class-Public_controller.html">Public_controller</a></li>
 				<li><a href="class-Seeder.html">Seeder</a></li>
 				<li><a href="class-Slug.html">Slug</a></li>
@@ -127,7 +128,7 @@ CI_Model
 		
 		
 
-			<b>Located at</b> <a href="source-class-Article_model.html#3-161" title="Go to source code">Article_model.php</a>
+			<b>Located at</b> <a href="source-class-Article_model.html#3-207" title="Go to source code">Article_model.php</a>
 		<br>
 	</div>
 
@@ -167,7 +168,7 @@ CI_Model
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="with_slug" id="_with_slug">
+		<tr data-order="get_all_lang" id="_get_all_lang">
 
 			<td class="attributes"><code>
 				 public 
@@ -177,15 +178,97 @@ CI_Model
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_with_slug">#</a>
-			<code><a href="source-class-Article_model.html#95-104" title="Go to source code">with_slug</a>( <span>string <var>$slug</var></span> )</code>
+			<a class="anchor" href="#_get_all_lang">#</a>
+			<code><a href="source-class-Article_model.html#95-118" title="Go to source code">get_all_lang</a>( <span>string <var>$lang</var></span>, <span> <var>$order_by</var> = <span class="php-quote">''</span></span> )</code>
 
 			<div class="description short">
-				<p>Adds OR WHERE filter for both slugs</p>
+				<p>returns all articles with fields in given language</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>Adds OR WHERE filter for both slugs</p>
+				<p>returns all articles with fields in given language</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$lang</var></dt>
+						<dd>language</dd>
+						<dt><var>$order_by</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<br>$this
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="where_slug" id="_where_slug">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_where_slug">#</a>
+			<code><a href="source-class-Article_model.html#120-135" title="Go to source code">where_slug</a>( <span>string <var>$slug</var></span>, <span>string <var>$lang</var> = <span class="php-quote">''</span></span> )</code>
+
+			<div class="description short">
+				<p>add where clause to get slug in given language. If not language provided
+searches in all slug fields</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>add where clause to get slug in given language. If not language provided
+searches in all slug fields</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$slug</var></dt>
+						<dd>slug</dd>
+						<dt><var>$lang</var></dt>
+						<dd>language</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<br>$this
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="slug_lang" id="_slug_lang">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_slug_lang">#</a>
+			<code><a href="source-class-Article_model.html#137-151" title="Go to source code">slug_lang</a>( <span>string <var>$slug</var></span> )</code>
+
+			<div class="description short">
+				<p>looks for a slug in DB, if it's found, returns its lang</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>looks for a slug in DB, if it's found, returns its lang</p>
 
 
 					<h4>Parameters</h4>
@@ -196,7 +279,7 @@ CI_Model
 
 					<h4>Returns</h4>
 					<div class="list">
-						<br>$this
+						mixed<br>lang or false, if not found
 					</div>
 
 
@@ -216,7 +299,7 @@ CI_Model
 
 			<td class="name"><div>
 			<a class="anchor" href="#_create_slugs">#</a>
-			<code><a href="source-class-Article_model.html#106-116" title="Go to source code">create_slugs</a>( <span>array <var>$data</var></span> )</code>
+			<code><a href="source-class-Article_model.html#153-163" title="Go to source code">create_slugs</a>( <span>array <var>$data</var></span> )</code>
 
 			<div class="description short">
 				<p>Creates data slugs from titles</p>
@@ -254,7 +337,7 @@ CI_Model
 
 			<td class="name"><div>
 			<a class="anchor" href="#_get_main_pic">#</a>
-			<code><a href="source-class-Article_model.html#118-140" title="Go to source code">get_main_pic</a>( <span>array <var>$data</var></span> )</code>
+			<code><a href="source-class-Article_model.html#165-186" title="Go to source code">get_main_pic</a>( <span>array <var>$data</var></span> )</code>
 
 			<div class="description short">
 				<p>Gets first picture in an article</p>

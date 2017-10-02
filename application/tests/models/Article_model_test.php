@@ -33,11 +33,33 @@ class Article_model_test extends TestCase
 
     public function test_When_searching_by_slug_Then_both_slug_columns_are_used()
     {
-        $result_en = $this->obj->with_slug('title-en-slug-1')->get();
-        $result_es = $this->obj->with_slug('title-es-slug-1')->get();
+        $result_en = $this->obj->where_slug('title-en-slug-1')->get();
+        $result_es = $this->obj->where_slug('title-es-slug-1', 'es')->get();
         $this->assertInternalType('array', $result_en);
         $this->assertInternalType('array', $result_es);
         $this->assertSame($result_en, $result_es);
+    }
+
+    public function test_When_getting_data_by_lang_correct_records_are_returned()
+    {
+        $articles = $this->obj->get_all_lang('es', 'date');
+        $this->assertInternalType('array', $articles);
+        $this->assertCount(2, $articles);
+        foreach ($articles as $article) {
+            $this->assertArrayHasKey('title', $article);
+            $this->assertArrayHasKey('content', $article);
+            $this->assertArrayHasKey('slug', $article);
+        }
+    }
+
+    public function test_When_getting_language_of_a_slug_the_returned_language_is_correct()
+    {
+        $lang = $this->obj->slug_lang('title-es-slug-1');
+        $this->assertSame($lang, 'es');
+        $lang = $this->obj->slug_lang('title-en-slug-1');
+        $this->assertSame($lang, 'en');
+        $lang = $this->obj->slug_lang('not-valid-slug');
+        $this->assertFalse($lang);
     }
 
     public function test_When_inserting_Then_date_is_required_with_valid_format()

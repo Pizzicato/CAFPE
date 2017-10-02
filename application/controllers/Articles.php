@@ -10,26 +10,25 @@ class Articles extends Auth_controller
 
     /**
      * Maps to:
-     *    - base_url + articles
-     *    - base_url + articles/index
+     *    - site_url + articles
+     *    - site_url + articles/index
      */
     public function index()
     {
-        $articles = $this->article_model->get_all();
-        $this->data['articles'] = $articles;
+        $this->data['articles'] = [];
+        $articles = $this->article_model->order_by('date', 'DESC')->get_all();
+        if($articles) {
+            $this->data['articles'] = $articles;
+        }
     }
 
     /**
      * Maps to:
-     *    - base_url + articles/view/$slug
+     *    - site_url + articles/view/$slug
      */
-    public function view($slug = null)
+    public function view($id)
     {
-        // TODO: show article depending on language
-        // $article = $this->article_model->where($this->lang->t('slug'), $slug)->get();
-        // TODO: if language is changed, redirect URL to change slug if article exists in that lang,
-        // if not, message to user "article not available in that lang"
-        $article = $this->article_model->with_slug($slug)->get();
+        $article = $this->article_model->get($id);
         if (! $article) {
             show_404();
         }
@@ -39,7 +38,7 @@ class Articles extends Auth_controller
 
     /**
      * Maps to:
-     *    - base_url + articles/create
+     *    - site_url + articles/create
      */
     public function create()
     {
