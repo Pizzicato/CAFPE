@@ -6,7 +6,8 @@
         <td>{title}</td>
         <td>{content}</td>
         <td>{main_pic}</td>
-        <td><a href="<?php echo site_url('article/'); ?>{slug}">view</a></td>
+        <td>
+            <a href="<?= site_url('article/') ?>{slug}">view</a></td>
     </tr>
 {/articles}
 </table>

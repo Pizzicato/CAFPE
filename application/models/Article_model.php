@@ -141,10 +141,12 @@
      */
     public function slug_lang($slug)
     {
-        if($this->where('slug_es', $slug)->get()) {
-            return 'es';
-        } elseif ($this->where('slug_en', $slug)->get())  {
-            return 'en';
+        if($slug) {
+            if($this->where('slug_es', $slug)->get()) {
+                return 'es';
+            } elseif ($this->where('slug_en', $slug)->get())  {
+                return 'en';
+            }
         }
 
         return false;

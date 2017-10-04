@@ -14,7 +14,7 @@ class Pages extends Public_controller
 
     /**
      * Maps to:
-     *    - site_url + pages/articles
+     *    - site_url + pages/(articles|noticias)
      */
     public function articles()
     {
@@ -25,9 +25,9 @@ class Pages extends Public_controller
 
     /**
      * Maps to:
-     *    - site_url + pages/article
+     *    - site_url + pages/(article|noticia)
      */
-    public function article($slug)
+    public function article($slug =  '')
     {
         $this->load->model('article_model');
 
@@ -60,20 +60,22 @@ class Pages extends Public_controller
      */
     private function _clean_article_array($article)
     {
-        $clean_article = [];
-        foreach ($article as $field => $value) {
-            $field_lang = substr($field, -3);
-            // language dependent field in current lang
-            if($field_lang === '_'.current_lang()) {
-                $clean_article[substr($field, 0,-3)] = $value;
-                continue;
+        if($article) {
+            $clean_article = [];
+            foreach ($article as $field => $value) {
+                $field_lang = substr($field, -3);
+                // language dependent field in current lang
+                if($field_lang === '_'.current_lang()) {
+                    $clean_article[substr($field, 0,-3)] = $value;
+                    continue;
+                }
+                // non language dependent field
+                if(! preg_match('/^_es|_en/', $field_lang)) {
+                    $clean_article[$field] = $value;
+                }
             }
-            // non language dependent field
-            if(! preg_match('/^_es|_en/', $field_lang)) {
-                $clean_article[$field] = $value;
-            }
+            return $clean_article;
         }
-
-        return $clean_article;
+        return null;
     }
 }

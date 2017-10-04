@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -61,9 +61,24 @@ $route['(\w{2})/admin'] = 'private_pages/index';
 $route['(\w{2})/admin/dashboard'] = 'private_pages/index';
 $route['(\w{2})/admin/(.*)'] = '$2';
 
-$route['en/articles'] = 'pages/articles';
-$route['es/noticias'] = 'pages/articles';
-$route['es/noticia/(.*)'] = 'pages/article/$1';
+$public_routes = array(
+    'en' => array(
+        'news' => 'pages/articles',
+        'article' => 'pages/article'
+    ),
+    'es' => array(
+        'noticias' => 'pages/articles',
+        'noticia' => 'pages/article'
+    )
+);
 
-// Ignore lang segment in URI
-$route['(\w{2})/(.*)'] = 'pages/$2';
+
+// callback that gets the route from the URI, using $public_routes array
+$route['(\w{2})/(.*)(/.*)'] = function ($lang, $controller, $params = '') use ($public_routes) {
+    if (isset($public_routes[$lang][$controller])) {
+        return $public_routes[$lang][$controller].$params;
+    }
+    show_404();
+};
+
+$route['(\w{2})/(.*)'] = $route['(\w{2})/(.*)(/.*)'];

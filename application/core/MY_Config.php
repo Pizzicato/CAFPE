@@ -20,8 +20,18 @@ class MY_Config extends CI_Config
 	{
         $CI =& get_instance();
 
+        $lang = $CI->lang->current;
         $uri = ltrim($uri, '/');
-        $uri = $uri ? $CI->lang->current.'/'.$uri : $uri;
+        if($uri){
+            // get controller and params from URI
+            preg_match( "/^([^\/]*)(\/.*)?$/", $uri, $m);
+            $controller = $m[1];
+            $params = isset($m[2]) ? $m[2] : '';
+            // translate given controller name to current language
+            $controller = $CI->lang->t_controller($controller);
+            // add language to beginning of URI
+            $uri = $lang.'/'.$controller.$params;
+        }
 
         return parent::site_url($uri, $protocol);
     }

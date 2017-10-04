@@ -23,9 +23,30 @@ class MY_Lang extends CI_Lang
         if (in_array($lang_uri, $CONFIG->item('languages_abbr'))) {
             $this->current = $lang_uri;
             $CONFIG->set_item('language', $CONFIG->item('lang_uri_abbr')[$lang_uri]);
-        }
-        else if(! is_cli()) {
+        } elseif (! is_cli()) {
             show_404();
         }
+    }
+
+    /**
+     * Translate controller name to current language
+     *
+     * Returns translated controller name if exists, provided if not
+     *
+     * @param	string $controller controller name
+     * @return	string
+     */
+    public function t_controller($controller = '', $language_abbr = '')
+    {
+        $CONFIG =& load_class('Config', 'core');
+        if (! $language_abbr) {
+            $language_abbr = $this->current;
+        }
+        // get long version of language abbreviation from config
+        $language = $CONFIG->item('lang_uri_abbr')[$language_abbr];
+        // include controller translation file
+        include(APPPATH.'language/'.$language.'/controllers.php');
+
+        return isset($lang['c_'.$controller]) ? $lang['c_'.$controller] : $controller;
     }
 }
