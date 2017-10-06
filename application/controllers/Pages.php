@@ -14,9 +14,9 @@ class Pages extends Public_controller
 
     /**
      * Maps to:
-     *    - site_url + pages/(articles|noticias)
+     *    - site_url + pages/(news|noticias)
      */
-    public function articles()
+    public function news()
     {
         $this->load->model('article_model');
         $articles = $this->article_model->get_all_lang(current_lang(), 'date DESC');
@@ -42,8 +42,10 @@ class Pages extends Public_controller
         // slug language different to current language, redirect with correct slug
         // if article available in current lang
         if ($slug_lang !== current_lang()) {
-            if ($article['slug_'.current_lang()]) {
-                $uri = '/article/'.$article['slug_'.current_lang()];
+            $right_slug = $article['slug_'.current_lang()];
+            if ($right_slug) {
+                $original_uri = $this->uri->uri_string();
+                $uri = str_replace($slug, $right_slug, $original_uri);
                 redirect($uri);
             } else {
                 $article = null;

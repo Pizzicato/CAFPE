@@ -6,6 +6,7 @@
         <title>{pagetitle}</title>
     </head>
     <body>
+        <?= lang_switcher() ?>
         <?php $this->load->view($template); ?>
     </body>
 </html>

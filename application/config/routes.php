@@ -61,24 +61,16 @@ $route['(\w{2})/admin'] = 'private_pages/index';
 $route['(\w{2})/admin/dashboard'] = 'private_pages/index';
 $route['(\w{2})/admin/(.*)'] = '$2';
 
-$public_routes = array(
-    'en' => array(
-        'news' => 'pages/articles',
-        'article' => 'pages/article'
-    ),
-    'es' => array(
-        'noticias' => 'pages/articles',
-        'noticia' => 'pages/article'
-    )
-);
-
-
-// callback that gets the route from the URI, using $public_routes array
-$route['(\w{2})/(.*)(/.*)'] = function ($lang, $controller, $params = '') use ($public_routes) {
-    if (isset($public_routes[$lang][$controller])) {
-        return $public_routes[$lang][$controller].$params;
+// Public routes (non admin) are all directed to pages controller
+// The second segment is the pages controller action, which have to be translated
+$route['(\w{2})/(.*)(/.*)'] = function ($lang, $pages_action, $params = '') {
+    $LANG =& load_class('Lang', 'core');
+    $pages_action = $LANG->translate_to_id($pages_action, $lang);
+    // action not translatable
+    if(!$pages_action) {
+        show_404();
     }
-    show_404();
+    return 'pages/'.$pages_action.$params;
 };
 
 $route['(\w{2})/(.*)'] = $route['(\w{2})/(.*)(/.*)'];

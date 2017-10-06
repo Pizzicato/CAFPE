@@ -5,7 +5,7 @@
     <tr>
         <td><?= $_['date'] ?></td>
         <td><?= $_['title_es'] ? $_['title_es'] : $_['title_en'] ?></td>
-        <td><a href="<?= site_url("admin/articles/view/{$_['id']}") ?>">view</a></td>
+        <td><a href="<?= site_url_lang("admin/articles/view/{$_['id']}") ?>">view</a></td>
     </tr>
     <?php endforeach; ?>
 </table>

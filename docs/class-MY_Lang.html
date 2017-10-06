@@ -53,7 +53,6 @@
 				<li><a href="class-Articles.html">Articles</a></li>
 				<li><a href="class-Auth_controller.html">Auth_controller</a></li>
 				<li><a href="class-Hierarchical_controllers.html">Hierarchical_controllers</a></li>
-				<li><a href="class-MY_Config.html">MY_Config</a></li>
 				<li><a href="class-MY_Controller.html">MY_Controller</a></li>
 				<li class="active"><a href="class-MY_Lang.html">MY_Lang</a></li>
 				<li><a href="class-MY_Model.html">MY_Model</a></li>
@@ -73,6 +72,8 @@
 				<li><a href="function-css_url.html">css_url</a></li>
 				<li><a href="function-current_lang.html">current_lang</a></li>
 				<li><a href="function-jscript_url.html">jscript_url</a></li>
+				<li><a href="function-lang_switcher.html">lang_switcher</a></li>
+				<li><a href="function-site_url_lang.html">site_url_lang</a></li>
 			</ul>
 		</div>
 	</div>
@@ -114,7 +115,7 @@ CI_Lang
 		
 		
 
-			<b>Located at</b> <a href="source-class-MY_Lang.html#3-52" title="Go to source code">MY_Lang.php</a>
+			<b>Located at</b> <a href="source-class-MY_Lang.html#3-171" title="Go to source code">MY_Lang.php</a>
 		<br>
 	</div>
 
@@ -123,6 +124,54 @@ CI_Lang
 		<div class="panel panel-default">
 			<div class="panel-heading"><h2>Methods summary</h2></div>
 			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="site_url_lang" id="_site_url_lang">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_site_url_lang">#</a>
+			<code><a href="source-class-MY_Lang.html#22-55" title="Go to source code">site_url_lang</a>( <span>string|string[] <var>$uri</var> = <span class="php-quote">''</span></span>, <span>string <var>$lang</var> = <span class="php-quote">''</span></span>, <span>string <var>$protocol</var> = <span class="php-keyword1">null</span></span> )</code>
+
+			<div class="description short">
+				<p>Returns site_url() of provided URI adding to its beginning language and
+first segment translation</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Returns site_url() of provided URI adding to its beginning language and
+first segment translation</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$uri</var></dt>
+						<dd>URI string or an array of segments</dd>
+						<dt><var>$lang</var></dt>
+						<dd>language to which translate URI first segment</dd>
+						<dt><var>$protocol</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+					<h4>Uses</h4>
+					<div class="list">
+							site_url helper (CI_Config alias)<br>
+					</div>
+
+
+			</div>
+			</div></td>
+		</tr>
 		<tr data-order="__construct" id="___construct">
 
 			<td class="attributes"><code>
@@ -134,7 +183,7 @@ CI_Lang
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-MY_Lang.html#7-29" title="Go to source code">__construct</a>( )</code>
+			<code><a href="source-class-MY_Lang.html#61-85" title="Go to source code">__construct</a>( )</code>
 
 			<div class="description short">
 				
@@ -152,40 +201,126 @@ CI_Lang
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="t_controller" id="_t_controller">
+		<tr data-order="translate" id="_translate">
 
 			<td class="attributes"><code>
 				 public 
-				string
+				mixed
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_t_controller">#</a>
-			<code><a href="source-class-MY_Lang.html#31-51" title="Go to source code">t_controller</a>( <span>string <var>$controller</var> = <span class="php-quote">''</span></span>, <span> <var>$language_abbr</var> = <span class="php-quote">''</span></span> )</code>
+			<a class="anchor" href="#_translate">#</a>
+			<code><a href="source-class-MY_Lang.html#87-109" title="Go to source code">translate</a>( <span>string <var>$line</var></span>, <span>string <var>$orig_lang</var></span>, <span> <var>$dest_lang</var></span> )</code>
 
 			<div class="description short">
-				<p>Translate controller name to current language</p>
+				<p>Translates string from $orig_lang to $dest_lang</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>Translate controller name to current language</p>
+				<p>Translates string from $orig_lang to $dest_lang</p>
 
-<p>Returns translated controller name if exists, provided if not</p>
+<p>Returns translated string or false if translation not found</p>
 
 
 					<h4>Parameters</h4>
 					<div class="list"><dl>
-						<dt><var>$controller</var></dt>
-						<dd>controller name</dd>
-						<dt><var>$language_abbr</var></dt>
+						<dt><var>$line</var></dt>
+						<dd>string to translate</dd>
+						<dt><var>$orig_lang</var></dt>
+						<dd>$lang</dd>
+						<dt><var>$dest_lang</var></dt>
 						<dd></dd>
 					</dl></div>
 
 					<h4>Returns</h4>
 					<div class="list">
-						string
+						mixed<br>string or false
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="translate_to_id" id="_translate_to_id">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_translate_to_id">#</a>
+			<code><a href="source-class-MY_Lang.html#111-125" title="Go to source code">translate_to_id</a>( <span>string <var>$line</var></span>, <span>string <var>$lang</var></span> )</code>
+
+			<div class="description short">
+				<p>Translates string from given lang to identifier</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Translates string from given lang to identifier</p>
+
+<p>Returns translated string or false if translation not found</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$line</var></dt>
+						<dd>string to translate</dd>
+						<dt><var>$lang</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed<br>string or false
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="translate_from_id" id="_translate_from_id">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_translate_from_id">#</a>
+			<code><a href="source-class-MY_Lang.html#127-141" title="Go to source code">translate_from_id</a>( <span>string <var>$id</var></span>, <span>string <var>$lang</var></span> )</code>
+
+			<div class="description short">
+				<p>Translates string from identifier to given lang</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Translates string from identifier to given lang</p>
+
+<p>Returns translated string or false if translation not found</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>$line string to translate</dd>
+						<dt><var>$lang</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed<br>string or false
 					</div>
 
 
@@ -217,7 +352,7 @@ CI_Lang
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-MY_Lang.html#5" title="Go to source code"><var>$current</var></a>
+					<a href="source-class-MY_Lang.html#6" title="Go to source code"><var>$current</var></a>
 
 				<div class="description short">
 					
@@ -232,6 +367,65 @@ CI_Lang
 				<div>
 					<a href="#$current" class="anchor">#</a>
 					<code><span class="php-quote">''</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="translations_from_id" id="$translations_from_id">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Lang.html#11-20" title="Go to source code"><var>$translations_from_id</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$translations_from_id" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>(
+    <span class="php-quote">'news'</span> =&gt; <span class="php-keyword1">array</span>(
+        <span class="php-quote">'en'</span> =&gt; <span class="php-quote">'news'</span>,
+        <span class="php-quote">'es'</span> =&gt; <span class="php-quote">'noticias'</span>
+    ),
+    <span class="php-quote">'article'</span> =&gt; <span class="php-keyword1">array</span>(
+        <span class="php-quote">'en'</span> =&gt; <span class="php-quote">'article'</span>,
+        <span class="php-quote">'es'</span> =&gt; <span class="php-quote">'noticia'</span>
+    )
+)</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="translations_to_id" id="$translations_to_id">
+			<td class="attributes"><code>
+				protected  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Lang.html#59" title="Go to source code"><var>$translations_to_id</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$translations_to_id" class="anchor">#</a>
+					<code><span class="php-keyword1">array</span>()</code>
 				</div>
 			</td>
 		</tr>

@@ -7,7 +7,7 @@
         <td>{content}</td>
         <td>{main_pic}</td>
         <td>
-            <a href="<?= site_url('article/') ?>{slug}">view</a></td>
+            <a href="<?= site_url_lang('article') ?>/{slug}">view</a></td>
     </tr>
 {/articles}
 </table>
