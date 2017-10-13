@@ -17,7 +17,7 @@ function lang_switcher()
     $uri = $CI->uri->segment_array();
     array_shift($uri);
     // public page, Page controller action sould be translated to other language
-    if($uri[0] !== 'admin') {
+    if($uri && $uri[0] !== 'admin') {
         $uri[0] = $CI->lang->translate($uri[0], $lang, $other_lang);
     }
     $uri = implode('/',$uri);
@@ -42,6 +42,5 @@ function lang_switcher()
 
 function site_url_lang($uri, $lang = '', $protocol = null)
 {
-    $CI =& get_instance();
-    return $CI->lang->site_url_lang($uri, $lang, $protocol);
+    return get_instance()->lang->site_url_lang($uri, $lang, $protocol);
 }

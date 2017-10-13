@@ -2,31 +2,44 @@
     "name": "cafpe-frontend",
     "version": "1.0.0",
     "description": "",
-    "main": "gulpfile.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Pizzicato/CAFPE.git"
+    },
     "dependencies": {
-        "del": "^2.2.2",
-        "gulp-autoprefixer": "^4.0.0",
-        "gulp-cache": "^0.4.6",
-        "gulp-concat": "^2.6.1",
-        "gulp-imagemin": "^3.2.0",
-        "gulp-load-plugins": "^1.5.0",
-        "gulp-clean-css": "^3.4.0",
-        "gulp-notify": "^3.0.0",
-        "gulp-sass": "^3.1.0",
-        "gulp-sourcemaps": "^2.6.0",
-        "gulp-uglify": "^3.0.0",
-        "gulp-newer": "^1.3.0",
-        "gulp-rename": "^1.2.2",
-        "imagemin-pngquant": "^5.0.1",
-        "gulp": "^3.9.1"
+        "autoprefixer": "^7.1.5",
+        "bootstrap": "^4.0.0-beta",
+        "clean-css-cli": "^4.1.10",
+        "font-awesome": "^4.7.0",
+        "imagemin-newer": "^1.0.2",
+        "jquery": "^3.2.1",
+        "node-sass": "^4.5.3",
+        "npm-run-all": "^4.1.1",
+        "popper.js": "^1.12.5",
+        "postcss-cli": "^4.1.1",
+        "uglify-js": "^3.1.3"
     },
     "devDependencies": {
-        "browser-sync": "^2.18.12"
+        "browser-sync": "^2.18.13",
+        "onchange": "^3.2.1"
     },
     "scripts": {
-        "build": "gulp build",
-        "dev": "gulp dev"
+        "clean": "rm -rf public/assets/{fonts,img,jscripts,styles}/* && rm -rf public/assets/src/*/vendors",
+        "makedirs": "mkdir -p public/assets/{fonts,img,jscripts,styles} public/assets/src/{fonts,img} public/assets/src/jscripts/vendors/ public/assets/src/styles/vendors/{bootstrap,font-awesome}",
+        "cp-assets": "cp node_modules/jquery/dist/jquery.js node_modules/popper.js/dist/umd/popper.js node_modules/bootstrap/dist/js/bootstrap.js public/assets/src/jscripts/vendors/ && cp -R node_modules/bootstrap/scss/* public/assets/src/styles/vendors/bootstrap && cp -R node_modules/font-awesome/scss/* public/assets/src/styles/vendors/font-awesome && cp node_modules/font-awesome/fonts/* public/assets/src/fonts/",
+        "prebuild": "run-s clean makedirs cp-assets",
+        "build:jscripts": "uglifyjs public/assets/src/jscripts/vendors/jquery.js public/assets/src/jscripts/vendors/popper.js public/assets/src/jscripts/vendors/bootstrap.js public/assets/src/jscripts/*.js -o public/assets/jscripts/main.min.js -c -m --source-map \"base='./public/assets/src../'\"",
+        "build:styles": "node-sass --source-map-embed --source-map-root file://${PWD}/ --output-style expanded public/assets/src/styles/main.scss | postcss -u autoprefixer -b 'latest 2 versions' -o public/assets/styles/main.css --map public/assets/styles/main.css.map && cleancss public/assets/styles/main.css -o public/assets/styles/main.min.css",
+        "build:images": "imagemin-newer public/assets/src/img public/assets/img",
+        "build:fonts": "cp public/assets/src/fonts/* public/assets/fonts/",
+        "build": "run-s build:*",
+        "serve": "browser-sync start --proxy 'localhost:8020' --files 'public/assets/jscripts/main.min.js, public/assets/styles/*.css' application/**/*.php",
+        "watch:styles": "onchange 'public/assets/src/styles/**/*.scss' -- npm run build:styles",
+        "watch:js": "onchange 'public/assets/src/jscripts/**/*.js' -- npm run build:jscripts",
+        "watch:images": "onchange 'public/assets/src/img/**/*' -- npm run build:images",
+        "watch:fonts": "onchange 'public/assets/src/fonts/*' -- npm run build:fonts",
+        "watch": "run-p serve watch:*"
     },
-    "author": "",
+    "author": "Pablo Guaza",
     "license": "ISC"
 }

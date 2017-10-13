@@ -13,23 +13,23 @@
  * @access  public
  * @return  string CSS main file location
  */
-if (! function_exists('css_url')) {
-    function css_url()
-    {
-        $CI =& get_instance();
-        $url = base_url() . $CI->config->item('css_path');
-        switch (ENVIRONMENT) {
-            case 'testing':
-            case 'development':
-                $url .= $CI->config->item('main_css_file');
-                break;
-            default:
-                $url .= $CI->config->item('main_min_css_file');
-                break;
-        }
-        return $url;
-    }
-}
+ if (! function_exists('css_url')) {
+     function css_url()
+     {
+         $CI =& get_instance();
+         $url = base_url() . $CI->config->item('css_path');
+         switch (ENVIRONMENT) {
+             case 'testing':
+             case 'development':
+                 $url .= $CI->config->item('main_css_file');
+                 break;
+             default:
+                 $url .= $CI->config->item('main_min_css_file');
+                 break;
+         }
+         return $url;
+     }
+ }
 
 /**
  * Get main js file URL
@@ -42,15 +42,7 @@ if (! function_exists('jscript_url')) {
     {
         $CI =& get_instance();
         $url = base_url() . $CI->config->item('jscript_path');
-        switch (ENVIRONMENT) {
-            case 'testing':
-            case 'development':
-                $url .= $CI->config->item('main_jscript_file');
-                break;
-            default:
-                $url .= $CI->config->item('main_min_jscript_file');
-                break;
-        }
+        $url .= $CI->config->item('main_jscript_file');
         return $url;
     }
 }

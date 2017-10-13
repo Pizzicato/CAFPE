@@ -47,10 +47,12 @@ class MY_Lang extends CI_Lang
                 $first_segment = $translated_first_segment;
             }
 
-            // add language and possibly modified first segment to rest of URI
-            $uri = $lang.'/'.$first_segment.$rest;
+            // add possibly modified first segment to rest of URI
+            $uri = $first_segment.$rest;
         }
 
+        // add language to beginning of URI
+        $uri = $lang.'/'.$uri;
         return site_url($uri, $protocol);
     }
 

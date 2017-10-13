@@ -53,6 +53,8 @@ composer.lock
 
 /public/assets/*
 !/public/assets/src/
+/public/assets/src/fonts/*
+/public/assets/src/*/vendors/*
 
 # Front-End
 node_modules/*

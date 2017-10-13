@@ -1,4 +1,5 @@
 ## Set environment
+SetEnvIfNoCase Host "^localhost" LOCAL_HOST
 SetEnvIfNoCase Host "^" CI_ENV=development WPD_URL=0
 SetEnvIfNoCase Host "cafpe\.ugr\.es" CI_ENV=production
 SetEnvIfNoCase Host "wpd\.ugr\.es" CI_ENV=production WPD_URL=1
@@ -12,6 +13,14 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ %{ENV:BASE_PATH}/index.php/$1 [L]
+
+<Files "main.min.js">
+  Header set SourceMap "http://localhost:8020/assets/jscripts/main.min.js.map" env=LOCAL_HOST
+</Files>
+
+<Files "main.css">
+  Header set SourceMap "http://localhost:8020/assets/styles/main.css.map" env=LOCAL_HOST
+</Files>
 
 ## Basic auth for staging server
 Deny from env=STAGING_SERVER

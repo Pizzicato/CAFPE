@@ -31,14 +31,23 @@ To install the required PHP packages:
 $ composer install
 ```
 
-### Assets generation via Gulp
-The gulpfile included in the repository is the same one used for deploying the app used by ```deploy.bash``` script. It contains the tasks to get the final assets used in production, but also there is a task used for development, which includes some nice features like browser reloading when code or source assets are changed.
-
-To use it cd into the repo folder and run:
-
+### Assets generation and development utilities
+Node and npm are used for this purpose. To install all needed modules:
 ```
 $ npm install
-$ npm run dev
+```
+
+The package.json file npm scripts are the same ones used for deploying the app run by ```deploy.bash```.
+
+It contains two main scripts:
+
+Final assets creation from sources (SCSS, javascripts, images and fonts)
+```
+$ npm run build
+```
+Automatic browse reload when assets change and automatic rebuild of assets if sources are changed:
+```
+$ npm run watch
 ```
 
 ## Tests

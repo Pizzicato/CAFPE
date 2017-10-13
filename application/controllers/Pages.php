@@ -44,8 +44,8 @@ class Pages extends Public_controller
         if ($slug_lang !== current_lang()) {
             $right_slug = $article['slug_'.current_lang()];
             if ($right_slug) {
-                $original_uri = $this->uri->uri_string();
-                $uri = str_replace($slug, $right_slug, $original_uri);
+                $current_uri = $this->uri->uri_string();
+                $uri = str_replace($slug, $right_slug, $current_uri);
                 redirect($uri);
             } else {
                 $article = null;
