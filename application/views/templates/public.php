@@ -1,5 +1,3 @@
-<p>PUBLIC</p>
-<?php $this->load->view('templates/_parts/header'); ?>
 <main>
     <?php $this->load->view($view); ?>
     <?php $this->load->view('templates/_parts/sidebar'); ?>

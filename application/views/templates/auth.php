@@ -1,6 +1,5 @@
-<p>PRIVATE</p>
-<?php $this->load->view('templates/_parts/header'); ?>
 <main>
+    <?= action_result() ?>
     <?php $this->load->view($view); ?>
     <?php $this->load->view('templates/_parts/sidebar'); ?>
 </main>

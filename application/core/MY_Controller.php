@@ -13,6 +13,8 @@ class MY_Controller extends CI_Controller
     protected $data = array();
     // View that will be loaded by default: controller/method path inside views folder
     protected $default_view;
+    // requested action status
+    public $status = [];
 
     public function __construct($template)
     {
@@ -27,6 +29,8 @@ class MY_Controller extends CI_Controller
 
     /**
     * Renders passed view
+    * @param string $view view name
+    * @param bool $return render image directly or return as string
     */
     public function render($view, $return = false)
     {
@@ -40,6 +44,7 @@ class MY_Controller extends CI_Controller
 
     /**
     * Override _ouput Ouput class method to allow implicit view rendering
+    * @param string $output
     */
     public function _output($output)
     {
@@ -49,6 +54,34 @@ class MY_Controller extends CI_Controller
             // nothing was rendered from controller, render default view
             echo $this->render($this->default_view, true);
         }
+    }
+
+    /**
+    * Saves controller action status, if it has not been set before
+     * @param string $action Name of performed action (create, edit, delete...)
+     * @param string $class ok or error
+     * @return	bool
+     */
+    public function status($class, $redirect = false)
+    {
+        $action = $this->router->fetch_method();
+        $message = $this->lang->line($action.'_'.$class, FALSE);
+        if(!empty($this->status) && ($class !== 'ok' && $class !== 'error') || !$message) {
+            return false;
+        }
+        $status = $this->status = array(
+            'message' => $message,
+            'class' => $class
+        );
+
+        if($redirect) {
+            $_SESSION['status'] = $status;
+            $this->session->mark_as_flash('status');
+        } else {
+            $this->status = $status;
+        }
+
+        return true;
     }
 
     /**
@@ -65,6 +98,8 @@ class MY_Controller extends CI_Controller
 
     /**
     * Checks if view file exists in views folder
+    * @param string $view view name
+    * @return	bool
     */
     private function _valid_view($view)
     {

@@ -7,7 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
     <body>
-        <?= lang_switcher() ?>
-        <?php $this->load->view($template); ?>
+        <?php $this->load->view('templates/_parts/menu'); ?>
+        <div class="container">
+            <?php $this->load->view($template); ?>
+        </div>
     </body>
 </html>

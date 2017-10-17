@@ -1,5 +1,6 @@
 # CAFPE
-[![Build Status](http://ftae31.ugr.es:8090/buildStatus/icon?job=cafpe)](http://ftae31.ugr.es:8090/job/cafpe/)
+[![Jenkins](https://img.shields.io/jenkins/s/http/ftae31.ugr.es:8090/job/Pizzicato/job/CAFPE/job/master.svg)]()
+[![Jenkins](https://img.shields.io/jenkins/t/http/ftae31.ugr.es:8090/job/Pizzicato/job/CAFPE/job/master.svg)]()
 
 ## Needed software for development
 

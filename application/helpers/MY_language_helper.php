@@ -26,13 +26,11 @@ function lang_switcher()
     $output = '';
     switch ($lang) {
         case 'es':
-            $output = 'Español';
-            $output .= ' | '.anchor($url, 'English');
+            $output .= anchor($url, 'English', 'class="nav-link"');
             break;
 
         case 'en':
-            $output = 'English';
-            $output .= ' | '.anchor($url, 'Español');
+            $output .= anchor($url, 'Español', 'class="nav-link"');
             break;
     }
 
@@ -43,4 +41,9 @@ function lang_switcher()
 function site_url_lang($uri, $lang = '', $protocol = null)
 {
     return get_instance()->lang->site_url_lang($uri, $lang, $protocol);
+}
+
+function redirect_lang($uri = '', $lang = '', $method = 'auto', $code = NULL)
+{
+    return get_instance()->lang->redirect_lang($uri, $lang, $method, $code);
 }

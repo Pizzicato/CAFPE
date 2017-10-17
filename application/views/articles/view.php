@@ -1,18 +1,15 @@
 <?php if($title_en): ?>
-<h1>English version: {title_en}</h1>
+<h2>English version: {title_en}</h2>
 <div>
     <p>{date}</p>
-    <p>{main_pic}</p>
     <p>{content_en}</p>
-    <p>{slug_en}</p>
 </div>
 <?php endif; ?>
 <?php if($title_es): ?>
-<h1>Spanish version: {title_es}</h1>
+<h2>Spanish version: {title_es}</h2>
 <div>
     <p>{date}</p>
-    <p>{main_pic}</p>
     <p>{content_es}</p>
-    <p>{slug_es}</p>
 </div>
 <?php endif; ?>
+<?= anchor(site_url_lang('admin/articles'), lang('view_all')) ?>

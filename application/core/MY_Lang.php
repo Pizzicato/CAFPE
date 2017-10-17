@@ -19,6 +19,36 @@ class MY_Lang extends CI_Lang
         )
     );
 
+    // inversion of the previous array. It's created dinamically to minimize user errors
+    // origin lang -> word in other language -> id
+    protected $translations_to_id = array();
+
+    public function __construct()
+    {
+        parent::__construct();
+        // create inversion of $translations_from_id
+        $this->_invert_translations();
+
+        $URI =& load_class('URI', 'core');
+        $CONFIG =& load_class('Config', 'core');
+
+        // get URI segment that should define the language
+        $lang_uri = $URI->segment(1);
+
+        // default language, only for home page
+        if ($lang_uri === null) {
+            $lang_uri = $CONFIG->item('language_abbr');
+        }
+
+        // save language if it's valid (has been defined in config file)
+        if (in_array($lang_uri, $CONFIG->item('languages_abbr'))) {
+            $this->current = $lang_uri;
+            $CONFIG->set_item('language', $CONFIG->item('lang_uri_abbr')[$lang_uri]);
+        } elseif (! is_cli()) {
+            show_404();
+        }
+    }
+
     /**
      * Returns site_url() of provided URI adding to its beginning language and
      * first segment translation
@@ -56,36 +86,19 @@ class MY_Lang extends CI_Lang
         return site_url($uri, $protocol);
     }
 
-    // inversion of the previous array. It's created dinamically to minimize user errors
-    // origin lang -> word in other language -> id
-    protected $translations_to_id = array();
-
-    public function __construct()
+    /**
+     * Returns redirect() of provided URI using site_url_lang to get the right URI
+     *
+     * @param	string|string[]	$uri URI string or an array of segments
+     * @param	string	$lang language to which translate URI first segment
+     * @param	string	$method Redirect method (‘auto’, ‘location’ or ‘refresh’)
+     * @param	string	$code HTTP Response code (usually 302 or 303)
+     * @return	string
+     */
+    public function redirect_lang($uri = '', $lang = '', $method = 'auto', $code = NULL)
     {
-        parent::__construct();
-        // create inversion of $translations_from_id
-        $this->_invert_translations();
-
-        $URI =& load_class('URI', 'core');
-        $CONFIG =& load_class('Config', 'core');
-
-        // get URI segment that should define the language
-        $lang_uri = $URI->segment(1);
-
-        // default language, only for home page
-        if ($lang_uri === null) {
-            $lang_uri = $CONFIG->item('language_abbr');
-        }
-
-        // save language if it's valid (has been defined in config file)
-        if (in_array($lang_uri, $CONFIG->item('languages_abbr'))) {
-            $this->current = $lang_uri;
-            $CONFIG->set_item('language', $CONFIG->item('lang_uri_abbr')[$lang_uri]);
-        } elseif (! is_cli()) {
-            show_404();
-        }
+        redirect(site_url_lang($uri, $lang), $method, $code);
     }
-
     /**
      * Translates string from $orig_lang to $dest_lang
      *

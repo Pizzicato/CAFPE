@@ -1,3 +1,6 @@
-<h1>Create new article</h1>
-<?php echo form_open('articles/create')?>
-<?php $this->load->view('articles/_form') ?>
+<h2>Create new article</h2><br>
+<?php
+    $attributes = array('id' => 'cafpe_form', 'novalidate' => 'novalidate');
+    echo form_open(site_url_lang('admin/articles/create'), $attributes);
+    $this->load->view('articles/_form')
+?>

@@ -28,7 +28,6 @@ class Migration_DeleteLangColFromArticlesTable extends CI_Migration
         // rename table to temporal name, recreate table, insert data, remove temporal table
         $this->db->trans_start();
         $this->dbforge->rename_table($table, $tmp_table);
-        var_dump($articles_creation_sql);
         $this->db->query($articles_creation_sql);
         $this->db->query("INSERT INTO {$table} SELECT {$fields} FROM {$tmp_table};");
         $this->dbforge->drop_table($tmp_table);

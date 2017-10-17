@@ -69,10 +69,13 @@
 
 			<h3>Functions</h3>
 			<ul>
+				<li><a href="function-action_result.html">action_result</a></li>
+				<li><a href="function-actions_widget.html">actions_widget</a></li>
 				<li><a href="function-css_url.html">css_url</a></li>
 				<li><a href="function-current_lang.html">current_lang</a></li>
 				<li><a href="function-jscript_url.html">jscript_url</a></li>
 				<li><a href="function-lang_switcher.html">lang_switcher</a></li>
+				<li><a href="function-redirect_lang.html">redirect_lang</a></li>
 				<li><a href="function-site_url_lang.html">site_url_lang</a></li>
 			</ul>
 		</div>
@@ -130,7 +133,7 @@ CI_Controller
 		
 		
 
-			<b>Located at</b> <a href="source-class-MY_Controller.html#6-74" title="Go to source code">MY_Controller.php</a>
+			<b>Located at</b> <a href="source-class-MY_Controller.html#6-109" title="Go to source code">MY_Controller.php</a>
 		<br>
 	</div>
 
@@ -150,7 +153,7 @@ CI_Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-MY_Controller.html#17-25" title="Go to source code">__construct</a>( <span> <var>$template</var></span> )</code>
+			<code><a href="source-class-MY_Controller.html#19-27" title="Go to source code">__construct</a>( <span> <var>$template</var></span> )</code>
 
 			<div class="description short">
 				
@@ -179,7 +182,7 @@ CI_Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#_render">#</a>
-			<code><a href="source-class-MY_Controller.html#28-39" title="Go to source code">render</a>( <span> <var>$view</var></span>, <span> <var>$return</var> = <span class="php-keyword1">false</span></span> )</code>
+			<code><a href="source-class-MY_Controller.html#30-43" title="Go to source code">render</a>( <span>string <var>$view</var></span>, <span>boolean <var>$return</var> = <span class="php-keyword1">false</span></span> )</code>
 
 			<div class="description short">
 				<p>Renders passed view</p>
@@ -189,6 +192,13 @@ CI_Controller
 				<p>Renders passed view</p>
 
 
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$view</var></dt>
+						<dd>view name</dd>
+						<dt><var>$return</var></dt>
+						<dd>render image directly or return as string</dd>
+					</dl></div>
 
 
 
@@ -208,7 +218,7 @@ CI_Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#__output">#</a>
-			<code><a href="source-class-MY_Controller.html#41-52" title="Go to source code">_output</a>( <span> <var>$output</var></span> )</code>
+			<code><a href="source-class-MY_Controller.html#45-57" title="Go to source code">_output</a>( <span>string <var>$output</var></span> )</code>
 
 			<div class="description short">
 				<p>Override _ouput Ouput class method to allow implicit view rendering</p>
@@ -218,7 +228,52 @@ CI_Controller
 				<p>Override _ouput Ouput class method to allow implicit view rendering</p>
 
 
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$output</var></dt>
+						<dd></dd>
+					</dl></div>
 
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="status" id="_status">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_status">#</a>
+			<code><a href="source-class-MY_Controller.html#59-85" title="Go to source code">status</a>( <span>string <var>$class</var></span>, <span>string <var>$redirect</var> = <span class="php-keyword1">false</span></span> )</code>
+
+			<div class="description short">
+				<p>Saves controller action status, if it has not been set before</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Saves controller action status, if it has not been set before</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$class</var></dt>
+						<dd>$action Name of performed action (create, edit, delete...)</dd>
+						<dt><var>$redirect</var></dt>
+						<dd>$class ok or error</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
 
 
 
@@ -289,6 +344,31 @@ CI_Controller
 				<div>
 					<a href="#$default_view" class="anchor">#</a>
 					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="status" id="$status">
+			<td class="attributes"><code>
+				public  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-MY_Controller.html#17" title="Go to source code"><var>$status</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$status" class="anchor">#</a>
+					<code>[]</code>
 				</div>
 			</td>
 		</tr>

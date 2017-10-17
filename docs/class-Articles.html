@@ -69,10 +69,13 @@
 
 			<h3>Functions</h3>
 			<ul>
+				<li><a href="function-action_result.html">action_result</a></li>
+				<li><a href="function-actions_widget.html">actions_widget</a></li>
 				<li><a href="function-css_url.html">css_url</a></li>
 				<li><a href="function-current_lang.html">current_lang</a></li>
 				<li><a href="function-jscript_url.html">jscript_url</a></li>
 				<li><a href="function-lang_switcher.html">lang_switcher</a></li>
+				<li><a href="function-redirect_lang.html">redirect_lang</a></li>
 				<li><a href="function-site_url_lang.html">site_url_lang</a></li>
 			</ul>
 		</div>
@@ -129,7 +132,7 @@ CI_Controller
 		
 		
 
-			<b>Located at</b> <a href="source-class-Articles.html#3-51" title="Go to source code">Articles.php</a>
+			<b>Located at</b> <a href="source-class-Articles.html#3-95" title="Go to source code">Articles.php</a>
 		<br>
 	</div>
 
@@ -211,15 +214,15 @@ CI_Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#_view">#</a>
-			<code><a href="source-class-Articles.html#25-37" title="Go to source code">view</a>( <span> <var>$id</var></span> )</code>
+			<code><a href="source-class-Articles.html#25-37" title="Go to source code">view</a>( <span> <var>$id</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				<p>Maps to:
-   - site_url + articles/view/$slug</p>
+   - site_url + articles/view/$id</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>Maps to: - site_url + articles/view/$slug</p>
+				<p>Maps to: - site_url + articles/view/$id</p>
 
 
 
@@ -241,7 +244,7 @@ CI_Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#_create">#</a>
-			<code><a href="source-class-Articles.html#39-50" title="Go to source code">create</a>( )</code>
+			<code><a href="source-class-Articles.html#39-56" title="Go to source code">create</a>( )</code>
 
 			<div class="description short">
 				<p>Maps to:
@@ -260,6 +263,66 @@ CI_Controller
 			</div>
 			</div></td>
 		</tr>
+		<tr data-order="edit" id="_edit">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_edit">#</a>
+			<code><a href="source-class-Articles.html#58-80" title="Go to source code">edit</a>( <span> <var>$id</var> = <span class="php-keyword1">null</span></span> )</code>
+
+			<div class="description short">
+				<p>Maps to:
+   - site_url + articles/edit/$id</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Maps to: - site_url + articles/edit/$id</p>
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="delete" id="_delete">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_delete">#</a>
+			<code><a href="source-class-Articles.html#82-94" title="Go to source code">delete</a>( <span> <var>$id</var> = <span class="php-keyword1">null</span></span> )</code>
+
+			<div class="description short">
+				<p>Maps to:
+   - site_url + articles/delete/$id</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Maps to: - site_url + articles/delete/$id</p>
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
 			</table>
 		</div>
 
@@ -267,7 +330,8 @@ CI_Controller
 	        <div class="panel-heading"><h3>Methods inherited from <a href="class-MY_Controller.html#methods">MY_Controller</a></h3></div>
 			<p class="elementList">
 				<code><a href="class-MY_Controller.html#__output">_output()</a></code>, 
-				<code><a href="class-MY_Controller.html#_render">render()</a></code>
+				<code><a href="class-MY_Controller.html#_render">render()</a></code>, 
+				<code><a href="class-MY_Controller.html#_status">status()</a></code>
 			</p>
 		</div>
 
@@ -288,7 +352,8 @@ CI_Controller
             <div class="panel-heading"><h3>Properties inherited from <a href="class-MY_Controller.html#properties">MY_Controller</a></h3></div>
 			<p class="elementList">
 				<code><a href="class-MY_Controller.html#$data"><var>$data</var></a></code>, 
-				<code><a href="class-MY_Controller.html#$default_view"><var>$default_view</var></a></code>
+				<code><a href="class-MY_Controller.html#$default_view"><var>$default_view</var></a></code>, 
+				<code><a href="class-MY_Controller.html#$status"><var>$status</var></a></code>
 			</p>
 		</div>
 

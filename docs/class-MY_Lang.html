@@ -69,10 +69,13 @@
 
 			<h3>Functions</h3>
 			<ul>
+				<li><a href="function-action_result.html">action_result</a></li>
+				<li><a href="function-actions_widget.html">actions_widget</a></li>
 				<li><a href="function-css_url.html">css_url</a></li>
 				<li><a href="function-current_lang.html">current_lang</a></li>
 				<li><a href="function-jscript_url.html">jscript_url</a></li>
 				<li><a href="function-lang_switcher.html">lang_switcher</a></li>
+				<li><a href="function-redirect_lang.html">redirect_lang</a></li>
 				<li><a href="function-site_url_lang.html">site_url_lang</a></li>
 			</ul>
 		</div>
@@ -115,7 +118,7 @@ CI_Lang
 		
 		
 
-			<b>Located at</b> <a href="source-class-MY_Lang.html#3-173" title="Go to source code">MY_Lang.php</a>
+			<b>Located at</b> <a href="source-class-MY_Lang.html#3-186" title="Go to source code">MY_Lang.php</a>
 		<br>
 	</div>
 
@@ -124,6 +127,35 @@ CI_Lang
 		<div class="panel panel-default">
 			<div class="panel-heading"><h2>Methods summary</h2></div>
 			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="__construct" id="___construct">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___construct">#</a>
+			<code><a href="source-class-MY_Lang.html#26-50" title="Go to source code">__construct</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
 		<tr data-order="site_url_lang" id="_site_url_lang">
 
 			<td class="attributes"><code>
@@ -135,7 +167,7 @@ CI_Lang
 
 			<td class="name"><div>
 			<a class="anchor" href="#_site_url_lang">#</a>
-			<code><a href="source-class-MY_Lang.html#22-57" title="Go to source code">site_url_lang</a>( <span>string|string[] <var>$uri</var> = <span class="php-quote">''</span></span>, <span>string <var>$lang</var> = <span class="php-quote">''</span></span>, <span>string <var>$protocol</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-MY_Lang.html#52-87" title="Go to source code">site_url_lang</a>( <span>string|string[] <var>$uri</var> = <span class="php-quote">''</span></span>, <span>string <var>$lang</var> = <span class="php-quote">''</span></span>, <span>string <var>$protocol</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				<p>Returns site_url() of provided URI adding to its beginning language and
@@ -172,28 +204,43 @@ first segment translation</p>
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="__construct" id="___construct">
+		<tr data-order="redirect_lang" id="_redirect_lang">
 
 			<td class="attributes"><code>
 				 public 
-				
+				string
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-MY_Lang.html#63-87" title="Go to source code">__construct</a>( )</code>
+			<a class="anchor" href="#_redirect_lang">#</a>
+			<code><a href="source-class-MY_Lang.html#89-101" title="Go to source code">redirect_lang</a>( <span>string|string[] <var>$uri</var> = <span class="php-quote">''</span></span>, <span>string <var>$lang</var> = <span class="php-quote">''</span></span>, <span>string <var>$method</var> = <span class="php-quote">'auto'</span></span>, <span>string <var>$code</var> = <span class="php-keyword1">NULL</span></span> )</code>
 
 			<div class="description short">
-				
+				<p>Returns redirect() of provided URI using site_url_lang to get the right URI</p>
 			</div>
 
 			<div class="description detailed hidden">
-				
+				<p>Returns redirect() of provided URI using site_url_lang to get the right URI</p>
 
 
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$uri</var></dt>
+						<dd>URI string or an array of segments</dd>
+						<dt><var>$lang</var></dt>
+						<dd>language to which translate URI first segment</dd>
+						<dt><var>$method</var></dt>
+						<dd>Redirect method (‘auto’, ‘location’ or ‘refresh’)</dd>
+						<dt><var>$code</var></dt>
+						<dd>HTTP Response code (usually 302 or 303)</dd>
+					</dl></div>
 
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
 
 
 
@@ -212,7 +259,7 @@ first segment translation</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_translate">#</a>
-			<code><a href="source-class-MY_Lang.html#89-111" title="Go to source code">translate</a>( <span>string <var>$line</var></span>, <span>string <var>$orig_lang</var></span>, <span> <var>$dest_lang</var></span> )</code>
+			<code><a href="source-class-MY_Lang.html#102-124" title="Go to source code">translate</a>( <span>string <var>$line</var></span>, <span>string <var>$orig_lang</var></span>, <span> <var>$dest_lang</var></span> )</code>
 
 			<div class="description short">
 				<p>Translates string from $orig_lang to $dest_lang</p>
@@ -256,7 +303,7 @@ first segment translation</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_translate_to_id">#</a>
-			<code><a href="source-class-MY_Lang.html#113-127" title="Go to source code">translate_to_id</a>( <span>string <var>$line</var></span>, <span>string <var>$lang</var></span> )</code>
+			<code><a href="source-class-MY_Lang.html#126-140" title="Go to source code">translate_to_id</a>( <span>string <var>$line</var></span>, <span>string <var>$lang</var></span> )</code>
 
 			<div class="description short">
 				<p>Translates string from given lang to identifier</p>
@@ -298,7 +345,7 @@ first segment translation</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_translate_from_id">#</a>
-			<code><a href="source-class-MY_Lang.html#129-143" title="Go to source code">translate_from_id</a>( <span>string <var>$id</var></span>, <span>string <var>$lang</var></span> )</code>
+			<code><a href="source-class-MY_Lang.html#142-156" title="Go to source code">translate_from_id</a>( <span>string <var>$id</var></span>, <span>string <var>$lang</var></span> )</code>
 
 			<div class="description short">
 				<p>Translates string from identifier to given lang</p>
@@ -411,7 +458,7 @@ first segment translation</p>
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-MY_Lang.html#61" title="Go to source code"><var>$translations_to_id</var></a>
+					<a href="source-class-MY_Lang.html#24" title="Go to source code"><var>$translations_to_id</var></a>
 
 				<div class="description short">
 					

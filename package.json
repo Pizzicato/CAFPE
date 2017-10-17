@@ -33,7 +33,7 @@
         "build:images": "imagemin-newer public/assets/src/img public/assets/img",
         "build:fonts": "cp public/assets/src/fonts/* public/assets/fonts/",
         "build": "run-s build:*",
-        "serve": "browser-sync start --proxy 'localhost:8020' --files 'public/assets/jscripts/main.min.js, public/assets/styles/*.css' application/**/*.php",
+        "serve": "browser-sync start --proxy 'localhost:8020' --files 'public/assets/jscripts/main.min.js, public/assets/styles/*.css' 'application/**/*.php'",
         "watch:styles": "onchange 'public/assets/src/styles/**/*.scss' -- npm run build:styles",
         "watch:js": "onchange 'public/assets/src/jscripts/**/*.js' -- npm run build:jscripts",
         "watch:images": "onchange 'public/assets/src/img/**/*' -- npm run build:images",
