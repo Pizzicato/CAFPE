@@ -44,16 +44,37 @@ if (! function_exists('actions_widget')) {
     function actions_widget($uri, $id, $actions = ['view', 'edit', 'delete'])
     {
         $output = '';
-        $delete_js = '';
         $icons = array('view' => 'eye', 'edit' => 'pencil', 'delete' => 'trash-o');
         foreach ($actions as $action) {
-            $onclick = ($action === 'delete') ?
-                            'onclick="return confirm(\''.lang('delete_confirm').'\')"' :
-                            '';
-            $output .=
-                '<a href="'.site_url_lang($uri.'/'.$action.'/'.$id).'" '.$onclick.'>
-                    <i data-toggle="tooltip" title="'.lang($action).'" class="fa fa-'.$icons[$action].'" aria-hidden="true"></i>
-                </a>';
+            $attributes = ['class' => 'action-icon'];
+            $modal = '';
+            if($action == 'delete') {
+                $attributes = array_merge(
+                    $attributes,
+                    ['data-toggle' => 'modal', 'data-target' => '#deleteModal']
+                );
+                $modal = '
+                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel">'.lang('delete').'</h5>
+                                </div>
+                                <div class="modal-body text-left">'.lang('delete_confirm').'</div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">'.lang('close').'</button>
+                                    <a class="btn btn-primary" href="'.site_url_lang($uri.'/'.$action.'/'.$id).'" role="button">'.lang('delete').'</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+            }
+
+            $output .= anchor(
+                site_url_lang($uri.'/'.$action.'/'.$id),
+                '<i data-toggle="tooltip" title="'.lang($action).'" class="fa fa-'.$icons[$action].'" aria-hidden="true"></i>',
+                $attributes
+            ).$modal;
         }
 
         return $output;

@@ -10,9 +10,9 @@
     </thead>
     <?php foreach ($articles as $_) : ?>
     <tr>
-        <td><?= $_['date'] ?></td>
+        <td class="text-nowrap"><?= $_['date'] ?></td>
         <td><?= $_['title_es'] ? $_['title_es'] : $_['title_en'] ?></td>
-        <td>
+        <td class="text-right text-nowrap">
             <?= actions_widget("admin/articles", $_['id']) ?>
         </td>
     </tr>

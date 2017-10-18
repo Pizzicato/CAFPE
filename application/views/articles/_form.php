@@ -1,4 +1,8 @@
 <?= validation_errors('<p class="text-danger">', '</p>') ?>
+<?php
+    $attributes = array('id' => 'cafpe_form', 'novalidate' => 'novalidate');
+    echo form_open(site_url_lang('admin/articles/'.$action.'/'.@$_['id']), $attributes);
+ ?>
 <div class="form-group row">
     <?php
         $data = array(
