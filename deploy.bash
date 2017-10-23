@@ -190,8 +190,8 @@ function ftp_upload_file() {
 function ftp_upload_site() {
     echo "FTP UPLOAD [INFO]: Uploading site to FTP server"
     remove_lftp_logs
-    # Change public name folder to public_html
-    mv public public_html
+    # Change html name folder to public_html
+    mv html public_html
     lftp -c "$LFTP_OPTIONS
     open '$FTP_ACCESS';
     mirror --reverse --ignore-time \
@@ -227,7 +227,7 @@ function ftp_upload_site() {
     if [[ $? == 1 ]]; then
         return 1
     fi
-    mv public_html public
+    mv public_html html
 }
 
 ##
