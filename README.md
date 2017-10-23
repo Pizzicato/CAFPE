@@ -17,13 +17,13 @@ Follow each section below and run all the commands in the same order as listed.
 
 ### Clone repository
 ```
-mkdir <repo-dir>
-git clone https://github.com/Pizzicato/CAFPE.git <repo-dir>
-make init
+$ mkdir <repo-dir>
+$ git clone https://github.com/Pizzicato/CAFPE.git <repo-dir>
+$ cd <repo-dir>
 ```
 
 ### Shared hooks
-When running ```make init``` among other actions, the common git configuration values that all contributors should have in their ```.git/config``` file are set. More specifically, those that enable the use of shared hooks which are located in the ```.githooks``` folder.
+When running ```make init``` among other actions, the common git configuration values that all contributors should have in their ```.git/config``` folder are set. More specifically, those that enable the use of shared hooks which are located in the ```.githooks``` folder.
 
 Since git version 2.9 the default hooks folder location can be changed using ```core.hookspath```, allowing to share them among all contributors, and thus keeping commits more standard.
 
@@ -40,8 +40,8 @@ $ composer install
 There is a Docker container with the same configuration and software version as the production environment. To use it:
 
 ```
-docker pull pizzicato/centos7-apache-php54-sqlite3
-docker run --name <name>  -d -p 8020:80 -v <repo-dir>:/var/www/ pizzicato/centos7-apache-php54-sqlite3
+$ docker pull pizzicato/centos7-apache-php54-sqlite3
+$ docker run --name <name>  -d -p 8020:80 -v <repo-dir>:/var/www/ pizzicato/centos7-apache-php54-sqlite3
 ```
 
 ### Assets generation and development utilities

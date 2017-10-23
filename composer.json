@@ -10,5 +10,11 @@
 		"phpunit/phpunit": "6.1.*",
 		"apigen/apigen": "4.*",
 		"kenjis/codeigniter-cli": "^0.1.0"
-	}
+	},
+    "scripts": {
+        "post-install-cmd": [
+            "php cli migrate `php cli migrate version|grep latest|awk '{ print $2 }'`",
+            "php cli seed"
+        ]
+    }
 }

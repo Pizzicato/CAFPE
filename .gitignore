@@ -31,8 +31,6 @@ application/tests/build/*.phar
 application/tests/build/*.phar.asc
 application/tests/results
 
-composer.lock
-
 # Very crazy rules to ignore /vendor, except /vendor/codeigniter/framework/system/
 # ref: http://stackoverflow.com/questions/5533050/gitignore-exclude-folder-but-include-specific-subfolder/
 /vendor/*

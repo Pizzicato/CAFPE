@@ -6,6 +6,4 @@ LATEST=`php cli migrate version|grep latest|awk '{ print $2 }'`
 # to cache and logs folders
 init:
 	git config core.hooksPath .githooks
-	php cli migrate `php cli migrate version|grep latest|awk '{ print $2 }'`
-	php cli seed
 	chmod 777 application/cache application/logs
