@@ -56,4 +56,3 @@ application/tests/results
 
 # Front-End
 node_modules/*
-package-lock.json

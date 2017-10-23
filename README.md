@@ -20,6 +20,7 @@ Follow each section below and run all the commands in the same order as listed.
 $ mkdir <repo-dir>
 $ git clone https://github.com/Pizzicato/CAFPE.git <repo-dir>
 $ cd <repo-dir>
+$ make init
 ```
 
 ### Shared hooks
@@ -52,9 +53,9 @@ $ npm install
 
 The package.json file npm scripts are the same ones used for deploying the app run by ```deploy.bash```.
 
-It contains two main scripts:
+It contains two main scripts, run them in liste order to start developing:
 
-Final assets creation from sources (SCSS, javascripts, images and fonts)
+Assets creation from sources (SCSS, javascripts, images and fonts)
 ```
 $ npm run build
 ```
