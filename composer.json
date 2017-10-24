@@ -13,9 +13,6 @@
 	},
     "scripts": {
         "post-install-cmd": [
-            "php vendor/kenjis/ci-phpunit-test/install.php",
-            "rm application/tests/controllers/Welcome_test.php",
-            "git checkout --  application/tests/Bootstrap.php application/tests/TestCase.php application/tests/phpunit.xml",
             "php cli migrate `php cli migrate version|grep latest|awk '{ print $2 }'`",
             "php cli seed"
         ]

@@ -236,7 +236,7 @@ switch (ENVIRONMENT)
 	define('BASEPATH', $system_path);
 
 	// Path to the front controller (this file) directory
-	define('FCPATH', realpath(dirname(__FILE__).'/../../public').DIRECTORY_SEPARATOR);
+	define('FCPATH', realpath(dirname(__FILE__).'/../../html').DIRECTORY_SEPARATOR);
 
 	// Name of the "system" directory
 	define('SYSDIR', basename(BASEPATH));

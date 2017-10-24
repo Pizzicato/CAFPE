@@ -163,7 +163,7 @@ function ftp_download_file() {
 #
 # $1 - Local file name
 # $2 - Destination file name
-# $3 - (optional) permissions in octal format. If present updated file
+# $3 - (optional) permissions in octal format. If present, updated file
 #      will be chmoded accordingly
 function ftp_upload_file() {
     echo "FTP UPLOAD [INFO]: Uploading '$1' to FTP server"
