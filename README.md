@@ -51,9 +51,7 @@ Node and npm are used for this purpose. To install all needed modules:
 $ npm install
 ```
 
-The package.json file npm scripts are the same ones used for deploying the app run by ```deploy.bash```.
-
-It contains two main scripts, run them in liste order to start developing:
+The package.json file npm scripts are the same ones used for deploying the app used by ```deploy.bash```. It contains two main scripts, run them in listed order to start developing:
 
 Assets creation from sources (SCSS, javascripts, images and fonts)
 ```

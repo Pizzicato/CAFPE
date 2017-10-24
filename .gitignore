@@ -43,16 +43,16 @@ application/tests/results
 !/vendor/codeigniter/framework/system/
 
 # Assets
-/public/*
-!/public/assets/
-!/public/.htaccess
-!/public/.htpasswd
-!/public/index.php
+/html/*
+!/html/assets/
+!/html/.htaccess
+!/html/.htpasswd
+!/html/index.php
 
-/public/assets/*
-!/public/assets/src/
-/public/assets/src/fonts/*
-/public/assets/src/*/vendors/*
+/html/assets/*
+!/html/assets/src/
+/html/assets/src/fonts/*
+/html/assets/src/*/vendors/*
 
 # Front-End
 node_modules/*
