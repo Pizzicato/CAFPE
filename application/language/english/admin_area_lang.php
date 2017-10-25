@@ -38,5 +38,5 @@ $lang['title'] = 'Title';
 $lang['content'] = 'Content';
 
 // Form custom errors
-$lang['article_dependent_fields'] = 'The article title and content have to be filled in in at least one of the available languages';
+$lang['article_dependent_fields'] = 'Article title and content have to be filled in in at least one of the available languages';
 $lang['date_invalid'] = 'The date field has an invalid format';

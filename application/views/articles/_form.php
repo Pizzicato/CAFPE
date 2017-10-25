@@ -6,7 +6,7 @@
 ?>
 <div class="form-group row">
     <?= form_label(lang('date'), 'date', array('class' => "col-sm-2 col-form-label")) ?>
-    <div class="col-sm-10 input-group">
+    <div class="col-sm-10">
         <?= form_input(
                 array(
                     'name' => 'date',

@@ -1,5 +1,6 @@
 ## Set environment
 SetEnvIfNoCase Host "^localhost" LOCAL_HOST
+SetEnvIfNoCase Host "^127.0.0.1" LOCAL_HOST
 SetEnvIfNoCase Host "^" CI_ENV=development WPD_URL=0
 SetEnvIfNoCase Host "cafpe\.ugr\.es" CI_ENV=production
 SetEnvIfNoCase Host "wpd\.ugr\.es" CI_ENV=production WPD_URL=1

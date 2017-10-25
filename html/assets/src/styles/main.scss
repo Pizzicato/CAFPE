@@ -1,13 +1,14 @@
-//bootstrap
+// bootstrap
 @import 'vendors/bootstrap/bootstrap';
 
-//fontawesome
+// fontawesome
 @import 'vendors/font-awesome/font-awesome';
 
-//bootstrap datepicker
+// bootstrap datepicker
 @import 'vendors/bootstrap-datepicker/bootstrap-datepicker.standalone';
 
-//SMACSS Architecture
+// SMACSS Architecture
+@import 'variables';
 @import 'base';
 @import 'layout';
 @import 'state';

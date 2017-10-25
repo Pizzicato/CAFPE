@@ -37,5 +37,5 @@ $lang['title'] = 'Título';
 $lang['content'] = 'Contenido';
 
 // Form custom errors
-$lang['article_dependent_fields'] = 'Título y contenido de la noticia ha de ser completado en al menos un lenguage';
+$lang['article_dependent_fields'] = 'Título y contenido de la noticia han de ser completados en al menos un lenguage';
 $lang['date_invalid'] = 'El formato de la fecha no es válido';
