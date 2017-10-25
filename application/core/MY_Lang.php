@@ -144,7 +144,7 @@ class MY_Lang extends CI_Lang
      *
      * Returns translated string or false if translation not found
      *
-     * @param string $line string to translate
+     * @param string $id string id to translate
      * @param string $lang
      * @return mixed string or false
      */

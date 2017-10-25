@@ -2,6 +2,15 @@
 
 class Pages extends Public_controller
 {
+    public function __construct()
+    {
+        parent::__construct('templates/public');
+        $page = $this->router->method;
+        if($page !== 'index') {
+            $page = ucfirst($this->lang->translate_from_id($page, current_lang()));
+            $this->data['pagetitle'] .= ' > '.$page;
+        }
+    }
     /**
      * Maps to:
      *    - site_url + pages
@@ -51,7 +60,9 @@ class Pages extends Public_controller
                 $article = null;
             }
         }
+
         $this->data['article'] = $this->_clean_article_array($article);
+        $this->data['pagetitle'] .= ': '.$this->data['article']['title'];
     }
 
     /**
