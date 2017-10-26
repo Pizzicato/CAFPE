@@ -50,7 +50,7 @@ class Articles extends Auth_controller
             redirect_lang('admin/articles/view/'.$id);
         }
         // not valid posted data
-        elseif(!empty($_POST)) {
+        elseif(!$this->article_model->validated) {
             $this->status('error');
         }
     }
@@ -67,7 +67,7 @@ class Articles extends Auth_controller
             show_404();
         }
         // update data if provided
-        if(!empty($_POST)) {
+        if(!$this->article_model->validated) {
             if ($this->article_model->from_form(null, null, array('id' => $id))->update()) {
                 $this->status('ok', true);
                 redirect_lang('admin/articles/view/'.$id);

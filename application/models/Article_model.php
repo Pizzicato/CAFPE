@@ -202,11 +202,9 @@
         // array of results
         else {
             foreach ($data as &$record) {
-                // not valid record, exit
-                if(!isset($record['date'])) {
-                    break;
+                if(isset($record['date'])) {
+                    $record['date'] = $this->_date_toggle($record['date']);
                 }
-                $record['date'] = $this->_date_toggle($record['date']);
             }
         }
         return $data;

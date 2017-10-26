@@ -5,8 +5,10 @@ class Pages extends Public_controller
     public function __construct()
     {
         parent::__construct('templates/public');
+        // get called method from this controller
         $page = $this->router->method;
         if($page !== 'index') {
+            // add page to title, translate it first to current language
             $page = ucfirst($this->lang->translate_from_id($page, current_lang()));
             $this->data['pagetitle'] .= ' > '.$page;
         }
