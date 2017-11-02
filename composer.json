@@ -2,19 +2,22 @@
 	"description" : "The CodeIgniter Application with Composer",
 	"require": {
 		"php": ">=5.3.2",
-		"codeigniter/framework": "3.1.*"
+		"codeigniter/framework": "3.1.*",
+		"benedmunds/ionauth": "2.x-dev"
 	},
 	"require-dev": {
-		"mikey179/vfsStream": "1.1.*",
 		"kenjis/ci-phpunit-test": "^0.15.0",
-		"phpunit/phpunit": "6.1.*",
 		"apigen/apigen": "4.*",
 		"kenjis/codeigniter-cli": "^0.1.0"
 	},
     "scripts": {
         "post-install-cmd": [
             "php cli migrate `php cli migrate version|grep latest|awk '{ print $2 }'`",
-            "php cli seed"
+            "php cli seed",
+            "rm -f application/libraries/ionauth/config/ion_auth.php"
+        ],
+        "post-update-cmd": [
+            "rm -f application/libraries/ionauth/config/ion_auth.php"
         ]
     }
 }

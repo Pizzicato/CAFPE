@@ -51,8 +51,12 @@
 			<ul>
 				<li><a href="class-Article_model.html">Article_model</a></li>
 				<li><a href="class-Articles.html">Articles</a></li>
+				<li><a href="class-Auth.html">Auth</a></li>
 				<li><a href="class-Auth_controller.html">Auth_controller</a></li>
+				<li><a href="class-Bcrypt.html">Bcrypt</a></li>
 				<li><a href="class-Hierarchical_controllers.html">Hierarchical_controllers</a></li>
+				<li><a href="class-Ion_auth.html">Ion_auth</a></li>
+				<li><a href="class-Ion_auth_model.html">Ion_auth_model</a></li>
 				<li class="active"><a href="class-MY_Controller.html">MY_Controller</a></li>
 				<li><a href="class-MY_Lang.html">MY_Lang</a></li>
 				<li><a href="class-MY_Model.html">MY_Model</a></li>
@@ -61,6 +65,8 @@
 				<li><a href="class-Public_controller.html">Public_controller</a></li>
 				<li><a href="class-Seeder.html">Seeder</a></li>
 				<li><a href="class-Slug.html">Slug</a></li>
+				<li><a href="class-User_sessions.html">User_sessions</a></li>
+				<li><a href="class-Users.html">Users</a></li>
 			</ul>
 
 
@@ -71,10 +77,14 @@
 			<ul>
 				<li><a href="function-action_result.html">action_result</a></li>
 				<li><a href="function-actions_widget.html">actions_widget</a></li>
+				<li><a href="function-base64_current_url_encode.html">base64_current_url_encode</a></li>
+				<li><a href="function-base64_url_decode.html">base64_url_decode</a></li>
+				<li><a href="function-base64_url_encode.html">base64_url_encode</a></li>
 				<li><a href="function-css_url.html">css_url</a></li>
 				<li><a href="function-current_lang.html">current_lang</a></li>
 				<li><a href="function-jscript_url.html">jscript_url</a></li>
 				<li><a href="function-lang_switcher.html">lang_switcher</a></li>
+				<li><a href="function-logged_in.html">logged_in</a></li>
 				<li><a href="function-redirect_lang.html">redirect_lang</a></li>
 				<li><a href="function-site_url_lang.html">site_url_lang</a></li>
 			</ul>
@@ -119,7 +129,9 @@ CI_Controller
 		<p class="elementList">
 			<code><a href="class-Articles.html">Articles</a></code>, 
 			<code><a href="class-Pages.html">Pages</a></code>, 
-			<code><a href="class-Private_pages.html">Private_pages</a></code>
+			<code><a href="class-Private_pages.html">Private_pages</a></code>, 
+			<code><a href="class-User_sessions.html">User_sessions</a></code>, 
+			<code><a href="class-Users.html">Users</a></code>
 		</p>
 	</div>
 
@@ -133,7 +145,7 @@ CI_Controller
 		
 		
 
-			<b>Located at</b> <a href="source-class-MY_Controller.html#6-109" title="Go to source code">MY_Controller.php</a>
+			<b>Located at</b> <a href="source-class-MY_Controller.html#6-116" title="Go to source code">MY_Controller.php</a>
 		<br>
 	</div>
 
@@ -153,7 +165,7 @@ CI_Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-MY_Controller.html#19-27" title="Go to source code">__construct</a>( <span> <var>$template</var></span> )</code>
+			<code><a href="source-class-MY_Controller.html#19-34" title="Go to source code">__construct</a>( <span> <var>$template</var></span> )</code>
 
 			<div class="description short">
 				
@@ -182,7 +194,7 @@ CI_Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#_render">#</a>
-			<code><a href="source-class-MY_Controller.html#30-43" title="Go to source code">render</a>( <span>string <var>$view</var></span>, <span>boolean <var>$return</var> = <span class="php-keyword1">false</span></span> )</code>
+			<code><a href="source-class-MY_Controller.html#37-50" title="Go to source code">render</a>( <span>string <var>$view</var></span>, <span>boolean <var>$return</var> = <span class="php-keyword1">false</span></span> )</code>
 
 			<div class="description short">
 				<p>Renders passed view</p>
@@ -218,7 +230,7 @@ CI_Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#__output">#</a>
-			<code><a href="source-class-MY_Controller.html#45-57" title="Go to source code">_output</a>( <span>string <var>$output</var></span> )</code>
+			<code><a href="source-class-MY_Controller.html#52-64" title="Go to source code">_output</a>( <span>string <var>$output</var></span> )</code>
 
 			<div class="description short">
 				<p>Override _ouput Ouput class method to allow implicit view rendering</p>
@@ -252,7 +264,7 @@ CI_Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#_status">#</a>
-			<code><a href="source-class-MY_Controller.html#59-85" title="Go to source code">status</a>( <span>string <var>$class</var></span>, <span>string <var>$redirect</var> = <span class="php-keyword1">false</span></span> )</code>
+			<code><a href="source-class-MY_Controller.html#66-92" title="Go to source code">status</a>( <span>string <var>$class</var></span>, <span>string <var>$redirect</var> = <span class="php-keyword1">false</span> </span>, <span> <var>$custom_message</var> = <span class="php-quote">''</span></span> )</code>
 
 			<div class="description short">
 				<p>Saves controller action status, if it has not been set before</p>
@@ -268,6 +280,8 @@ CI_Controller
 						<dd>$action Name of performed action (create, edit, delete...)</dd>
 						<dt><var>$redirect</var></dt>
 						<dd>$class ok or error</dd>
+						<dt><var>$custom_message</var></dt>
+						<dd></dd>
 					</dl></div>
 
 					<h4>Returns</h4>

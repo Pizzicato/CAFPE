@@ -7,9 +7,9 @@ class TestCase extends CIPHPUnitTestCase
     public static function setUpBeforeClass()
     {
         parent ::setUpBeforeClass();
+        $CI =& get_instance();
         // Run migrations once
         if (! self::$migrated) {
-            $CI =& get_instance();
             $CI->load->database();
             $CI->load->library('migration');
             if ($CI->migration->latest() === false) {
@@ -17,5 +17,11 @@ class TestCase extends CIPHPUnitTestCase
             }
             self::$migrated = true ;
         }
+        // seed users and login test user
+        $CI->load->add_package_path(APPPATH.'libraries/ionauth/');
+        $CI->load->library('Seeder');
+        $CI->seeder->call('UserSeeder');
+        $CI->load->library('ion_auth');
+        $CI->ion_auth->login('test', 'password');
     }
 }

@@ -19,10 +19,17 @@ class MY_Controller extends CI_Controller
     public function __construct($template)
     {
         parent::__construct();
+
+        // load ionauth library
+        $this->load->add_package_path(APPPATH.'libraries/ionauth/');
+        $this->load->library('ion_auth');
+
+        // set common data for all controllers
         $this->data['pagetitle'] = 'CAFPE - Centro Andaluz de Física de Partículas Elementales';
         $this->data['template'] = $template;
         $this->default_view = $this->router->fetch_class() . '/' . $this->router->fetch_method();
 
+        // check if app is in maintenance mode
         $this->_maintenance_mode_check();
     }
 
@@ -62,10 +69,10 @@ class MY_Controller extends CI_Controller
      * @param string $class ok or error
      * @return	bool
      */
-    public function status($class, $redirect = false)
+    public function status($class, $redirect = false , $custom_message = '')
     {
         $action = $this->router->fetch_method();
-        $message = $this->lang->line($action.'_'.$class, FALSE);
+        $message = $custom_message ? $custom_message : $this->lang->line($action.'_'.$class, FALSE);
         if(!empty($this->status) && ($class !== 'ok' && $class !== 'error') || !$message) {
             return false;
         }

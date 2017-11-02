@@ -9,7 +9,12 @@
     <body>
         <?php $this->load->view('templates/_parts/menu'); ?>
         <div class="container">
-            <?php $this->load->view($template); ?>
+            <main>
+                <?= action_result() ?>
+                <?php $this->load->view($template); ?>
+            </main>
+            <?php $this->load->view('templates/_parts/footer'); ?>
+            <script src="<?= jscript_url() ?>" charset="utf-8"></script>
         </div>
     </body>
 </html>

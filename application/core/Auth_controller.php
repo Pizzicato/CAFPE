@@ -17,5 +17,8 @@ class Auth_controller extends MY_Controller
     private function _auth_logged_in()
     {
         //Check if user is authenticated
+        if ($this->ion_auth->logged_in() === false) {
+            redirect_lang('admin/login');
+        }
     }
 }

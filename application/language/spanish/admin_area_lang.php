@@ -4,6 +4,8 @@
 * Administration area translations
 */
 
+$lang['admin_area'] = 'Área Restringida';
+
 $lang['english'] = 'Inglés';
 $lang['spanish'] = 'Español';
 
@@ -11,6 +13,8 @@ $lang['spanish'] = 'Español';
 $lang['view'] = 'Ver';
 $lang['edit'] = 'Modificar';
 $lang['delete'] = 'Borrar';
+$lang['save'] = 'Guardar';
+$lang['send'] = 'Enviar';
 
 $lang['view_all'] = "Ver todos";
 $lang['no_records'] = "Todavía no existe ningún elemento";
@@ -19,6 +23,8 @@ $lang['close'] = "Cerrar";
 // Items actions titles
 $lang['new_article'] = 'Nueva noticia';
 $lang['edit_article'] = 'Modificar noticia';
+$lang['new_user'] = 'Nuevo usuario';
+$lang['edit_user'] = 'Modificar usuario';
 
 // Actions status
 $lang['create_ok'] = 'Datos guardados correctamente';
@@ -33,7 +39,6 @@ $lang['delete_confirm'] = '¿Seguro que quieres borrar este elemento?';
 // Form fields
 $lang['lang_version_es'] = 'Versión en español';
 $lang['lang_version_en'] = 'Versión en inglés';
-$lang['title'] = 'Título';
 $lang['content'] = 'Contenido';
 
 // Form custom errors

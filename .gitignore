@@ -20,6 +20,9 @@ lftp_transferred.log
 /application/logs/*
 !/application/logs/index.html
 
+# remove ioanauth files (they should be installed via composer), except custom config
+application/libraries/ionauth
+
 # Remove PHPUnit generated files when testing
 application/tests/_ci_phpunit_test/tmp
 application/tests/build/coverage

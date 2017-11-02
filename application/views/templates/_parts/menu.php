@@ -21,5 +21,16 @@
               <?= lang_switcher() ?>
           </li>
         </ul>
+        <div class="col-auto admin-area-button">
+            <?php if(logged_in()): ?>
+                <a data-toggle="tooltip" title="<?= lang('logout') ?>" class="btn btn-success" href="<?= site_url_lang('admin/logout/'.base64_current_url_encode()) ?>">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                </a>
+            <?php else: ?>
+                <a data-toggle="tooltip" title="<?= lang('admin_area') ?>" class="btn btn-success" href="<?= site_url_lang('admin/dashboard') ?>">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                </a>
+            <?php endif; ?>
+        </div>
     </div>
 </nav>

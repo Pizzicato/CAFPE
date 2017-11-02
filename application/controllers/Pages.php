@@ -66,7 +66,7 @@ class Pages extends Public_controller
         $this->data['article'] = $this->_clean_article_array($article);
         $this->data['pagetitle'] .= ': '.$this->data['article']['title'];
     }
-
+    
     /**
      * returns an article array with only the language dependent fields in
      * the current language, and the rest of the fields

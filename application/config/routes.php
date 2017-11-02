@@ -58,6 +58,8 @@ $route['(\w{2})'] = $route['default_controller'];
 
 // Admin routes
 $route['(\w{2})/admin'] = 'private_pages/index';
+$route['(\w{2})/admin/login'] = 'user_sessions/create';
+$route['(\w{2})/admin/logout(.*)'] = 'user_sessions/delete$2';
 $route['(\w{2})/admin/dashboard'] = 'private_pages/index';
 $route['(\w{2})/admin/(.*)'] = '$2';
 

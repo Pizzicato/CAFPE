@@ -84,7 +84,7 @@
         <?= form_button(
                 array(
                     'type' => 'submit',
-                    'content' => 'Save',
+                    'content' => lang('save'),
                     'class' => 'btn btn-outline-primary'
                 )
             )
