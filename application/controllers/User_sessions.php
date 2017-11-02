@@ -38,9 +38,11 @@ class User_sessions extends Public_controller
     public function delete($url = '')
     {
         $url = $url ? base64_url_decode($url) : site_url_lang('admin/login');
-        // TODO: Problem with Session message, session gets destroyed
         if($this->ion_auth->logged_in()){
             $this->ion_auth->logout();
+            // Regenerate session: Fix for a ion_auth bug
+            session_start();
+            $this->session->sess_regenerate(TRUE);
             $this->status('ok', true, $this->ion_auth->messages());
         }
 
