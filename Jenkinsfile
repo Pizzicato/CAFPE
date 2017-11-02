@@ -30,7 +30,7 @@ stage('Test') {
         unstash 'complete-workspace'
         echo '************ Testing  ************'
         try {
-            sh 'vendor/bin/phpunit --log-junit results/phpunit/phpunit.xml -c application/tests'
+            sh 'phpunit --log-junit results/phpunit/phpunit.xml -c application/tests'
         }
         catch(error) {
             echo "Tests failed. Deploy halted: ${error.message}"
