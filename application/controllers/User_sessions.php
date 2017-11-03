@@ -8,9 +8,9 @@ class User_sessions extends Public_controller
     }
 
     /**
-     * Maps to:
-     *    - site_url + admin/login
-     */
+    * Maps to:
+    *    - site_url + admin/login
+    */
     public function create()
     {
         $this->load->library('form_validation');
@@ -30,11 +30,11 @@ class User_sessions extends Public_controller
     }
 
     /**
-     * Maps to:
-     *    - site_url + user_sessions/delete/$url
-     *
-     * @param string $url base64 encoded referer URL
-     */
+    * Maps to:
+    *    - site_url + user_sessions/delete/$url
+    *
+    * @param string $url base64 encoded referer URL
+    */
     public function delete($url = '')
     {
         $url = $url ? base64_url_decode($url) : site_url_lang('admin/login');

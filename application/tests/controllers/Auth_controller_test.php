@@ -6,9 +6,12 @@
 
 class Auth_controller_test extends TestCase
 {
-    public function test_login_needed()
+    public function test_When_accessing_restricted_area_not_logged_in_Then_redirection()
     {
-        $this->markTestIncomplete('This test has not been implemented yet.');
+        unset($_SESSION);
+        $this->request('GET', "/en/admin/");
+        $this->assertRedirect('en/admin/login', 302);
+        get_instance()->ion_auth->login('test', 'password');
     }
 
     public function test_template()

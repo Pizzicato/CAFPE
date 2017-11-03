@@ -23,4 +23,9 @@ class MY_Controller_test extends TestCase
     {
         $this->markTestIncomplete('This test has not been implemented yet.');
     }
+
+    public function test_status()
+    {
+        $this->markTestIncomplete('This test has not been implemented yet.');
+    }
 }

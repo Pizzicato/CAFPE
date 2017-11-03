@@ -1,4 +1,4 @@
-var title_en_msg, content_es_msg, title_en_msg, content_en_msg, no_title_content_msg;
+var title_es_msg, title_en_msg, content_es_msg, content_en_msg, no_title_content_msg;
 
 switch (window.location.pathname.split("/")[1]) {
     case 'en':
