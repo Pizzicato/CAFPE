@@ -160,8 +160,8 @@
      */
     protected function create_slugs($data)
     {
-        $data['slug_es'] = $this->slug->create_uri($data['title_es'], 'slug_es');
-        $data['slug_en'] = $this->slug->create_uri($data['title_en'], 'slug_en');
+        $data['slug_es'] = $this->slug->create_uri(@$data['title_es'], 'slug_es');
+        $data['slug_en'] = $this->slug->create_uri(@$data['title_en'], 'slug_en');
         return $data;
     }
 

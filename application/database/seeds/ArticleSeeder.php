@@ -15,8 +15,8 @@ class ArticleSeeder extends Seeder
             'content_en' => 'Content en test 1',
             'date' => date('Y-m-d'),
             'main_pic' => 'Main-pic1.jpg',
-            'slug_es' => 'title-es-slug-1',
-            'slug_en' => 'title-en-slug-1',
+            'slug_es' => 'title-es-test-1',
+            'slug_en' => 'title-en-test-1',
             'created_at' => date('Y-m-d'),
             'updated_at' => date('Y-m-d')
         ];
@@ -30,7 +30,7 @@ class ArticleSeeder extends Seeder
             'content_en' => '',
             'date' => date('Y-m-d'),
             'main_pic' => 'Main-pic2.jpg',
-            'slug_es' => 'title-es-slug-2',
+            'slug_es' => 'title-es-test-2',
             'slug_en' => '',
             'created_at' => date('Y-m-d'),
             'updated_at' => date('Y-m-d')
@@ -46,7 +46,7 @@ class ArticleSeeder extends Seeder
             'date' => date('Y-m-d'),
             'main_pic' => 'Main-pic3.jpg',
             'slug_es' => '',
-            'slug_en' => 'title-en-slug-3',
+            'slug_en' => 'title-en-test-3',
             'created_at' => date('Y-m-d'),
             'updated_at' => date('Y-m-d')
         ];

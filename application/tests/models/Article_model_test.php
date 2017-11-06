@@ -33,8 +33,8 @@ class Article_model_test extends TestCase
 
     public function test_When_searching_by_slug_Then_both_slug_columns_are_used()
     {
-        $result_en = $this->obj->where_slug('title-en-slug-1')->get();
-        $result_es = $this->obj->where_slug('title-es-slug-1', 'es')->get();
+        $result_en = $this->obj->where_slug('title-en-test-1')->get();
+        $result_es = $this->obj->where_slug('title-es-test-1', 'es')->get();
         $this->assertInternalType('array', $result_en);
         $this->assertInternalType('array', $result_es);
         $this->assertSame($result_en, $result_es);
@@ -54,9 +54,9 @@ class Article_model_test extends TestCase
 
     public function test_When_getting_language_of_a_slug_the_returned_language_is_correct()
     {
-        $lang = $this->obj->slug_lang('title-es-slug-1');
+        $lang = $this->obj->slug_lang('title-es-test-1');
         $this->assertSame($lang, 'es');
-        $lang = $this->obj->slug_lang('title-en-slug-1');
+        $lang = $this->obj->slug_lang('title-en-test-1');
         $this->assertSame($lang, 'en');
         $lang = $this->obj->slug_lang('not-valid-slug');
         $this->assertFalse($lang);

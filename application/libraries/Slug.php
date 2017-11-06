@@ -137,11 +137,10 @@ class Slug
      * change the name to "name-1".
      *
      * @param   string $uri
-     * @param   int $id
      * @param   int $count
      * @return  string
      */
-    private function _check_uri($uri, $field, $id = false, $count = 0)
+    private function _check_uri($uri, $field, $count = 0)
     {
         $CI =& get_instance();
         $new_uri = ($count > 0) ? $uri.$this->_get_replacement().$count : $uri;
@@ -149,12 +148,8 @@ class Slug
         // Setup the query
         $CI->db->select($field)->where($field, $new_uri);
 
-        if ($id) {
-            $CI->db->where($this->id.' !=', $id);
-        }
-
         if ($CI->db->count_all_results($this->table) > 0) {
-            return $this->_check_uri($uri, $field, $id, ++$count);
+            return $this->_check_uri($uri, $field, ++$count);
         } else {
             return $new_uri;
         }
