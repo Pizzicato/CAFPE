@@ -4,6 +4,7 @@
 * App tranlations, used all over
 */
 
+$lang['index'] = 'Inicio';
 $lang['news'] = 'Noticias';
 $lang['article'] = "Noticia";
 $lang['users'] = "Usuarios";

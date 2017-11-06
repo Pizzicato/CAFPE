@@ -6,12 +6,8 @@ class Pages extends Public_controller
     {
         parent::__construct('templates/public');
         // get called method from this controller
-        $page = $this->router->method;
-        if($page !== 'index') {
-            // add page to title, translate it first to current language
-            $page = ucfirst($this->lang->translate_from_id($page, current_lang()));
-            $this->data['pagetitle'] .= ' > '.$page;
-        }
+        $this->data['current_page'] = $this->router->method;
+        $this->data['pagetitle'] .= ' > '.lang($this->data['current_page']);
     }
     /**
      * Maps to:
@@ -66,7 +62,7 @@ class Pages extends Public_controller
         $this->data['article'] = $this->_clean_article_array($article);
         $this->data['pagetitle'] .= ': '.$this->data['article']['title'];
     }
-    
+
     /**
      * returns an article array with only the language dependent fields in
      * the current language, and the rest of the fields

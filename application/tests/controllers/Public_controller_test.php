@@ -6,7 +6,7 @@
 
 class Public_controller_test extends TestCase
 {
-    public function test_login_not_needed()
+    public function test_When_requesting_public_actions_Then_login_not_needed()
     {
         unset($_SESSION);
         $this->request('GET', "/");
@@ -14,8 +14,11 @@ class Public_controller_test extends TestCase
         get_instance()->ion_auth->login('test', 'password');
     }
 
-    public function test_template()
+    public function test_When_requesting_public_actions_Then_title_is_set()
     {
-        $this->markTestIncomplete('This test has not been implemented yet.');
+        $output = $this->request('GET', "/en");
+        $this->assertContains('<title>CAFPE - Centro Andaluz de Física de Partículas Elementales > Home</title>', $output);
+        $output = $this->request('GET', "/en/news");
+        $this->assertContains('<title>CAFPE - Centro Andaluz de Física de Partículas Elementales > News</title>', $output);
     }
 }

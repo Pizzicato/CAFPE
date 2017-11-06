@@ -4,7 +4,7 @@
  * @group controller
  */
 
-class Pages_test extends TestCase
+class Pages_controller_test extends TestCase
 {
     public static function setUpBeforeClass()
     {

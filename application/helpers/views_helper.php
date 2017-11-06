@@ -45,7 +45,7 @@ if (! function_exists('actions_widget')) {
         $output = '';
         $icons = array('view' => 'eye', 'edit' => 'pencil', 'delete' => 'trash-o');
         foreach ($actions as $action) {
-            $attributes = ['class' => 'action-icon'];
+            $attributes = ['class' => 'action-icaction_resulton'];
             $modal = '';
             if($action == 'delete') {
                 $attributes = array_merge(
@@ -77,5 +77,29 @@ if (! function_exists('actions_widget')) {
         }
 
         return $output;
+    }
+}
+
+/**
+ * Prints status from last action using flash data
+ */
+if (! function_exists('admin_area_button')) {
+    function admin_area_button()
+    {
+        if (logged_in()){
+            $title = lang('logout');
+            $href = site_url_lang('admin/logout/'.base64_current_url_encode());
+            $logo = "sign-out";
+        }
+        else {
+            $title = lang('admin_area');
+            $href = site_url_lang('admin/dashboard');
+            $logo = "lock";
+        }
+
+        return "<a data-toggle=\"tooltip\" title=\"$title\" class=\"btn btn-success\" href=\"$href\">
+            <i class=\"fa fa-$logo\" aria-hidden=\"true\"></i>
+            <span class=\"sr-only\">$title</span>
+        </a>";
     }
 }

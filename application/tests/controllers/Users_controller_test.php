@@ -4,7 +4,7 @@
  * @group controller
  */
 
-class Users_test extends TestCase
+class Users_controller_test extends TestCase
 {
     public function test_language()
     {

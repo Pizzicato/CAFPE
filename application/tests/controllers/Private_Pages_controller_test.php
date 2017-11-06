@@ -4,7 +4,7 @@
  * @group controller
  */
 
-class Private_Pages_test extends TestCase
+class Private_Pages_controller_test extends TestCase
 {
     public function test_When_acces_index_Then_see_home_page()
     {
