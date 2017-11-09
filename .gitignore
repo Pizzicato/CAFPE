@@ -46,16 +46,7 @@ application/tests/results
 !/vendor/codeigniter/framework/system/
 
 # Assets
-/html/*
-!/html/assets/
-!/html/.htaccess
-!/html/.htpasswd
-!/html/index.php
-
-/html/assets/*
-!/html/assets/src/
-/html/assets/src/fonts/*
-/html/assets/src/*/vendors/*
+/html/assets/dist
 
 # Front-End
 node_modules/*

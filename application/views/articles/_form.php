@@ -36,6 +36,7 @@
     <div class="form-group row">
         <?= form_label(lang('content'), 'content_es', array('class' => "col-sm-2 col-form-label")) ?>
         <div class="col-sm-10">
+            <div id="content_es_ckeditor_space"></div>
             <?= form_textarea(
                     array(
                         'name' => 'content_es',

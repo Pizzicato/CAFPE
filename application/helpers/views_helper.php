@@ -45,7 +45,7 @@ if (! function_exists('actions_widget')) {
         $output = '';
         $icons = array('view' => 'eye', 'edit' => 'pencil', 'delete' => 'trash-o');
         foreach ($actions as $action) {
-            $attributes = ['class' => 'action-icaction_resulton'];
+            $attributes = ['class' => 'action-icon'];
             $modal = '';
             if($action == 'delete') {
                 $attributes = array_merge(
@@ -83,23 +83,28 @@ if (! function_exists('actions_widget')) {
 /**
  * Prints status from last action using flash data
  */
-if (! function_exists('admin_area_button')) {
-    function admin_area_button()
+if (! function_exists('admin_area_buttons')) {
+    function admin_area_buttons()
     {
-        if (logged_in()){
-            $title = lang('logout');
-            $href = site_url_lang('admin/logout/'.base64_current_url_encode());
-            $logo = "sign-out";
-        }
-        else {
-            $title = lang('admin_area');
-            $href = site_url_lang('admin/dashboard');
-            $logo = "lock";
-        }
+        $admin_area_title = lang('admin_area');
+        $admin_area_href = site_url_lang('admin/dashboard');
+        $admin_area_button = "
+            <a data-toggle=\"tooltip\" title=\"$admin_area_title\" class=\"btn btn-success\" href=\"$admin_area_href\">
+                <i class=\"fa fa-lock\" aria-hidden=\"true\"></i>
+                <span class=\"sr-only\">$admin_area_title</span>
+            </a>";
 
-        return "<a data-toggle=\"tooltip\" title=\"$title\" class=\"btn btn-success\" href=\"$href\">
-            <i class=\"fa fa-$logo\" aria-hidden=\"true\"></i>
-            <span class=\"sr-only\">$title</span>
-        </a>";
+        if (logged_in()){
+            $title_logout = lang('logout');
+            $href_logout = site_url_lang('admin/logout/'.base64_current_url_encode());
+            return "<div class=\"btn-group\" role=\"group\" aria-label=\"Admin Area\">".
+                            $admin_area_button."
+                            <a data-toggle=\"tooltip\" title=\"$title_logout\" class=\"btn btn-success\" href=\"$href_logout\">
+                                <i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i>
+                                <span class=\"sr-only\">$title_logout</span>
+                            </a>
+                    </div>";
+        }
+        return $admin_area_button;
     }
 }

@@ -2,7 +2,7 @@
 <html lang="<?php echo current_lang(); ?>">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="<?= css_url() ?>">
+        <?= style_tag($styles) ?>
         <title>{pagetitle}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
@@ -14,7 +14,10 @@
                 <?php $this->load->view($template); ?>
             </main>
             <?php $this->load->view('templates/_parts/footer'); ?>
-            <script src="<?= jscript_url() ?>" charset="utf-8"></script>
         </div>
+        <script>
+            var CKEDITOR_BASEPATH = '/assets/jscripts/ckeditor/';
+        </script>
+        <?= jscript_tag($jscripts) ?>
     </body>
 </html>

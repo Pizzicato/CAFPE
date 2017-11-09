@@ -28,6 +28,8 @@ class MY_Controller extends CI_Controller
         $this->data['pagetitle'] = 'CAFPE - Centro Andaluz de Física de Partículas Elementales';
         $this->data['template'] = $template;
         $this->default_view = $this->router->fetch_class() . '/' . $this->router->fetch_method();
+        $this->data['jscripts'] = ['main.vendors', 'main'];
+        $this->data['styles'] = ['main'];
 
         // check if app is in maintenance mode
         $this->_maintenance_mode_check();

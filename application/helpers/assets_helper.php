@@ -13,23 +13,29 @@
  * @access  public
  * @return  string CSS main file location
  */
- if (! function_exists('css_url')) {
-     function css_url()
-     {
-         $CI =& get_instance();
-         $url = base_url() . $CI->config->item('css_path');
-         switch (ENVIRONMENT) {
-             case 'testing':
-             case 'development':
-                 $url .= $CI->config->item('main_css_file');
-                 break;
-             default:
-                 $url .= $CI->config->item('main_min_css_file');
-                 break;
-         }
-         return $url;
-     }
- }
+ if (! function_exists('style_tag')) {
+    function style_tag($styles)
+    {
+        $CI =& get_instance();
+        $base_css_path = base_url() . $CI->config->item('css_path');
+        $output = '';
+
+        foreach ($styles as $style) {
+            $output .= "<link rel=\"stylesheet\" href=\"".$base_css_path;
+            switch (ENVIRONMENT) {
+                case 'testing':
+                case 'development':
+                    $output .= "$style.css";
+                    break;
+                default:
+                    $output .= "$style.min.css";
+                    break;
+            }
+            $output .= "\">\n";
+        }
+        return $output;
+    }
+}
 
 /**
  * Get main js file URL
@@ -37,12 +43,17 @@
  * @access  public
  * @return  string
  */
-if (! function_exists('jscript_url')) {
-    function jscript_url()
+if (! function_exists('jscript_tag')) {
+    function jscript_tag($jscripts)
     {
         $CI =& get_instance();
-        $url = base_url() . $CI->config->item('jscript_path');
-        $url .= $CI->config->item('main_jscript_file');
-        return $url;
+        $base_jscript_path = base_url() . $CI->config->item('jscript_path');
+        $output = '';
+        foreach ($jscripts as $jscript) {
+            $output .= "<script src=\"$base_jscript_path";
+            $output .= "$jscript.min.js\" charset=\"utf-8\"></script>\n";
+        }
+
+        return $output;
     }
 }

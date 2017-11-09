@@ -9,6 +9,9 @@ class Auth_controller extends MY_Controller
     {
         parent::__construct('templates/auth');
         $this->_auth_logged_in();
+        // add admin jscripts in auth area
+        array_push($this->data['jscripts'],'admin.vendors','admin');
+        $this->data['styles'][] = 'admin';
     }
 
     /**

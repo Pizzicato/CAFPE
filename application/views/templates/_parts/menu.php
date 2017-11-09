@@ -31,8 +31,8 @@
             <li class="nav-item">
                 <?= lang_switcher() ?>
             </li>
-            <li class="admin-area-button nav-item">
-                <?= admin_area_button() ?>
+            <li class="nav-item">
+                <?= admin_area_buttons() ?>
             </li>
         </ul>
     </div>
