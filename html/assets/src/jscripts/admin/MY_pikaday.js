@@ -1,9 +1,12 @@
-// Disable autocomplete in input field
-var MY_Pikaday = (function() {
+var MY_pikaday = (function() {
     var lang = window.location.pathname.split("/")[1];
+
     var general_conf = {
         toString: function(date, format) {
-            return date.getDate()+'-'+(date.getMonth() + 1)+'-'+date.getFullYear();
+            var day = ('0' + date.getDate()).slice(-2),
+                month = ('0' + (date.getMonth() + 1)).slice(-2),
+                year = date.getFullYear();
+            return day + '-' + month + '-' + year;
         }
     };
     var lang_dependent_conf = {

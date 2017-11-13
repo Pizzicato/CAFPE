@@ -40,9 +40,9 @@
             <?= form_textarea(
                     array(
                         'name' => 'content_es',
-                        'value' => set_value('content_es', @$_['content_es']),
+                        'value' => set_value('content_es', @$_['content_es'], false),
                         'id'=> 'content_es',
-                        'rows' => 4,
+                        'rows' => 8,
                         'class' => (form_error('content_es') ? 'form-control is-invalid' : 'form-control')
                     )
                 ) ?>
@@ -70,9 +70,9 @@
             <?= form_textarea(
                     array(
                         'name' => 'content_en',
-                        'value' => set_value('content_en', @$_['content_en']),
+                        'value' => set_value('content_en', @$_['content_en'], false),
                         'id'=> 'content_en',
-                        'rows' => 4,
+                        'rows' => 8,
                         'class' => (form_error('content_en') ? 'form-control is-invalid' : 'form-control')
                     )
                 )
