@@ -5,8 +5,14 @@ var MY_tinymce = (function() {
         branding: false,
         menubar: false,
         resize: false,
-        plugins: ["fullscreen code link image"],
-        toolbar: "fullscreen code | undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | link unlink image",
+        plugins: ["fullscreen code link image responsivefilemanager"],
+        toolbar: "fullscreen code | undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | link unlink image responsivefilemanager",
+        image_advtab: true,
+        external_filemanager_path: "/filemanager/",
+        filemanager_title: "FileManager",
+        external_plugins: {
+            "filemanager": "/filemanager/plugin.min.js"
+        },
         language: lang
     };
     var translations = {
@@ -25,7 +31,8 @@ var MY_tinymce = (function() {
             "Insert\/edit link": "Insertar\/editar enlace",
             "Insert link": "Insertar enlace",
             "Remove link": "Quitar enlace",
-            "Insert\/edit image": "Insertar\/editar imagen"
+            "Insert\/edit image": "Insertar\/editar imagen",
+            "Insert file": "Insertar fichero"
         }
     };
 

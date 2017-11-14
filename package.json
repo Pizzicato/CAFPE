@@ -44,6 +44,7 @@
         "cp-vendors:admin:jscripts:pikaday": "cp node_modules/pikaday/pikaday.js node_modules/pikaday/plugins/pikaday.jquery.js html/assets/src/jscripts/admin/vendors/",
         "cp-vendors:admin:jscripts:tinymce": "cp node_modules/tinymce/tinymce.min.js html/assets/src/jscripts/admin/vendors/",
         "cp-vendors:admin:jscripts:tinymce-files": "cp -R node_modules/tinymce/{plugins,skins,themes} html/assets/dist/jscripts/tinymce/",
+        "cp-vendors:admin:jscripts:filemanager-tinymce": "cp -R html/filemanager/tinymce/plugins/responsivefilemanager html/assets/dist/jscripts/tinymce/plugins/",
         "prebuild": "run-s clean mkdir:** cp-vendors:**",
         "build:app:jscripts:vendors": "uglifyjs html/assets/src/jscripts/app/vendors/{jquery.js,popper.js,bootstrap.js,jquery.validate.js} -o html/assets/dist/jscripts/main.vendors.min.js -c -m",
         "build:app:jscripts:main": "uglifyjs html/assets/src/jscripts/app/*.js -o html/assets/dist/jscripts/main.min.js -c -m --source-map && sed -i \"s/html\\//\\//g\" html/assets/dist/jscripts/main.min.js.map",

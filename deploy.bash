@@ -190,7 +190,7 @@ function ftp_upload_file() {
 function ftp_upload_site() {
     echo "FTP UPLOAD [INFO]: Uploading site to FTP server"
     remove_lftp_logs
-    # Change html name folder to public_html
+    # Change html folder name to public_html
     mv html public_html
     lftp -c "$LFTP_OPTIONS
     open '$FTP_ACCESS';

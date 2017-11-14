@@ -47,6 +47,10 @@ application/tests/results
 
 # Assets
 /html/assets/dist
+/html/filemanager_contents/uploads/*
+!/html/filemanager_contents/uploads/.gitkeep
+/html/filemanager_contents/thumbs/*
+!/html/filemanager_contents/thumbs/.gitkeep
 
 # Front-End
 node_modules/*
