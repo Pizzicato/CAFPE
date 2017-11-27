@@ -2,8 +2,9 @@
 
 // Import TinyMCE
 import Pikaday from 'pikaday';
+import get_lang from '../../shared/modules/lang.js'
 
-const lang = window.location.pathname.split("/")[1];
+const lang = get_lang();
 
 const general_conf = {
     toString: function(date, format) {
@@ -39,7 +40,7 @@ const lang_dependent_conf = {
 
 export default function my_pikaday(selector) {
     // get configuration depending on current language (first segment or URI)
-    const conf = lang_dependent_conf['es'];
+    const conf = lang_dependent_conf[lang];
     Object.assign(conf, general_conf);
     const elements = document.querySelectorAll(selector);
 

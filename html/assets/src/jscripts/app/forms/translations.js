@@ -1,5 +1,9 @@
+import get_lang from '../../shared/modules/lang.js'
+
+const lang = get_lang();
+
 // Set form validation messages depending on URL language
-if (window.location.pathname.split("/")[1] === 'es') {
+if (lang === 'es') {
     $.extend($.validator.messages, {
         required: "Este campo es obligatorio.",
         remote: "Por favor, rellena este campo.",

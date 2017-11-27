@@ -1,5 +1,8 @@
 import my_pikaday from '../modules/pikaday';
 import my_tinymce from '../modules/tinymce';
+import get_lang from '../../shared/modules/lang.js'
+
+const lang = get_lang();
 
 $(function() {
     // load pikaday datepicker
@@ -12,7 +15,7 @@ $(function() {
     // articles form validation
     var title_es_msg, title_en_msg, content_es_msg, content_en_msg, no_title_content_msg;
 
-    switch (window.location.pathname.split("/")[1]) {
+    switch (lang) {
         case 'en':
             title_es_msg = "If content in Spanish is filled, title is required";
             content_es_msg = "If title in Spanish is filled, content is required";

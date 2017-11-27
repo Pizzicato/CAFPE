@@ -12,7 +12,9 @@ import 'tinymce/plugins/code';
 import 'tinymce/plugins/link';
 import 'tinymce/plugins/image';
 
-const lang = window.location.pathname.split("/")[1];
+import get_lang from '../../shared/modules/lang.js'
+
+const lang = get_lang();
 
 const conf = {
     branding: false,

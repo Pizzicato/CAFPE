@@ -27,7 +27,7 @@ module.exports = {
                 options: {
                     name: '[name].[ext]',
                     outputPath: 'fonts/',
-                    publicPath: '/assets/dist/'
+                    publicPath: '~pabloguaza/assets/dist/'
                 }
             }]
         }]
