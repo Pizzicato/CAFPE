@@ -22,16 +22,7 @@
 
         foreach ($styles as $style) {
             $output .= "<link rel=\"stylesheet\" href=\"".$base_css_path;
-            switch (ENVIRONMENT) {
-                case 'testing':
-                case 'development':
-                    $output .= "$style.css";
-                    break;
-                default:
-                    $output .= "$style.min.css";
-                    break;
-            }
-            $output .= "\">\n";
+            $output .= "$style.css\">\n";
         }
         return $output;
     }
@@ -51,7 +42,7 @@ if (! function_exists('jscript_tag')) {
         $output = '';
         foreach ($jscripts as $jscript) {
             $output .= "<script src=\"$base_jscript_path";
-            $output .= "$jscript.min.js\" charset=\"utf-8\"></script>\n";
+            $output .= "$jscript.js\" charset=\"utf-8\"></script>\n";
         }
 
         return $output;

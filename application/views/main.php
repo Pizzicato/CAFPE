@@ -15,9 +15,6 @@
             </main>
             <?php $this->load->view('templates/_parts/footer'); ?>
         </div>
-        <script>
-            var CKEDITOR_BASEPATH = '/assets/jscripts/ckeditor/';
-        </script>
         <?= jscript_tag($jscripts) ?>
     </body>
 </html>

@@ -2180,16 +2180,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v3.1.1",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "a1e8e1a30e1352f118feff1a8481066ddc2f234a"
+                "reference": "08131e7ff29de6bb9f12275c7d35df71f25f4d89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/a1e8e1a30e1352f118feff1a8481066ddc2f234a",
-                "reference": "a1e8e1a30e1352f118feff1a8481066ddc2f234a",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/08131e7ff29de6bb9f12275c7d35df71f25f4d89",
+                "reference": "08131e7ff29de6bb9f12275c7d35df71f25f4d89",
                 "shasum": ""
             },
             "require": {
@@ -2227,7 +2227,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2017-09-02T17:10:46+00:00"
+            "time": "2017-11-04T11:48:34+00:00"
         },
         {
             "name": "psr/log",
@@ -2327,16 +2327,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.28",
+            "version": "v2.8.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "f81549d2c5fdee8d711c9ab3c7e7362353ea5853"
+                "reference": "3eeaec6a5d9a253925139cd19eda07d882635d87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/f81549d2c5fdee8d711c9ab3c7e7362353ea5853",
-                "reference": "f81549d2c5fdee8d711c9ab3c7e7362353ea5853",
+                "url": "https://api.github.com/repos/symfony/console/zipball/3eeaec6a5d9a253925139cd19eda07d882635d87",
+                "reference": "3eeaec6a5d9a253925139cd19eda07d882635d87",
                 "shasum": ""
             },
             "require": {
@@ -2384,7 +2384,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-10-01T21:00:16+00:00"
+            "time": "2017-11-12T16:36:54+00:00"
         },
         {
             "name": "symfony/debug",
@@ -2559,16 +2559,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.8.28",
+            "version": "v2.8.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "842fb6df22180244b4c65935ce1a88d324e5ff9e"
+                "reference": "d819bf267e901727141fe828ae888486fd21236e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/842fb6df22180244b4c65935ce1a88d324e5ff9e",
-                "reference": "842fb6df22180244b4c65935ce1a88d324e5ff9e",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/d819bf267e901727141fe828ae888486fd21236e",
+                "reference": "d819bf267e901727141fe828ae888486fd21236e",
                 "shasum": ""
             },
             "require": {
@@ -2604,7 +2604,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-10-05T14:38:30+00:00"
+            "time": "2017-11-05T15:25:56+00:00"
         },
         {
             "name": "tracy/tracy",

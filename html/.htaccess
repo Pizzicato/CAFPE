@@ -15,24 +15,22 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ %{ENV:BASE_PATH}/index.php/$1 [L]
 
-<Files "main.min.js">
-  Header set SourceMap "http://localhost:8020/assets/dist/jscripts/main.min.js.map" env=LOCAL_HOST
+# TODO: https://serverfault.com/questions/292731/is-it-possible-to-use-a-wildcard-in-the-files-tag-of-htaccess
+# Sourcemaps are located in localhost to make them private for production & staging environments
+<Files "app.js">
+  Header set SourceMap "http://localhost:8020/assets/dist/jscripts/app.js.map" env=!LOCAL_HOST
 </Files>
 
-<Files "main.vendors.min.js">
-  Header set SourceMap "http://localhost:8020/assets/dist/jscripts/main.vendors.min.js.map" env=LOCAL_HOST
+<Files "admin.js">
+  Header set SourceMap "http://localhost:8020/assets/dist/jscripts/admin.js.map" env=!LOCAL_HOST
 </Files>
 
-<Files "admin.min.js">
-  Header set SourceMap "http://localhost:8020/assets/dist/jscripts/admin.min.js.map" env=LOCAL_HOST
+<Files "app.css">
+  Header set SourceMap "http://localhost:8020/assets/dist/styles/app.css.map" env=!LOCAL_HOST
 </Files>
 
-<Files "admin.vendors.min.js">
-  Header set SourceMap "http://localhost:8020/assets/dist/jscripts/admin.vendors.min.js.map" env=LOCAL_HOST
-</Files>
-
-<Files "main.css">
-  Header set SourceMap "http://localhost:8020/assets/dist/styles/main.css.map" env=LOCAL_HOST
+<Files "admin.css">
+  Header set SourceMap "http://localhost:8020/assets/dist/styles/admin.css.map" env=!LOCAL_HOST
 </Files>
 
 ## Basic auth for staging server

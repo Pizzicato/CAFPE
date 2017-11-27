@@ -1,0 +1,11 @@
+// External resources
+@import "~bootstrap/scss/bootstrap";
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
+
+// SMACSS Architecture
+@import 'variables';
+//@import 'base';
+//@import 'layout';
+@import 'state';
+@import 'modules/action_icons';

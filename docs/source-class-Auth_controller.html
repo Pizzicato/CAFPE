@@ -112,8 +112,8 @@
 </span><span id="10" class="l">        parent::__construct(<span class="php-quote">'templates/auth'</span>);
 </span><span id="11" class="l">        <span class="php-var">$this</span>-&gt;_auth_logged_in();
 </span><span id="12" class="l">        <span class="php-comment">// add admin jscripts in auth area</span>
-</span><span id="13" class="l">        <span class="php-keyword2">array_push</span>(<span class="php-var">$this</span>-&gt;data[<span class="php-quote">'jscripts'</span>],<span class="php-quote">'admin.vendors'</span>,<span class="php-quote">'admin'</span>);
-</span><span id="14" class="l">        <span class="php-var">$this</span>-&gt;data[<span class="php-quote">'styles'</span>][] = <span class="php-quote">'admin'</span>;
+</span><span id="13" class="l">        <span class="php-var">$this</span>-&gt;data[<span class="php-quote">'jscripts'</span>] = [<span class="php-quote">'admin.vendors'</span>, <span class="php-quote">'admin'</span>];
+</span><span id="14" class="l">        <span class="php-var">$this</span>-&gt;data[<span class="php-quote">'styles'</span>] = [<span class="php-quote">'admin'</span>];
 </span><span id="15" class="l">    }
 </span><span id="16" class="l">
 </span><span id="17" class="l">    <span class="php-comment">/**
