@@ -3,8 +3,6 @@
 const merge = require('webpack-merge');
 const parts = require('./webpack.config.parts');
 
-process.env.PUBLIC_PATH = '/assets/dist/';
-
 const devConfig = merge(
     parts.extractSCSS(),
     parts.minifyJavaScript({
