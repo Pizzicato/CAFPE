@@ -31,7 +31,7 @@ const conf = {
     //     "filemanager": "/filemanager/plugin.min.js"
     // },
     language: lang,
-    skin_url: '/assets/dist/skins/lightgray'
+    skin_url: process.env.PUBLIC_PATH + 'skins/lightgray'
 };
 
 const translations = {

@@ -24,6 +24,7 @@ module.exports = merge(
             path: PATHS.dist,
         }
     },
+    parts.setEnvVar('PUBLIC_PATH', process.env.PUBLIC_PATH),
     parts.loadFonts({
         exclude: /tinymce/,
         options: {
