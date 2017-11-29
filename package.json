@@ -32,9 +32,10 @@
         "webpack-merge": "^4.1.1"
     },
     "scripts": {
-        "start": "webpack --config build/webpack.config.dev.js",
-        "build": "webpack --config build/webpack.config.prod.js",
-        "postbuild": "imagemin-newer html/assets/src/img html/assets/dist/img"
+        "imagemin": "imagemin-newer html/assets/src/img html/assets/dist/img",
+        "start": "npm run imagemin && webpack --config webpack/webpack.config.dev.js",
+        "build:prod": "npm run imagemin && webpack --config webpack/webpack.config.prod.js",
+        "build:stage": "npm run imagemin && webpack --config webpack/webpack.config.stage.js"
     },
     "author": "Pablo Guaza",
     "license": "ISC"

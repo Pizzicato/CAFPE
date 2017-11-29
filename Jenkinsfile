@@ -13,8 +13,6 @@ stage('Set Up') {
             echo '************ Installing Node modules ************'
             sh 'npm set progress=false'
             sh 'npm install'
-            echo '************ Creating Assets ************'
-            sh 'npm run build'
             stash 'complete-workspace'
         }
         catch(error) {
@@ -51,6 +49,8 @@ try {
                     echo ' ************ Deploying to staging server ************'
                     withCredentials([usernamePassword(credentialsId: 'eddefcd8-350c-4a75-9f2e-bed38fab48c8', passwordVariable: 'FTP_PASSWORD', usernameVariable: 'FTP_USERNAME')]) {
                         unstash 'complete-workspace'
+                        echo '************ Creating Assets ************'
+                        sh 'npm run build:stage'
                         sh "./deploy.bash ${env.FTPWPD_HOST} ${FTP_USERNAME} ${FTP_PASSWORD} ${env.CAFPE_DEV_DB} ${env.CAFPE_PROD_DB}"
                     }
                 }
@@ -80,11 +80,11 @@ try {
             lock(resource: 'production-server', inversePrecedence: true) {
                 node {
                     echo ' ************ Release to production server ************'
-                    unstash 'complete-workspace'
                     // TODO: Add deploy command once first migration is made
                     withCredentials([usernamePassword(credentialsId: '4ef8e4ac-7c5f-4e97-a698-b2ad6909c718', passwordVariable: 'FTP_PASSWORD', usernameVariable: 'FTP_USERNAME')]) {
                         unstash 'complete-workspace'
-
+                        // echo '************ Creating Assets ************'
+                        // sh 'npm run build:prod'
                     }
                 }
                 milestone()
