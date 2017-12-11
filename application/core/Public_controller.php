@@ -9,7 +9,7 @@ class Public_controller extends MY_Controller
     {
         parent::__construct('templates/public');
         // add app jscripts in public area
-        $this->data['jscripts'] = ['admin.vendors', 'app'];
+        $this->data['jscripts'] = ['app.vendors', 'app'];
         $this->data['styles'] = ['app'];
     }
 }

@@ -13,6 +13,7 @@
                 'name' => 'username',
                 'value' => set_value('username', @$_['username']),
                 'id'=> 'username',
+                'required' => 'required',
                 'class' => (form_error('username') ? 'is-invalid ' : '').'form-control'
             )
     ) ?>
@@ -24,6 +25,7 @@
             array(
                 'name' => 'password',
                 'id'=> 'password',
+                'required' => 'required',
                 'class' => (form_error('password') ? 'is-invalid ' : '').'form-control'
             )
     ) ?>

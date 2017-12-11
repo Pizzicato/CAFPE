@@ -1,8 +1,3 @@
-$(function() {
-    $('#login-form').validate({
-        rules: {
-            username: "required",
-            password: "required"
-        }
-    });
-});
+import my_validate from '../../shared/modules/validate';
+
+my_validate('login-form');

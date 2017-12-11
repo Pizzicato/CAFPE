@@ -27,7 +27,7 @@ if (! function_exists('action_result')) {
             }
 
             return '<div class="'.$class.'" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="'.lang('close').'>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="'.lang('close').'">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     '.$status['message'].'

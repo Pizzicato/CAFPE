@@ -1,6 +1,13 @@
-div.is-invalid,
-div.general-error {
+.fg-invalid input {
+  border-color: $danger;
+}
+
+.fg-invalid .fg-invalid-feedback {
   color: $danger;
-  font-size: .875rem;
-  margin-top: .25rem;
+}
+
+dv.general-error {
+  color: $danger;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
 }
