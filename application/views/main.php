@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <?= style_tag($styles) ?>
+        <?= jscript_tag($jscripts) ?>
         <title>{pagetitle}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
@@ -15,6 +16,5 @@
             </main>
             <?php $this->load->view('templates/_parts/footer'); ?>
         </div>
-        <?= jscript_tag($jscripts) ?>
     </body>
 </html>

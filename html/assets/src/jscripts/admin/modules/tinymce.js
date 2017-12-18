@@ -20,6 +20,7 @@ const conf = {
     branding: false,
     menubar: false,
     resize: false,
+    height: 200,
     image_advtab: true,
     plugins: ["fullscreen code link image"],
     toolbar: "fullscreen code | undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | link unlink image",

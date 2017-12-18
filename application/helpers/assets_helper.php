@@ -42,7 +42,7 @@ if (! function_exists('jscript_tag')) {
         $output = '';
         foreach ($jscripts as $jscript) {
             $output .= "<script src=\"$base_jscript_path";
-            $output .= "$jscript.js\" charset=\"utf-8\"></script>\n";
+            $output .= "$jscript.js\" charset=\"utf-8\" defer></script>\n";
         }
 
         return $output;

@@ -4,10 +4,10 @@
 
 .fg-invalid .fg-invalid-feedback {
   color: $danger;
+  text-align: right;
 }
 
-dv.general-error {
+div.general-error {
   color: $danger;
-  font-size: 0.875rem;
   margin-top: 0.25rem;
 }

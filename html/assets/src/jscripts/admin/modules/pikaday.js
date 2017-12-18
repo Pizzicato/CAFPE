@@ -47,7 +47,7 @@ export default function my_pikaday(selector) {
     for (var i = 0; i < elements.length; i++) {
         // disable autocomplete and set input as readonly
         elements[i].setAttribute('autocomplete', 'off');
-        elements[i].readonly = true;
+        elements[i].readOnly = true;
         conf.field = elements[i];
         // load datepicker
         new Pikaday(conf);

@@ -1,101 +1,56 @@
+'use strict;'
+
 import my_pikaday from '../modules/pikaday';
 import my_tinymce from '../modules/tinymce';
+import my_validate from '../../shared/modules/validate';
 import get_lang from '../../shared/modules/lang.js'
 
 const lang = get_lang();
+const generalErrorMessage = (lang == 'es') ?
+    'Título y contenido de la noticia han de ser completados en al menos un lenguage' :
+    'Article title and content have to be filled in in at least one of the available languages';
 
-$(function() {
-    // load pikaday datepicker
-    my_pikaday('.datepicker');
+// load pikaday datepicker
+my_pikaday('.datepicker');
 
-    // load TinyMCE
-    my_tinymce('#content_es');
-    my_tinymce('#content_en');
+// load TinyMCE
+my_tinymce('#content_es');
+my_tinymce('#content_en');
 
-    // TODO: fix articles form validation
-    // var title_es_msg, title_en_msg, content_es_msg, content_en_msg, no_title_content_msg;
-    //
-    // switch (lang) {
-    //     case 'en':
-    //         title_es_msg = "If content in Spanish is filled, title is required";
-    //         content_es_msg = "If title in Spanish is filled, content is required";
-    //         title_en_msg = "If content in English is filled, title is required";
-    //         content_en_msg = "If content in English is filled, title is required";
-    //         no_title_content_msg = "Article title and content have to be filled in in at least one of the available languages";
-    //         break;
-    //     case 'es':
-    //         title_es_msg = "Si hay contenido en español, el título es obligatorio";
-    //         content_es_msg = "Si hay título en español, el contenido es obligatorio";
-    //         title_en_msg = "Si hay título en inglés, el contenido es obligatorio";
-    //         content_en_msg = "Si hay contenido en inglés, el título es obligatorio";
-    //         no_title_content_msg = "Título y contenido de la noticia han de ser completados en al menos un lenguage";
-    //         break;
-    // }
-    //
-    // $('#article-form').validate({
-    //     ignore: [],
-    //     focusInvalid: false,
-    //     rules: {
-    //         date: "required",
-    //         title_es: {
-    //             required: "#content_es:filled"
-    //         },
-    //         content_es: {
-    //             required: "#title_es:filled"
-    //         },
-    //         title_en: {
-    //             required: "#content_en:filled"
-    //         },
-    //         content_en: {
-    //             required: "#title_en:filled"
-    //         }
-    //     },
-    //     messages: {
-    //         title_es: {
-    //             required: title_es_msg
-    //         },
-    //         content_es: {
-    //             required: content_es_msg
-    //         },
-    //         title_en: {
-    //             required: title_en_msg
-    //         },
-    //         content_en: {
-    //             required: content_en_msg
-    //         }
-    //     }
-    // });
-    //
-    // $('#article-form').submit(function(event) {
-    //     // don't submit if none of the title and content fields are filled,
-    //     if (!$('#title_es').val() &&
-    //         !$('#content_es').val() &&
-    //         !$('#title_en').val() &&
-    //         !$('#content_en').val()
-    //     ) {
-    //         event.preventDefault();
-    //         // insert error in form if not present
-    //         if (!$(".general-error").length) {
-    //             $(
-    //                 '<div class="general-error">' +
-    //                 no_title_content_msg +
-    //                 '</div>'
-    //             ).insertBefore($("fieldset").first());
-    //         }
-    //     }
-    //     // remove potential error element
-    //     else if ($(".general-error").length) {
-    //         $('.general-error').remove();
-    //     }
-    // });
-    //
-    // // remove general error if title and content in one lang are filled
-    // $('#content_en, #title_en, #content_es, #title_es').keyup(function() {
-    //     if (
-    //         ($('#title_es').val() && $('#content_es').val()) ||
-    //         ($('#title_en').val() && $('#content_en').val())
-    //     ) {
-    //         $('.general-error').remove();
-    //     }
-    // });
-});
+// Custom validations that checks if all the title and content fields are empty. This cannot
+// be done using the validation library, since it uses a per field basis validation
+// document.getElementById('article-form').addEventListener("submit", e => {
+//     if (validArticle()) {
+//         removeFormGeneralError();
+//     } else {
+//         e.preventDefault();
+//         e.stopImmediatePropagation()
+//         showFormGeneralError();
+//     }
+// });
+
+// load validation library
+my_validate('article-form');
+
+function validArticle() {
+    return document.getElementById('title_es').value !== '' ||
+        document.getElementById('title_en').value !== '' ||
+        tinymce.editors['content_es'].getContent() !== '' ||
+        tinymce.editors['content_en'].getContent() !== '';
+}
+
+function showFormGeneralError() {
+    if (!document.getElementsByClassName('general-error').length) {
+        let errorNode = document.createElement("div");
+        errorNode.className = 'general-error';
+        errorNode.innerHTML = generalErrorMessage;
+        document.forms[0].insertBefore(errorNode, document.getElementsByTagName("fieldset")[0]);
+    }
+}
+
+function removeFormGeneralError() {
+    const errorNode = document.getElementsByClassName('general-error')[0];
+    if (errorNode) {
+        errorNode.remove();
+    }
+}
