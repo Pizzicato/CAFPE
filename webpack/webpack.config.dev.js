@@ -3,7 +3,7 @@
 const merge = require('webpack-merge');
 const parts = require('./webpack.config.parts');
 
-process.env.PUBLIC_PATH = '/assets/dist/';
+process.env.PUBLIC_PATH = '/';
 
 const devConfig = merge(
     {

@@ -22,17 +22,16 @@ const conf = {
     resize: false,
     height: 200,
     image_advtab: true,
-    plugins: ["fullscreen code link image"],
-    toolbar: "fullscreen code | undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | link unlink image",
-    // plugins: ["fullscreen code link image responsivefilemanager"],
-    // toolbar: "fullscreen code | undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | link unlink image responsivefilemanager",
-    // external_filemanager_path: "/filemanager/",
-    // filemanager_title: "FileManager",
-    // external_plugins: {
-    //     "filemanager": "/filemanager/plugin.min.js"
-    // },
+    plugins: ["fullscreen code link image responsivefilemanager"],
+    toolbar: "fullscreen code | undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | link unlink image responsivefilemanager",
+    external_filemanager_path: "/filemanager/",
+    filemanager_title: "FileManager",
+    external_plugins: {
+        "filemanager": "/filemanager/plugin.min.js",
+        "responsivefilemanager": process.env.PUBLIC_PATH + "filemanager/tinymce/plugins/responsivefilemanager/plugin.min.js"
+    },
     language: lang,
-    skin_url: process.env.PUBLIC_PATH + 'skins/lightgray'
+    skin_url: process.env.DIST_PATH + 'skins/lightgray'
 };
 
 const translations = {

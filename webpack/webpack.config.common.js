@@ -9,6 +9,8 @@ const PATHS = {
     dist: path.resolve(__dirname, '..', 'html', 'assets', 'dist'),
 };
 
+process.env.DIST_PATH = process.env.PUBLIC_PATH + 'assets/dist/';
+
 let isVendor = ({
     resource
 }) => /node_modules/.test(resource);
@@ -24,13 +26,14 @@ module.exports = merge(
             path: PATHS.dist,
         }
     },
+    parts.setEnvVar('DIST_PATH', process.env.DIST_PATH),
     parts.setEnvVar('PUBLIC_PATH', process.env.PUBLIC_PATH),
     parts.loadFonts({
         exclude: /tinymce/,
         options: {
             name: '[name].[ext]',
             outputPath: 'fonts/',
-            publicPath: process.env.PUBLIC_PATH,
+            publicPath: process.env.DIST_PATH,
         },
     }),
     parts.cleanPath({
